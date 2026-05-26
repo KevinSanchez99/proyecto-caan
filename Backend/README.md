@@ -1000,9 +1000,3 @@ curl -X POST http://localhost:3000/api/animals \
 ```
 
 ---
-
-## Conclusión
-
-Este backend proporciona una API REST completa y segura para gestionar animales, noticias y usuarios. Utiliza mejores prácticas de desarrollo como separación de responsabilidades, validación de entrada, autenticación con JWT y manejo de errores robusto.
-
-Para más información o reportar issues, consulta con el equipo de desarrollo.
