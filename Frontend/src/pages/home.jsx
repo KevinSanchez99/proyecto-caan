@@ -1,19 +1,22 @@
-import Navbar from "../components/NavBar";
+import NavBar from "../components/NavBar";
+import Hero from "../components/Hero";
+import NewsSlider from "../components/NewsSlider";
+import QuickAdoptions from "../components/QuickAdoptions";
+import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
+import React, { useState } from 'react';
 
-function Home() {
+export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main className="grow w-full"> 
-        {/* <BasicInfoSection />
+    <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
+      <NavBar />
+      <main className="flex-grow w-full">
+        <Hero />
         <NewsSlider />
-        <FeaturedAnimals />
-        <DonationRequest /> */}
+        <QuickAdoptions />
+        <CallToAction />
       </main>
       <Footer />
-    </>
+    </div>
   );
-}
-
-export default Home;
+};

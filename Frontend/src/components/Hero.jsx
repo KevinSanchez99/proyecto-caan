@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+
+const Hero = () => (
+    <section className="relative bg-surface-container-low overflow-hidden">
+        {/* Cambié max-w-container_max por max-w-[1280px] directamente para evitar conflictos con el spacing del config */}
+        <div className="max-w-container_max mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-12">
+
+            {/* Agregué min-w-0 para evitar que Flexbox aplaste el texto (causa del texto vertical) */}
+            <div className="flex-1 space-y-6 z-10 text-center lg:text-left">
+                <h1 className="inline-block px-4 py-2 bg-primary-container text-white font-label-2xl text-label-2xl rounded-full mb-2">
+                    Centro de Ayuda al Animal de Necochea
+                </h1>
+
+                {/* Restauradas tus clases font-h1 y text-on-surface */}
+                <h2 className="font-h1 text-[40px] md:text-[50px] text-on-surface leading-tight">
+                    Dale un hogar a quien más lo necesita
+                </h2>
+
+                {/* Restauradas tus clases font-body-lg, text-body-lg y text-on-surface-variant */}
+                <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto lg:mx-0">
+                    Rescatamos, rehabilitamos y buscamos familias amorosas para animales en situación de calle. Conoce a tu nuevo mejor amigo o ayúdanos a seguir cambiando vidas.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+                    {/* Botón secundario restaurado usando bg-secondary de tu config */}
+                    <a href="/adopciones" className="bg-secondary text-on-secondary border border-outline-variant font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-secondary/85 transition-all text-center">
+                        Adoptar ahora
+                    </a>
+                    <a href="/donaciones" className="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-primary/90 active:scale-95 transition-all shadow-sm text-center">
+                        Hacer una donación
+                    </a>
+                </div>
+            </div>
+
+            <div className="flex-1 relative z-10 w-full h-[400px] md:h-[500px]">
+                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Perro feliz al aire libre" className="w-full h-full object-cover rounded-2xl shadow-xl" />
+            </div>
+
+        </div>
+    </section>
+);
+
+export default Hero;
