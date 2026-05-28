@@ -12,7 +12,7 @@ const NewsSlider = () => {
     };
 
     return (
-        <section className="mb-12 mt-12 relative w-[95%] md:w-[75%] lg:w-[90%] mx-auto overflow-hidden bg-white shadow-sm border border-stone-200 rounded-xl">
+        <section className="mb-lg mt-lg relative w-[95%] md:w-[75%] lg:w-[83%] mx-auto overflow-hidden bg-white shadow-sm border border-outline-variant/20 rounded-xl">
             <div
                 className="flex transition-transform duration-500 ease-in-out w-full"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}

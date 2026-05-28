@@ -14,7 +14,7 @@ export default function Navbar() {
         { name: "Sobre Nosotros", path: "/about-us" },
         { name: "Adopciones", path: "/adoptions" },
         { name: "Noticias", path: "/news" },
-        { name: "FAQ", path: "/faq" },
+        { name: "Preguntas Frecuentes", path: "/faq" },
         { name: "Contacto", path: "/contact" },
     ];
 

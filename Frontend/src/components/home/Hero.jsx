@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Hero = () => (
     <section className="relative bg-surface-container-low overflow-hidden">
-        <div className="max-w-container_max mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-12">
+        <div className="max-w-container_max mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
 
             <div className="flex-1 space-y-6 z-10 text-center lg:text-left">
                 <h1 className="inline-block px-4 py-2 bg-primary-container text-white font-label-2xl text-label-2xl rounded-full mb-4">

@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "category": "Rescate",
+        "date": "15 Octubre, 2024",
+        "title": "Rescatamos a 5 gatitos abandonados en el centro",
+        "description": "Gracias al aviso rápido de la comunidad, pudimos rescatar a esta camada antes de la tormenta.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAwMrTlVsdeH3XtY0W76smRzG2FCYHG-A01v1hiGQ--BFfLOaHqGtKvEJ0BaQCeBwV5X-qHCbcjUUlInKAwdSAVFGqUJrRZoJP5iCpUysx08hoWaQD3nu7mnqJvNS86oUfGf6sRw0YmO3p9MDydsELLIooX-e3ZJCt0obZXsPEMHBAzUQ5Gp4upLG7yrXpVM_e3aPR9HOxCFLodtercdj49BGj1xXKTohc-FyNm0T8DsK6mK3RBZZcXOjcBs4VBrKYhu2WOBuiLW7KO",
+        "alt": "Gatito recién rescatado recibiendo cuidados veterinarios"
+    },
+    {
+        "id": 2,
+        "category": "Instalaciones",
+        "date": "10 Octubre, 2024",
+        "title": "¡Inauguramos nuestra nueva área de juegos!",
+        "description": "Gracias a sus donaciones, hemos completado la construcción del patio techado para días de lluvia.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCxKRakfasxoMGhmcBgzDfYJ_lbaNg2Tit7sSfytdLIRfGrN7PodAoX4RozksxQQq8AJ6VVuA96soc1c5cyUUSDa4XJE8SOg9ABgCxRw1fUCRqqdvlnwdJduuuw8e4MM6O6oAD1FnX3b6l8bf8DYTGWAzmkcPosHAvJR6mtWxFLqAtjZnn518ak2ghN33_WtMA_WLoAlr6oUqqBqhTmwk5TplaDY2tk0ZshV2V4lAXEwS0ZUVTsgn9AuGSDcQvZf4v4APGX8VOU5eKb",
+        "alt": "Nuevo centro de juegos para animales en el refugio"
+    },
+    {
+        "id": 3,
+        "category": "Comunidad",
+        "date": "05 Octubre, 2024",
+        "title": "Programa de Voluntariado 2025: Inscripciones Abiertas",
+        "description": "Buscamos personas apasionadas por el bienestar animal para unirse a nuestro equipo el próximo año.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBdz9bKCRWUgXDGhmyls0FN2f_q23hRv2MwleeUVPV7vEAshTohsyV3yl6Fod-D70ABAHp5Kv92Hm0ZE2xo_3Ybgo7-wmoUaYReHjn38EGWAHt-Ps5vv5yR5qVSo69wPFDUATjMydtIEDBKKoSe_kLmGetxmqmLnfDJvo5hVa2EMUBhil5mWtJhZYSOEj5gPfadLVBqD5iwXCnBXrW9roUCckjIL8gBLWD_rzv8MfcZf1guToqF-MaP_TFtRr2EXpGGLDuIua1AJ0hO",
+        "alt": "Grupo de voluntarios en entrenamiento"
+    },
+    {
+        "id": 4,
+        "category": "Rescate",
+        "date": "15 Octubre, 2024",
+        "title": "Rescatamos a 5 gatitos abandonados en el centro",
+        "description": "Gracias al aviso rápido de la comunidad, pudimos rescatar a esta camada antes de la tormenta.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAwMrTlVsdeH3XtY0W76smRzG2FCYHG-A01v1hiGQ--BFfLOaHqGtKvEJ0BaQCeBwV5X-qHCbcjUUlInKAwdSAVFGqUJrRZoJP5iCpUysx08hoWaQD3nu7mnqJvNS86oUfGf6sRw0YmO3p9MDydsELLIooX-e3ZJCt0obZXsPEMHBAzUQ5Gp4upLG7yrXpVM_e3aPR9HOxCFLodtercdj49BGj1xXKTohc-FyNm0T8DsK6mK3RBZZcXOjcBs4VBrKYhu2WOBuiLW7KO",
+        "alt": "Gatito recién rescatado recibiendo cuidados veterinarios"
+    },
+    {
+        "id": 5,
+        "category": "Instalaciones",
+        "date": "10 Octubre, 2024",
+        "title": "¡Inauguramos nuestra nueva área de juegos!",
+        "description": "Gracias a sus donaciones, hemos completado la construcción del patio techado para días de lluvia.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCxKRakfasxoMGhmcBgzDfYJ_lbaNg2Tit7sSfytdLIRfGrN7PodAoX4RozksxQQq8AJ6VVuA96soc1c5cyUUSDa4XJE8SOg9ABgCxRw1fUCRqqdvlnwdJduuuw8e4MM6O6oAD1FnX3b6l8bf8DYTGWAzmkcPosHAvJR6mtWxFLqAtjZnn518ak2ghN33_WtMA_WLoAlr6oUqqBqhTmwk5TplaDY2tk0ZshV2V4lAXEwS0ZUVTsgn9AuGSDcQvZf4v4APGX8VOU5eKb",
+        "alt": "Nuevo centro de juegos para animales en el refugio"
+    },
+    {
+        "id": 6,
+        "category": "Comunidad",
+        "date": "05 Octubre, 2024",
+        "title": "Programa de Voluntariado 2025: Inscripciones Abiertas",
+        "description": "Buscamos personas apasionadas por el bienestar animal para unirse a nuestro equipo el próximo año.",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBdz9bKCRWUgXDGhmyls0FN2f_q23hRv2MwleeUVPV7vEAshTohsyV3yl6Fod-D70ABAHp5Kv92Hm0ZE2xo_3Ybgo7-wmoUaYReHjn38EGWAHt-Ps5vv5yR5qVSo69wPFDUATjMydtIEDBKKoSe_kLmGetxmqmLnfDJvo5hVa2EMUBhil5mWtJhZYSOEj5gPfadLVBqD5iwXCnBXrW9roUCckjIL8gBLWD_rzv8MfcZf1guToqF-MaP_TFtRr2EXpGGLDuIua1AJ0hO",
+        "alt": "Grupo de voluntarios en entrenamiento"
+    }
+]
