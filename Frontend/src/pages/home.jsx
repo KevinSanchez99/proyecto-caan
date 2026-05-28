@@ -1,9 +1,12 @@
 import NavBar from "../components/NavBar";
-import Hero from "../components/Hero";
-import NewsSlider from "../components/NewsSlider";
-import QuickAdoptions from "../components/QuickAdoptions";
-import CallToAction from "../components/CallToAction";
 import Footer from "../components/Footer";
+
+import Hero from "../components/home/Hero";
+import NewsSlider from "../components/home/NewsSlider";
+import QuickAdoptions from "../components/home/QuickAdoptions";
+import CallToAction from "../components/home/CallToAction";
+
+
 import React, { useState } from 'react';
 
 export default function Home() {
