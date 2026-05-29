@@ -5,7 +5,7 @@ import Hero from "../components/home/Hero";
 import NewsSlider from "../components/home/NewsSlider";
 import QuickAdoptions from "../components/home/QuickAdoptions";
 import CallToAction from "../components/home/CallToAction";
-
+import ReportBanner from "../components/home/ReportBanner";
 
 import React, { useState } from 'react';
 
@@ -15,6 +15,9 @@ export default function Home() {
       <NavBar />
       <main className="flex-grow w-full">
         <Hero />
+        <section className="py-12 bg-surface">
+          <ReportBanner />
+        </section>
         <NewsSlider />
         <QuickAdoptions />
         <CallToAction />
