@@ -30,14 +30,12 @@ function AppRoutes() {
       <Route path="/adoptions" element={<Adoptions />} />
       <Route path="/news" element={<News />} />
       <Route path="/faq" element={<FAQ />} />
-      <Route path="/contact" element={<Contact />} />
       <Route path="/donations" element={<Donations />} />
     </Routes>
   );
 }
 
 function App() {
-<<<<<<< HEAD
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -45,24 +43,6 @@ function App() {
       </AuthProvider>
     </BrowserRouter>
   );
-=======
-  return(
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/admin" element={<Login/>} />
-          <Route path="/" element={<Home/>} />
-          <Route path="/about-us" element={<AboutUs/>} />
-          <Route path="/adoptions" element={<Adoptions/>} />
-          <Route path="/news" element={<News/>} />
-          <Route path="/faq" element={<FAQ/>} />
-          <Route path="/reports" element={<Reports/>} />
-          <Route path="/donations" element={<Donations/>} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
-  )
->>>>>>> 786d61fbb504376b7c51bbf33a14c30806bc0578
 }
 
 export default App;
