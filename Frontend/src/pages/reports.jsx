@@ -22,6 +22,6 @@ function Reports() {
       <Footer />
     </>
   );
-}
+};
 
 export default Reports;

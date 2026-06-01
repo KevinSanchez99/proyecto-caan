@@ -15,7 +15,7 @@ export default function Navbar() {
         { name: "Adopciones", path: "/adoptions" },
         { name: "Noticias", path: "/news" },
         { name: "Preguntas Frecuentes", path: "/faq" },
-        { name: "Contacto", path: "/contact" },
+        { name: "Denuncias", path: "/reports" },
     ];
 
     const checkIsActive = (path) => {

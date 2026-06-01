@@ -16,7 +16,7 @@ const NewsCard = ({ article }) => (
                 </span>
             </div>
         </div>
-        <div className="p-6">
+        <div className="p-8">
             <div className="text-outline font-label-sm text-label-sm mb-2 text-xs">
                 {article.date}
             </div>

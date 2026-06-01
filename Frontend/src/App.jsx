@@ -2,12 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Adoptions from "./pages/adoptions";
 import AboutUs from "./pages/about-us";
-import Contact from "./pages/contact";
 import Donations from "./pages/donations";
 import FAQ from "./pages/faq";
 import Home from "./pages/home";
 import News from "./pages/news";
-//import Reports from "./pages/reports";
+import Reports from "./pages/reports";
 import Login from "./pages/login";
 
 import { useAuth } from "./context/AuthContext";
@@ -38,6 +37,7 @@ function AppRoutes() {
 }
 
 function App() {
+<<<<<<< HEAD
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -45,6 +45,24 @@ function App() {
       </AuthProvider>
     </BrowserRouter>
   );
+=======
+  return(
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/admin" element={<Login/>} />
+          <Route path="/" element={<Home/>} />
+          <Route path="/about-us" element={<AboutUs/>} />
+          <Route path="/adoptions" element={<Adoptions/>} />
+          <Route path="/news" element={<News/>} />
+          <Route path="/faq" element={<FAQ/>} />
+          <Route path="/reports" element={<Reports/>} />
+          <Route path="/donations" element={<Donations/>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  )
+>>>>>>> 786d61fbb504376b7c51bbf33a14c30806bc0578
 }
 
 export default App;
