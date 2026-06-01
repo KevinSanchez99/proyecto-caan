@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { loginRequest, logoutRequest, verifyTokenRequest } from "../../api/auth.js";
+import { useLocation } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -17,6 +18,7 @@ export const AuthProvider = ({children}) => {
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const location = useLocation();
     useEffect(() => {
         const checkLogin = async () => {
             try {
@@ -43,7 +45,7 @@ export const AuthProvider = ({children}) => {
             }
         };
         checkLogin();
-    }, []);
+    }, [location.pathname]);
 
     const signin = async (user) => {
         try {
