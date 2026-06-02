@@ -1,6 +1,6 @@
 import Navbar from "../components/NavBar";
 import PageHeader from "../components/adoptions/Prest";
-import FilterDog from "../components/adoptions/FilterDog";
+import NewAnimal from "../components/adoptions/newAnimal";
 import TableAdop from "../components/adoptions/TableAdoptions";
 import Footer from "../components/Footer";
 
@@ -11,7 +11,7 @@ function Adoptions() {
       <Navbar/>
       <main className="grow w-full mt-35">
         <PageHeader/>
-        <FilterDog/>
+        <NewAnimal/>
         <TableAdop/>
       </main>
       {/* <Footer /> */}
