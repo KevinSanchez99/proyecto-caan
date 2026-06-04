@@ -2,33 +2,33 @@ import{ useState } from "react";
 import { Link } from "react-router-dom";
 
 const FacilitiesSection = () => (
-    <section className="max-w-[1280px] mx-auto px-8 py-16 mt-12 bg-[#f4f1ea] dark:bg-stone-900 rounded-sm shadow-inner relative overflow-hidden border border-stone-200/50">
-        <h2 className="text-center text-3xl md:text-5xl font-bold text-stone-800 dark:text-stone-200 mb-14 tracking-widest uppercase font-serif">
+    <section className="max-w-[90%] mx-auto px-8 py-16 mt-12 bg-[#f4f1ea] dark:bg-stone-900 rounded-sm shadow-inner relative overflow-hidden border border-stone-200/50">
+        <h1 className="text-center text-3xl md:text-5xl text-stone-800 dark:text-stone-200 mb-14 tracking-widest font-h1 font-bold text-on-surface leading-tight">
             Este es nuestro predio
-        </h2>
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-14 relative z-10 px-4">
             <div className="relative group mx-auto w-full max-w-[320px]">
                 <div className="bg-[#fcfbf9] p-3 shadow-md transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1">
-                    <img src="./im1.jpeg" alt="Entrada al refugio" className="w-full aspect-square object-cover contrast-125 border border-stone-200" />
+                    <img src="./im1.jpeg" alt="Entrada al refugio" className="w-full aspect-square object-cover contrast-125 border border-stone-200 rounded" />
                 </div>
             </div>
 
             <div className="relative group mx-auto w-full max-w-[320px] mt-4 md:mt-0">
                 <div className="bg-[#fcfbf9] p-3 shadow-md transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1">
-                    <img src="./im2.jpeg" alt="Zonas de recreo" className="w-full aspect-square object-cover contrast-125 border border-stone-200" />
+                    <img src="./im2.jpeg" alt="Zonas de recreo" className="w-full aspect-square object-cover contrast-125 border border-stone-200 rounded" />
                 </div>
             </div>
 
             <div className="relative group mx-auto w-full max-w-[320px] mt-4 md:mt-0">
                 <div className="bg-[#fcfbf9] p-3 shadow-md transform transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-1">
-                    <img src="./mi3.jpeg" alt="Caniles limpios y seguros" className="w-full aspect-square object-cover contrast-125 border border-stone-200" />
+                    <img src="./mi3.jpeg" alt="Caniles limpios y seguros" className="w-full aspect-square object-cover contrast-125 border border-stone-200 rounded" />
                 </div>
             </div>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-            <p className="text-stone-800 dark:text-stone-300 text-lg md:text-xl leading-relaxed font-medium font-serif">
+        <div className="max-w-4xl mx-auto text-justify relative z-10">
+            <p className="text-stone-800 dark:text-stone-300 text-lg md:text-xl font-body-lg text-on-surface-variant mx-auto">
                 Nuestro predio es el alma de nuestra misión. Un refugio seguro y lleno de amor para cientos de
                 animales que esperan un hogar definitivo. Desde las amplias zonas de recreo hasta los recintos
                 individuales diseñados para el bienestar de cada residente, cada espacio está pensado para su

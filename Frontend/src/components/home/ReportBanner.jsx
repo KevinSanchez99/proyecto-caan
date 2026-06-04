@@ -3,7 +3,7 @@ import React from 'react';
 const ReportBanner = () => {
 return (
 <div
-    className="bg-error-container/30 border border-error/20 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm mx-auto max-w-container_max px-gutter">
+    className="bg-error-container/30 border border-error/20 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm mx-auto max-w-[90%] px-gutter">
 
     <div className="flex items-start gap-4">
         

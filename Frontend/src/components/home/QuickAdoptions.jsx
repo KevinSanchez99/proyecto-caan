@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 const QuickAdoptions = () => (
     <section className="py-16 md:py-24 bg-stone-50">
-        <div className="max-w-[1280px] mx-auto px-6">
+        <div className="max-w-[93%] mx-auto px-6">
             <div className="flex justify-between items-end mb-10">
                 <div>
                     <h2 className="text-3xl font-bold text-stone-900 mb-2">Esperan por ti</h2>
