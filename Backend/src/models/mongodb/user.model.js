@@ -11,10 +11,15 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    currentSessionToken: {
+        type: String,
+        required: false,
+        default: null
     }
 });
 
-const User = mongoose.model('User', userSchema);
+export const User = mongoose.model('User', userSchema);
 
 export class UserModel{
     static async login({username, password}){
@@ -53,7 +58,7 @@ export class UserModel{
 
     static async obtainUserByID(id){
         try {
-            const user = await User.findById(id).select('username'); 
+            const user = await User.findById(id); 
 
             if (!user) {
                 throw new Error('Usuario no encontrado');

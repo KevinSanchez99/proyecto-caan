@@ -10,6 +10,8 @@ export class userController{
             const token = await createToken({
                 id: user._id
             });
+            user.currentSessionToken = token;
+            await user.save()
             res.cookie("token",token)
             res.status(200).json("logueado correctamente");
         } catch (error) {
@@ -26,6 +28,8 @@ export class userController{
             const token = await createToken({
                 id: user._id
             });
+            user.currentSessionToken = token;
+            await user.save()
             res.cookie("token",token)
             res.status(201).json({user});
         }catch(error){
@@ -33,25 +37,25 @@ export class userController{
         }
     }
 
-    static logout(req, res){
-        res.clearCookie('token').json({ message: 'Deslogueado correctamente' })
+    static async logout(req, res){
+        try {
+            
+            if (req.user) {
+                user.currentSessionToken = null;
+                await user.save();
+            }
+            
+            res.clearCookie('token').json({ message: 'Deslogueado correctamente' });
+        } catch (error) {
+            res.status(500).json(error.message);
+        }
     }
 
     static async obtainUser(req, res){
         try {
-            const { id } = req.user;
-            
-            if (!id) {
-                return res.status(400).json({ message: 'ID del usuario no encontrado en el token' });
-            }
+            const { _id: id,username } = req.user; 
 
-            const user = await UserModel.obtainUserByID(id);
-
-            if (!user) {
-                return res.status(404).json({ message: 'Usuario no encontrado' });
-            }
-
-            return res.status(200).json({ username: user.username });
+            return res.status(200).json({ id,username });
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
