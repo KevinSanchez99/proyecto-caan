@@ -25,6 +25,10 @@ const saludSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    desparacitado: {           // <-- NUEVO DATO 3/06/2026
+        type: Boolean,
+        required: true,
+    },
     condiciones_especiales: {
         type: String,
         default: 'Ninguna',
@@ -42,6 +46,10 @@ const animalSchema = new Schema({
         required: true,
     },
     raza: {
+        type: String,
+        required: true,
+    },
+    pelaje: {                  // <-- NUEVO DATO 3/06/2026
         type: String,
         required: true,
     },
