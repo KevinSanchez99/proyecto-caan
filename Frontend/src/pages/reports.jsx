@@ -49,11 +49,34 @@ export default function Reports() {
                   <h3 className="font-bold text-lg text-on-surface">Vía Correo Electrónico</h3>
                 </div>
                 <p className="text-on-surface-variant font-body-md mb-3">
-                  Puedes enviar todos los datos probatorios directamente al correo de nuestro equipo legal.
+                  Puedes enviar todos los datos probatorios directamente al correo electrónico de alguna comisaria.
                 </p>
-                <a href="mailto:legales@caan.com.ar" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-                  <span className="material-symbols-outlined text-sm">send</span> legales@caan.com.ar
-                </a>
+              </div>
+            </div>
+          </section>
+            {/* Información Legal (Anonimato y Acompañante) */}
+          <section className="bg-error-container/20 rounded-xl p-8 border border-error/20">
+            <h2 className="font-h3 text-h3 text-error mb-6 flex items-center border-b border-error/20 pb-4">
+              <span className="material-symbols-outlined mr-3 text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>privacy_tip</span>
+              Sobre el Anonimato y Participación
+            </h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="font-bold text-on-background mb-2 text-lg">Evolución de la denuncia</h3>
+                <p className="text-on-surface-variant font-body-md leading-relaxed">
+                  Si bien en una primera instancia <strong>la denuncia es anónima</strong> para protegerte, a medida que el proceso judicial avanza y se comprueba la veracidad de los hechos, por necesidad legal para su continuidad, <strong>dejará de ser anónima</strong> y la justicia podrá solicitar los datos del denunciante formal.
+                </p>
+              </div>
+
+              <div className="bg-white/60 dark:bg-stone-900/60 p-5 rounded-lg border border-error-container">
+                <h3 className="font-bold text-on-background mb-2 flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary text-xl">group</span>
+                  Figura del Acompañante / Testigo
+                </h3>
+                <p className="text-on-surface-variant font-body-md leading-relaxed">
+                  En caso de no querer figurar como el denunciante principal en la causa, tienes la opción de participar bajo la figura legal de <strong>acompañante</strong>. En este rol, serás únicamente el sujeto que confirma y testifica si aquello por lo cual se realiza la denuncia ocurrió o no, brindando apoyo a la causa sin ser el impulsor principal.
+                </p>
               </div>
             </div>
           </section>
@@ -106,34 +129,6 @@ export default function Reports() {
               </li>
             </ul>
           </section>
-
-          {/* Información Legal (Anonimato y Acompañante) */}
-          <section className="bg-error-container/20 rounded-xl p-8 border border-error/20">
-            <h2 className="font-h3 text-h3 text-error mb-6 flex items-center border-b border-error/20 pb-4">
-              <span className="material-symbols-outlined mr-3 text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>privacy_tip</span>
-              Sobre el Anonimato y Participación
-            </h2>
-            
-            <div className="space-y-6">
-              <div>
-                <h3 className="font-bold text-on-background mb-2 text-lg">Evolución de la denuncia</h3>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">
-                  Si bien en una primera instancia <strong>la denuncia es anónima</strong> para protegerte, a medida que el proceso judicial avanza y se comprueba la veracidad de los hechos, por necesidad legal para su continuidad, <strong>dejará de ser anónima</strong> y la justicia podrá solicitar los datos del denunciante formal.
-                </p>
-              </div>
-
-              <div className="bg-white/60 dark:bg-stone-900/60 p-5 rounded-lg border border-error-container">
-                <h3 className="font-bold text-on-background mb-2 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary text-xl">group</span>
-                  Figura del Acompañante / Testigo
-                </h3>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">
-                  En caso de no querer figurar como el denunciante principal en la causa, tienes la opción de participar bajo la figura legal de <strong>acompañante</strong>. En este rol, serás únicamente el sujeto que confirma y testifica si aquello por lo cual se realiza la denuncia ocurrió o no, brindando apoyo a la causa sin ser el impulsor principal.
-                </p>
-              </div>
-            </div>
-          </section>
-
         </div>
       </main>
 

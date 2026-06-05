@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 const CallToAction = () => (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-primary-fixed">
         <div className="max-w-[93%] mx-auto px-6">
             <div className="bg-emerald-800 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-sm">
                 <div className="absolute -top-32 -left-32 w-80 h-80 bg-emerald-500 opacity-30 rounded-full blur-3xl"></div>
@@ -13,8 +13,8 @@ const CallToAction = () => (
                         <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span> Haz una donación
                     </a>
                 </div>
-                <div className="relative z-10 md:w-1/2 w-full max-w-md">
-                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Perros siendo cuidados" className="w-full aspect-square md:aspect-[4/3] object-cover rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-500" />
+                <div className="relative w-70% md:w-1/2 h-full md:h-auto ">
+                    <img src="/animal4.jpeg" alt="Perros siendo cuidados" className="w-full aspect-square md:aspect-[4/3] object-cover rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-500" />
                 </div>
             </div>
         </div>
