@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const Hero = () => (
-    <section className="relative bg-surface-container-low overflow-hidden">
-        <div className="max-w-container_max mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
+    <section className="relative bg-primary-fixed overflow-hidden">
+        <div className="max-w-[93%] mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
 
             <div className="flex-1 space-y-6 z-10 text-center lg:text-left">
                 <h1 className="inline-block px-4 py-2 bg-primary-container text-white font-label-2xl text-label-2xl rounded-full mb-4">
@@ -18,7 +18,7 @@ const Hero = () => (
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                    <a href="/adopciones" className="bg-secondary text-on-secondary border border-outline-variant font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-secondary/85 transition-all text-center">
+                    <a href="/adopciones" className="bg-secondary-container text-on-secondary border border-outline-variant font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-secondary-container/70 transition-all text-center">
                         Adoptar ahora
                     </a>
                     <a href="/donaciones" className="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-primary/90 active:scale-95 transition-all shadow-sm text-center">

@@ -14,6 +14,7 @@ export default function News() {
       <Navbar />
       <main className="max-w-container_max mx-auto px-8 py-12 flex-grow w-full">
         <section className="mb-xl">
+          <h1 class="font-h1 text-[40px] md:text-[50px] text-on-surface leading-tight mb-4 text-center">Noticias del CAAN</h1>
           <NewsHeader />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
             {newsData.map((article) => (

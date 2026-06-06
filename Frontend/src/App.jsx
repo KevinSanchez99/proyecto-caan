@@ -31,6 +31,7 @@ function AppRoutes() {
       <Route path="/news" element={<News />} />
       <Route path="/faq" element={<FAQ />} />
       <Route path="/donations" element={<Donations />} />
+      <Route path="/reports" element={<Reports />} />
     </Routes>
   );
 }

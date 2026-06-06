@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 const QuickAdoptions = () => (
-    <section className="py-16 md:py-24 bg-stone-50">
-        <div className="max-w-[1280px] mx-auto px-6">
+    <section className="py-16 md:py-24 bg-primary-complement">
+        <div className="max-w-[93%] mx-auto px-6">
             <div className="flex justify-between items-end mb-10">
                 <div>
                     <h2 className="text-3xl font-bold text-stone-900 mb-2">Esperan por ti</h2>
                     <p className="text-stone-600">Conoce a algunos de nuestros peludos listos para ir a casa.</p>
                 </div>
-                <a href="/adopciones" className="hidden sm:flex font-semibold text-emerald-700 hover:text-emerald-900 transition-colors items-center gap-1">
+                <a href="/adopciones" className="hidden sm:flex font-semibold text-emerald-900 hover:text-emerald-700 transition-colors items-center gap-1">
                     Ver todos <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </a>
             </div>

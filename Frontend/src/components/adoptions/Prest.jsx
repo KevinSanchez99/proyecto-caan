@@ -14,7 +14,7 @@ export default function CabeceraAdopcion() {
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Ellos están
                     esperando una segunda oportunidad. Conoce a nuestros increíbles animales listos para
                     llenar tu hogar de amor y alegría.</p>
-                <img src="../../../public/animal21.jpeg" alt="" class="w-full h-auto mt-lg rounded-lg shadow-md object-cover"/>
+                <img src="/animal121.jpeg" alt="" class="w-full h-auto mt-lg rounded-lg shadow-md object-cover"/>
         </div>
     </>
   );
