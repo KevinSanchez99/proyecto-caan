@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { createAnimalRequest } from '../../../api/auth'; 
+import { useAuth } from "../../context/AuthContext";
 
 export default function ModalAnimal() {
-   
+   const { isAuthenticated, logout } = useAuth();
     const modalRef = useRef(null);
 
     const abrirModal = () => {
@@ -72,9 +73,13 @@ export default function ModalAnimal() {
 
     return (
         <>
-            <button className="p-3 rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant" onClick={abrirModal}>
-                Nuevo 
-            </button>
+           
+            {isAuthenticated && (
+                         <button className="p-3 rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant" onClick={abrirModal}>
+                        Nuevo 
+                    </button>
+   
+            )}
 
             <dialog ref={modalRef} className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface">
                 <h2 className="text-xl font-semibold mb-5">Ingresar Nuevo Rescatado</h2>
