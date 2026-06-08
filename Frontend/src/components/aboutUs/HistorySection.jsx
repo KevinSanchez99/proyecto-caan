@@ -20,7 +20,7 @@ const HistorySection = () => (
             <img
                 src="./cartel.jpeg"
                 alt="Historia del CAAN"
-                className="w-full h-auto object-cover aspect-video sm:aspect-square md:aspect-[4/3] rounded-xl shadow-sm border-[6px] border-white relative z-10"
+                className="bg-[#fcfbf9] p-3 pb-10 shadow-lg border border-stone-200/50 transform transition-all duration-500 group-hover:scale-100 group-hover:-rotate-2 rotate-1 rounded-sm"
             />
         </div>
     </div>

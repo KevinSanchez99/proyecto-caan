@@ -9,9 +9,9 @@ import React, { useState } from 'react';
 
 export default function AboutUs() {
   return (
-    <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
+    <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20 container_max">
       <NavBar/>
-      <main className="flex-grow w-full pb-12">
+      <main className="flex-grow w-full pb-12 bg-primary-fixed">
         <HistorySection />
         <OverlappingImagesSection />
         <FacilitiesSection />
