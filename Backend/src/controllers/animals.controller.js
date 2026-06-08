@@ -11,6 +11,17 @@ export class AnimalController {
         }
     }
 
+    // se agregó el método getAnimalById para obtener un animal específico por su ID 7/06/2026 - Tomas S
+    static async getAnimalById(req, res) {
+        try {
+            const { id } = req.params;
+            const animal = await AnimalModel.getAnimalById(id); 
+            res.json(animal);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
+
     static async createAnimal(req, res) {
         try {
             const newAnimal = await AnimalModel.createAnimal(req.body);

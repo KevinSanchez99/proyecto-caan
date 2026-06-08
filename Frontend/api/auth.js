@@ -18,3 +18,13 @@ export const createAnimalRequest = (animalData) => instance.post('/animals', ani
 
 // Peticion de obtener animales 4/06/2026 - Tomas S
 export const getAnimalsRequest = () => instance.get('/animals');
+
+// Peticion de obtener un animal por ID 7/06/2026 - Tomas S
+export const getAnimalByIdRequest = (id) => instance.get(`/animals/${id}`);
+
+// Peticion de modificar animal 06/06/2026 - Tomas S
+export const updateAnimalRequest = (id, animalData) => instance.patch(`/animals/${id}`, animalData);
+
+
+// Peticion de eliminar animal 06/06/2026 - Tomas S
+export const deleteAnimalRequest = (id) => instance.delete(`/animals/${id}`);

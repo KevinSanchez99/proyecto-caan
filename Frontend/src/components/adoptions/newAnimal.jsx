@@ -60,11 +60,11 @@ export default function ModalAnimal() {
         };
 
         try {
-            // Le mandamos el objeto 'payload' (JSON puro)
             const respuesta = await createAnimalRequest(payload);
             alert("¡Ficha creada con éxito!");
             cerrarModal();
             e.target.reset();
+             window.location.reload(); 
         } catch (error) {
             console.error('Error al crear el animal:', error);
             alert("Hubo un error al guardar. Revisa la consola para más detalles.");

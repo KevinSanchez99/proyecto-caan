@@ -99,6 +99,16 @@ export class AnimalModel {
         }
     }
 
+    // Obtener un animal por ID 7/06/2026 - Tomas S 
+    static async getAnimalById(id) {
+        try {
+            const animal = await Animal.findById(id);
+            return animal;
+        } catch (error) {
+            throw new Error('No se pudo obtener el animal.');
+        }
+    }
+
     // Crear un nuevo animal
     static async createAnimal(input) {
         try {

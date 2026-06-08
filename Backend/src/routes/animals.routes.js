@@ -10,3 +10,6 @@ animalsRouter.get('/', AnimalController.getAllAnimals);
 animalsRouter.post('/', verifyToken, validateSchema(animalSchema), AnimalController.createAnimal);
 animalsRouter.delete('/:id',verifyToken, AnimalController.deleteAnimal);
 animalsRouter.patch('/:id',verifyToken, validateSchema(updateAnimalSchema), AnimalController.updateAnimal);
+
+// Ruta para obtener un animal por ID 7/06/2026 - Tomas S
+animalsRouter.get('/:id', AnimalController.getAnimalById);

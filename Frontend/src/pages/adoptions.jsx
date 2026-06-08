@@ -8,7 +8,7 @@ function Adoptions() {
   return (
     <>
       <Navbar/>
-      <main className="grow w-full mt-35">  
+      <main className="grow w-full mt-35 bg-primary-complement">
         <NewAnimal/>
         <TableAdop/>
       </main>
