@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 const CallToAction = () => (
-    <section className="py-16 md:py-24 bg-primary-fixed">
+    <section className="py-16 md:py-24 bg-primary-fixed/70">
         <div className="max-w-[93%] mx-auto px-6">
             <div className="bg-emerald-800 rounded-3xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden shadow-sm">
                 <div className="absolute -top-32 -left-32 w-80 h-80 bg-emerald-500 opacity-30 rounded-full blur-3xl"></div>

@@ -13,6 +13,22 @@ export const logoutRequest = () => instance.post('/logout');
 
 export const verifyTokenRequest = () => instance.post('/verify');
 
+// Peticion de crear animal 1/06/2026 - Tomas S
+export const createAnimalRequest = (animalData) => instance.post('/animals', animalData);
+
+// Peticion de obtener animales 4/06/2026 - Tomas S
+export const getAnimalsRequest = () => instance.get('/animals');
+
+// Peticion de obtener un animal por ID 7/06/2026 - Tomas S
+export const getAnimalByIdRequest = (id) => instance.get(`/animals/${id}`);
+
+// Peticion de modificar animal 06/06/2026 - Tomas S
+export const updateAnimalRequest = (id, animalData) => instance.patch(`/animals/${id}`, animalData);
+
+
+// Peticion de eliminar animal 06/06/2026 - Tomas S
+export const deleteAnimalRequest = (id) => instance.delete(`/animals/${id}`);
+
 export const getNewsRequest = (page = 1, limit = 6, category = '', search = '', date = '') => {
     const params = new URLSearchParams({ page, limit });
     if (category) params.append('category', category);
