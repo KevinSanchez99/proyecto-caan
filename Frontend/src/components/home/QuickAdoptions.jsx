@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 const QuickAdoptions = () => (
-    <section className="py-16 md:py-24 bg-primary-complement">
+    <section className="py-16 md:py-24 bg-background">
         <div className="max-w-[93%] mx-auto px-6">
             <div className="flex justify-between items-end mb-10">
                 <div>
