@@ -25,7 +25,7 @@ export default function AnimalCard({ animal}) {
         };
     return (
         
-        <article className=" w-full bg-stone-50 flex flex-col p-md box-border rounded-2xl overflow-hidden">
+        <article className="group w-full bg-stone-50 flex flex-col p-md box-border rounded-2xl overflow-hidden shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-2xl hover:ring-1 hover:ring-primary/20">
             
             <div className="relative aspect-[4/3] shrink-0 overflow-hidden w-full rounded-lg">
                 <img 
