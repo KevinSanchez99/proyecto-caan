@@ -31,7 +31,7 @@ const OverlappingImagesSection = () => (
             <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 capitalize">
                 Nuestro Propósito
             </h2>
-            <p className="text-green-700/80 leading-relaxed text-lg font-medium">
+            <p className="leading-relaxed text-primary/80 text-md body-md">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium non, expedita ratione
                 laudantium suscipit minus nesciunt facilis cupiditate error iusto eos, earum doloremque, tenetur
                 quisquam veritatis placeat iure modi alias.

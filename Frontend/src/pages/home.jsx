@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-10">
       <NavBar />
-      <main className="flex-grow w-full bg-primary-complement">
+      <main className="flex-grow w-full">
         <Hero />
         <section className="py-12">
           <ReportBanner />

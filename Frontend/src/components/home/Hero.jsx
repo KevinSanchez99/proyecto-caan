@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Hero = () => (
-    <section className="relative bg-primary-fixed/70 overflow-hidden">
+    <section className="relative text-on-background overflow-hidden">
         <div className="max-w-[93%] mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
 
             <div className="flex-1 space-y-6 z-10 text-center lg:text-left">
