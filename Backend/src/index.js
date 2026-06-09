@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import { animalsRouter } from './routes/animals.routes.js';
 import { newsRouter } from './routes/news.routes.js';
 import { userRouter } from './routes/user.routes.js';
+import { uploadRouter } from './routes/upload.routes.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.disable('x-powered-by');
 app.use('/api/animals', animalsRouter);
 app.use('/api/news', newsRouter)
 app.use('/api', userRouter);
+app.use('/api/upload', uploadRouter);
 
 const startServer = async () => {
     try {

@@ -6,8 +6,11 @@ import Donations from "./pages/donations";
 import FAQ from "./pages/faq";
 import Home from "./pages/home";
 import News from "./pages/news";
+import NewsDetail from "./pages/NewsDetail";
 import Reports from "./pages/reports";
 import Login from "./pages/login";
+import NewsCreate from "./pages/NewsCreate";
+import NewsEdit from "./pages/NewsEdit";
 
 import { useAuth } from "./context/AuthContext";
 
@@ -28,7 +31,12 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/adoptions" element={<Adoptions />} />
+      
       <Route path="/news" element={<News />} />
+      <Route path="/news/create" element={<NewsCreate />} />
+      <Route path="/news/edit/:slug" element={<NewsEdit />} />
+      <Route path="/news/:slug" element={<NewsDetail />} />
+      
       <Route path="/faq" element={<FAQ />} />
       <Route path="/donations" element={<Donations />} />
       <Route path="/reports" element={<Reports />} />
