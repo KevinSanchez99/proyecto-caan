@@ -10,35 +10,35 @@ export default function Reports() {
       <NavBar />
 
       <main className="max-w-4xl mx-auto px-gutter py-xl flex-grow w-full">
-        
+
         {/* Cabecera */}
-        <header className="mb-lg">
-          <div className="inline-flex items-center space-x-2 bg-error-container text-on-error-container px-4 py-2 rounded-full mb-6 shadow-sm border border-error/20">
-            <span className="text-2xl text-error"><MdPolicy/></span>
-            <span className="font-label-sm text-label-sm font-bold tracking-wide uppercase">
-              Asesoramiento Legal
-            </span>
-          </div>
-          <h1 className="font-h1 text-h1 text-on-background mb-4">
-            Cómo realizar una denuncia
-          </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-            Desde CAAN no tomamos denuncias directas a través de esta página, pero te guiamos paso a paso para que sepas cómo proceder legalmente ante un caso de maltrato o abandono animal. Tu accionar correcto es fundamental para que la justicia pueda intervenir.
-          </p>
-        </header>
+        <section className="max-w-container_max mx-auto px-8 py-4 text-center">
+            <div className="inline-flex items-center space-x-2 bg-error-container text-on-error-container px-4 py-2 rounded-full mb-6 shadow-sm border border-error/20">
+                <span className="text-2xl text-error"><MdPolicy /></span>
+                <span span className="font-label-sm text-label-sm font-bold tracking-wide uppercase">
+                Asesoramiento Legal
+                </span>
+            </div>
+              <h1 className="font-h1 text-h1 text-error mb-md">
+                Cómo realizar una denuncia
+              </h1>
+              <p className="font-semibold text-body-xl text-black max-w-2xl mx-auto text-justify mb-6">
+                Desde CAAN no tomamos denuncias directas a través de esta página, pero te guiamos paso a paso para que sepas cómo proceder legalmente ante un caso de maltrato o abandono animal. Tu accionar correcto es fundamental para que la justicia pueda intervenir.
+              </p>
+        </section>
 
         <div className="space-y-8">
-          
+
           {/* Vías de Denuncia */}
           <section className="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] p-8 border border-outline-variant/20">
             <h2 className="font-h3 text-h3 text-on-background mb-6 flex items-center border-b border-surface-container-low pb-4">
-              <span className="text-error mr-3 text-3xl"><MdRoute/></span>
+              <span className="text-error mr-3 text-3xl"><MdRoute /></span>
               ¿Dónde realizar la denuncia?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-surface-container-high border border-outline-variant/30 p-6 rounded-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-primary text-2xl"><MdLocalPolice/></span>
+                  <span className="text-primary text-2xl"><MdLocalPolice /></span>
                   <h3 className="font-bold text-lg text-on-surface">Vía Presencial</h3>
                 </div>
                 <p className="text-on-surface-variant font-body-md">
@@ -47,7 +47,7 @@ export default function Reports() {
               </div>
               <div className="bg-surface-container-high border border-outline-variant/30 p-6 rounded-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-primary text-2xl"><MdMail/></span>
+                  <span className="text-primary text-2xl"><MdMail /></span>
                   <h3 className="font-bold text-lg text-on-surface">Vía Correo Electrónico</h3>
                 </div>
                 <p className="text-on-surface-variant font-body-md mb-3">
@@ -56,13 +56,13 @@ export default function Reports() {
               </div>
             </div>
           </section>
-            {/* Información Legal (Anonimato y Acompañante) */}
+          {/* Información Legal (Anonimato y Acompañante) */}
           <section className="bg-error-container/90 rounded-xl p-8 border border-error/20">
             <h2 className="font-h3 text-h3 text-error mb-6 flex items-center border-b border-error/20 pb-4">
-              <span className="mr-3 text-3xl"><MdPrivacyTip/></span>
+              <span className="mr-3 text-3xl"><MdPrivacyTip /></span>
               Sobre el Anonimato y Participación
             </h2>
-            
+
             <div className="space-y-6">
               <div>
                 <h3 className="font-bold text-on-background mb-2 text-lg">Evolución de la denuncia</h3>
@@ -73,7 +73,7 @@ export default function Reports() {
 
               <div className="bg-white/80 p-5 rounded-lg border border-error-container">
                 <h3 className="font-bold text-on-background mb-2 flex items-center gap-2">
-                  <span className="text-primary text-xl"><MdGroup/></span>
+                  <span className="text-primary text-xl"><MdGroup /></span>
                   Figura del Acompañante / Testigo
                 </h3>
                 <p className="text-on-surface-variant font-body-md leading-relaxed">
@@ -86,13 +86,13 @@ export default function Reports() {
           {/* Requisitos de la Denuncia */}
           <section className="bg-surface-container-lowest rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] p-8 border border-outline-variant/20">
             <h2 className="font-h3 text-h3 text-on-background mb-6 flex items-center border-b border-surface-container-low pb-4">
-              <span className="text-error mr-3 text-3xl"><MdListAlt/></span>
+              <span className="text-error mr-3 text-3xl"><MdListAlt /></span>
               ¿Qué datos debe incluir la denuncia?
             </h2>
             <p className="text-on-surface-variant mb-6 font-body-md">
               Ya sea de forma presencial o por correo, para que la denuncia pueda avanzar legalmente, debe contener la mayor cantidad posible de la siguiente información:
             </p>
-            
+
             <ul className="space-y-4 font-body-md text-on-surface">
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
                 <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">1</span>

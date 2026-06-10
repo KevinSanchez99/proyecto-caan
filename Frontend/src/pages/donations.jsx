@@ -122,7 +122,8 @@ export default function Donations() {
               <div className="relative z-10">
                 <h3 className="font-bold text-xl mb-1">¡Hazte Socio del CAAN!</h3>
                 <p className="text-sm leading-relaxed opacity-90">
-                  Colabora activamente con nosotros. Ser socio te permite ser parte de la familia CAAN y participar en nuestros eventos y campañas exclusivas cuando se realicen.
+                  Colabora activamente con nosotros, la cuota mensual mínima de socio es de <strong>$5000</strong>. ¡Dale! Sumate!<br/>
+                  <strong>Podes ayudar con dinero y/o participando en los eventos</strong> que se organicen para mejorar la calidad de vida de ellos.
                 </p>
               </div>
             </div>
