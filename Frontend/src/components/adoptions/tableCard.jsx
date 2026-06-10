@@ -3,7 +3,7 @@ import { getAnimalsRequest } from '../../../api/auth';
 import AnimalCard from './animalCard'; 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-export default function TableCard() {
+export default function TableCard({ filters = {} }) {
     const [animales, setAnimales] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [pagina, setPagina] = useState(1);
@@ -13,7 +13,8 @@ export default function TableCard() {
     useEffect(() => {
         const traerDatos = async () => {
             try {
-                const respuesta = await getAnimalsRequest();
+                setCargando(true);
+                const respuesta = await getAnimalsRequest(filters);
                 setAnimales(respuesta.data);
                 setCargando(false);
             } catch (error) {
@@ -23,7 +24,7 @@ export default function TableCard() {
         };
 
         traerDatos();
-    }, []);
+    }, [filters]);
 
     // para evitar que la pagina quede en un numero que no existe luego de eliminar animales o cosas asi 
     useEffect(() => {
@@ -38,6 +39,14 @@ export default function TableCard() {
         return (
             <div className="flex h-48 w-full items-center justify-center">
                 <span className="text-on-surface-variant text-base">Buscando animales...</span>
+            </div>
+        );
+    }
+
+    if (!cargando && animales.length === 0) {
+        return (
+            <div className="flex h-48 w-full items-center justify-center">
+                <span className="text-on-surface-variant text-base">Ningún perro coincide con el filtro buscado</span>
             </div>
         );
     }
