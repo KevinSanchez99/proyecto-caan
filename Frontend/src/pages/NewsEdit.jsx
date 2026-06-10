@@ -11,6 +11,8 @@ import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 import { es } from "@blocknote/core/locales";
 
+import {MdArrowBack} from "react-icons/md";
+
 export default function NewsEdit() {
     const { slug } = useParams();
     const navigate = useNavigate();
