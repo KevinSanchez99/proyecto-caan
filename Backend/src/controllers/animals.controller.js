@@ -4,7 +4,31 @@ export class AnimalController {
 
     static async getAllAnimals(req, res) {
         try {
-            const animals = await AnimalModel.getAllAnimals();
+            const {
+                nombre,
+                raza,
+                pelaje,
+                sexo,
+                tamaño,
+                edad,
+                unidad_edad,
+                especie,
+                estado,
+            } = req.query;
+
+            const filters = {};
+
+            if (nombre) filters.nombre = { $regex: nombre, $options: 'i' };
+            if (raza) filters.raza = { $regex: raza, $options: 'i' };
+            if (pelaje) filters.pelaje = { $regex: pelaje, $options: 'i' };
+            if (sexo) filters.sexo = sexo;
+            if (tamaño) filters.tamaño = tamaño;
+            if (especie) filters.especie = especie;
+            if (estado) filters.estado = estado;
+            if (edad) filters['edad.valor'] = Number(edad);
+            if (unidad_edad) filters['edad.unidad'] = unidad_edad;
+
+            const animals = await AnimalModel.getAllAnimals(filters);
             res.status(200).json(animals);
         } catch (error) {
             return res.status(500).json({ message: error.message });

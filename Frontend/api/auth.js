@@ -47,7 +47,7 @@ export const verifyTokenRequest = () => instance.post('/verify');
 export const createAnimalRequest = (animalData) => instance.post('/animals', animalData);
 
 // Peticion de obtener animales 4/06/2026 - Tomas S
-export const getAnimalsRequest = () => instance.get('/animals');
+export const getAnimalsRequest = (params = {}) => instance.get('/animals', { params });
 
 // Peticion de obtener un animal por ID 7/06/2026 - Tomas S
 export const getAnimalByIdRequest = (id) => instance.get(`/animals/${id}`);

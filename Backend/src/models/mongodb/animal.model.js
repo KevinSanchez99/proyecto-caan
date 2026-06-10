@@ -90,10 +90,10 @@ const Animal = mongoose.model('Animal', animalSchema);
 
 export class AnimalModel {
 
-    // Obtener todos los animales
-    static async getAllAnimals() {
+    // Obtener todos los animales, con filtro opcional
+    static async getAllAnimals(filters = {}) {
         try {
-            return await Animal.find();
+            return await Animal.find(filters);
         } catch (error) {
             throw new Error('No se pudieron obtener los animales.');
         }
