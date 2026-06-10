@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { MdArrowForward } from 'react-icons/md';
+
 const QuickAdoptions = () => (
     <section className="py-16 md:py-24 bg-background">
         <div className="max-w-[93%] mx-auto px-6">
@@ -8,7 +10,7 @@ const QuickAdoptions = () => (
                     <p className="text-stone-600">Conoce a algunos de nuestros peludos listos para ir a casa.</p>
                 </div>
                 <a href="/adopciones" className="hidden sm:flex font-semibold text-emerald-900 hover:text-emerald-700 transition-colors items-center gap-1">
-                    Ver todos <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    Ver todos <span className="material-symbols-outlined text-[18px]"><MdArrowForward/></span>
                 </a>
             </div>
 

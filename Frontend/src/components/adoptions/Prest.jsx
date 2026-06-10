@@ -14,13 +14,13 @@ export default function CabeceraAdopcion() {
                 </p>
                 <div className="flex flex-col md:flex-row gap-6 mt-lg py-6 justify-center items-center">
                   <div className="relative bg-white p-4 rounded-md shadow-lg w-80 sm:w-96 md:w-112">
-                    <img src="../../../public/adopta1.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
+                    <img src="/adopta1.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
                   </div>
                   <div className="relative bg-white p-4 rounded-md shadow-lg w-80 sm:w-96 md:w-112">
-                    <img src="../../../public/adopta2.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
+                    <img src="/adopta2.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
                   </div>
                   <div className="relative bg-white p-4 rounded-md shadow-lg w-80 sm:w-96 md:w-112">
-                    <img src="../../../public/adopta3.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
+                    <img src="/adopta3.jpg" alt="Perros jugando" className="w-full h-72 object-cover rounded-sm block" />
                   </div>
                 </div>
         </div>

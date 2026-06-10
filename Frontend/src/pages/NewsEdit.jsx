@@ -121,7 +121,7 @@ export default function NewsEdit() {
         <main className="max-w-4xl mx-auto px-8 py-12 grow w-full">
             
             <Link to="/news" className="inline-flex items-center text-emerald-700 hover:text-emerald-800 font-bold mb-8 transition-colors">
-                <span className="material-symbols-outlined mr-2" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_back</span>
+                <span className="text-2xl mr-2"><MdArrowBack/></span>
                 Volver a noticias
             </Link>
 

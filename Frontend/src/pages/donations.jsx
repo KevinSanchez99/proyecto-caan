@@ -40,14 +40,13 @@ export default function Donations() {
             <div className="bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="font-bold text-lg text-primary">Banco Provincia</h3>
-                  <p className="text-sm text-primary/70">Caja de Ahorros en Pesos</p>
+                  <h3 className="font-bold text-lg text-primary">CAAN Necochea</h3>
+                  <p className="text-sm text-primary/70">Billetera Virtual</p>
                 </div>
                 <span className="material-symbols-outlined text-primary text-3xl"><MdAttachMoney/></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
-                <CopyRow label="Alias" value="CAAN.NECOCHEA.DONAR" colorClass="text-primary" />
-                <CopyRow label="CBU" value="0140327303613000000000" />
+                <CopyRow label="Alias" value="TORRE.PALOMA.RUBI" colorClass="text-primary" />
               </div>
             </div>
 
@@ -55,14 +54,14 @@ export default function Donations() {
             <div className="bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="font-bold text-lg text-[#009EE3]">Mercado Pago</h3>
-                  <p className="text-sm text-primary/70">Billetera Virtual</p>
+                  <h3 className="font-bold text-lg text-[#009EE3]">Cuenta corriente</h3>
+                  <p className="text-sm text-primary/70">Centro de Ayuda al Animal de Necochea</p>
                 </div>
                 <span className="material-symbols-outlined text-[#009EE3] text-3xl"><MdPayments/></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
-                <CopyRow label="Alias" value="CAAN.MP.DONACIONES" colorClass="text-[#009EE3]" />
-                <CopyRow label="CVU" value="0000003100000000000000" />
+                <CopyRow label="CUIT" value="30709492701" colorClass="text-[#009EE3]" />
+                <CopyRow label="CBU" value="191010 3555010300835150" />
               </div>
             </div>
           </section>

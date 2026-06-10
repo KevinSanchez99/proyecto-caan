@@ -9,6 +9,8 @@ import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 
+import { MdArrowBack} from "react-icons/md";
+
 export default function NewsDetail() {
     const { slug } = useParams(); 
     const navigate = useNavigate();
@@ -91,7 +93,7 @@ export default function NewsDetail() {
             {/* Controles superiores */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
                 <Link to="/news" className="inline-flex items-center text-emerald-700 hover:text-emerald-800 font-bold transition-colors">
-                    <span className="material-symbols-outlined mr-2" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_back</span>
+                    <span className="text-xl mr-2" style={{ fontVariationSettings: "'FILL' 0" }}><MdArrowBack/></span>
                     Volver a todas las noticias
                 </Link>
 
