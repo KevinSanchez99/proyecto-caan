@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    currentSessionToken: {
+    refreshToken: {
         type: String,
         required: false,
         default: null

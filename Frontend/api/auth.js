@@ -7,6 +7,36 @@ const instance = axios.create({
     withCredentials: true
 });
 
+export const refreshTokenRequest = () => instance.post('/refresh');
+
+instance.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    async (error) => {
+        const originalRequest = error.config;
+
+        if (
+            error.response?.status === 401 && 
+            !originalRequest._retry && 
+            originalRequest.url !== '/login' && 
+            originalRequest.url !== '/refresh'
+        ) {
+            originalRequest._retry = true;
+
+            try {
+                await refreshTokenRequest();
+                
+                return instance(originalRequest);
+            } catch (refreshError) {
+                return Promise.reject(refreshError);
+            }
+        }
+
+        return Promise.reject(error);
+    }
+);
+
 export const loginRequest = user => instance.post(`/login`, user);
 
 export const logoutRequest = () => instance.post('/logout');
