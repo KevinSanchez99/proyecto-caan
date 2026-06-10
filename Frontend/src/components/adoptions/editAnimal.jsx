@@ -94,7 +94,7 @@ export default function EditAnimal({ animalId, onClose }) {
             onCancel={cerrarModal} // Maneja si el usuario presiona "ESC"
             className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface"
         >
-            <h2 className="text-xl font-semibold mb-5">Editar Rescatado</h2>
+            <h2 className="font-h2 text-h2 text-emerald-800 mb-6">Editar Rescatado</h2>
             
             {!formData ? (
                 <p className="text-center py-4">Cargando datos de la ficha...</p>
@@ -102,31 +102,31 @@ export default function EditAnimal({ animalId, onClose }) {
                 <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div className="flex flex-row gap-10">
                         {/* DATOS GENERALES */}
-                        <div className="flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3">Datos generales</h3>
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos generales</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Nombre del perro</label>
-                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="nombre" defaultValue={formData.nombre} required />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Nombre del perro</label>
+                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="nombre" defaultValue={formData.nombre} required />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Raza</label>
-                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="raza" defaultValue={formData.raza} required />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Raza</label>
+                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="raza" defaultValue={formData.raza} required />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Pelaje</label>
-                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="pelaje" defaultValue={formData.pelaje} required />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Pelaje</label>
+                                <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="pelaje" defaultValue={formData.pelaje} required />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Sexo</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="sexo" defaultValue={formData.sexo?.toLowerCase()} required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Sexo</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="sexo" defaultValue={formData.sexo?.toLowerCase()} required>
                                     <option value="">Selecciona el sexo</option>
                                     <option value="macho">Macho</option>
                                     <option value="hembra">Hembra</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Tamaño</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="tamaño" defaultValue={formData.tamaño} required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Tamaño</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="tamaño" defaultValue={formData.tamaño} required>
                                     <option value="">Selecciona el tamaño</option>
                                     <option value="Pequeño">Pequeño</option>
                                     <option value="Mediano">Mediano</option>
@@ -134,11 +134,11 @@ export default function EditAnimal({ animalId, onClose }) {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Edad aproximada</label>
-                                <input type="text" inputMode="numeric" pattern="[0-9]*" className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="edad" defaultValue={formData.edad?.valor} required onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }} />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Edad aproximada</label>
+                                <input type="text" inputMode="numeric" pattern="[0-9]*" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="edad" defaultValue={formData.edad?.valor} required onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }} />
                             </div>
                             <div>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="unidad_edad" defaultValue={formData.edad?.unidad} required>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="unidad_edad" defaultValue={formData.edad?.unidad} required>
                                     <option value=""> Unidad</option>
                                     <option value="meses">Meses</option>
                                     <option value="años">Años</option>
@@ -147,55 +147,55 @@ export default function EditAnimal({ animalId, onClose }) {
                         </div>
 
                         {/* DATOS MÉDICOS */}
-                        <div className="flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3">Datos Médicos</h3>
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos Médicos</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Vacunado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="vacunado" defaultValue={formData.salud?.vacunado ? "1" : "0"} required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Vacunado</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="vacunado" defaultValue={formData.salud?.vacunado ? "1" : "0"} required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Castrado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="castrado" defaultValue={formData.salud?.castrado ? "1" : "0"} required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Castrado</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="castrado" defaultValue={formData.salud?.castrado ? "1" : "0"} required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Desparasitado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="desparacitado" defaultValue={formData.salud?.desparacitado ? "1" : "0"} required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Desparasitado</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="desparacitado" defaultValue={formData.salud?.desparacitado ? "1" : "0"} required>
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Observaciones</label>
-                                <textarea className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none resize-none h-32" name="observaciones" defaultValue={formData.salud?.condiciones_especiales !== 'Ninguna' ? formData.salud?.condiciones_especiales : ''} />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Observaciones</label>
+                                <textarea className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" name="observaciones" defaultValue={formData.salud?.condiciones_especiales !== 'Ninguna' ? formData.salud?.condiciones_especiales : ''} />
                             </div>
                         </div>
 
                         {/* MÁS SOBRE MÍ */}
-                        <div className="flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3">Más Sobre Mí</h3>
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Más Sobre Mí</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Historia</label>
-                                <textarea className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none resize-none h-32" name="historia" defaultValue={formData.descripcion} required />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Historia</label>
+                                <textarea className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" name="historia" defaultValue={formData.descripcion} required />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Cambiar Foto (Opcional)</label>
-                                <input type="file" className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" accept="image/png, image/jpeg, image/webp" name="foto" />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Cambiar Foto (Opcional)</label>
+                                <input type="file" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" accept="image/png, image/jpeg, image/webp" name="foto" />
                             </div>
                         </div>
                     </div>
                     
                     <div className="flex justify-end gap-3 mt-4">
-                        <button type="button" onClick={cerrarModal} className="px-5 py-2.5 rounded-full font-medium text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
-                        <button type="submit" className="px-5 py-2.5 rounded-full font-medium bg-primary text-on-primary hover:opacity-90 transition-opacity">Guardar Cambios</button>
+                        <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
+                        <button type="submit" className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium">Guardar Cambios</button>
                     </div>
                 </form>
             )}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAnimalsRequest } from '../../../api/auth';
 import AnimalCard from './animalCard'; 
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 export default function TableCard() {
     const [animales, setAnimales] = useState([]);
@@ -34,7 +35,11 @@ export default function TableCard() {
 
 
     if (cargando) {
-        return <div className="p-md text-on-surface-variant">Buscando animales...</div>;
+        return (
+            <div className="flex h-48 w-full items-center justify-center">
+                <span className="text-on-surface-variant text-base">Buscando animales...</span>
+            </div>
+        );
     }
 
     const totalPaginas = Math.max(1, Math.ceil(animales.length / itemsPorPagina));
@@ -42,7 +47,7 @@ export default function TableCard() {
     const animalesAMostrar = animales.slice(inicio, inicio + itemsPorPagina);
 
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="w-[90%] mx-auto mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">        
                 {animalesAMostrar.map((animal) => (
                     <AnimalCard key={animal._id} animal={animal} />
@@ -55,9 +60,9 @@ export default function TableCard() {
                         type="button"
                         disabled={pagina === 1}
                         onClick={() => setPagina((prev) => Math.max(prev - 1, 1))}
-                        className={`w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === 1 ? 'opacity-40 cursor-not-allowed' : ''}`}
+                        className={`w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === 1 ? 'opacity-40 cursor-not-allowed' : ''}`}
                     >
-                        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>chevron_left</span>
+                        <FiChevronLeft size={20} aria-hidden className="text-on-surface-variant" />
                     </button>
 
                     {Array.from({ length: totalPaginas }, (_, index) => index + 1).map((numero) => (
@@ -65,7 +70,7 @@ export default function TableCard() {
                             key={numero}
                             type="button"
                             onClick={() => setPagina(numero)}
-                            className={`w-10 h-10 rounded-full flex items-center justify-center font-label-sm text-label-sm transition-colors ${pagina === numero ? 'bg-primary text-on-primary' : 'border border-outline-variant text-on-surface-variant hover:bg-surface-container-high'}`}
+                            className={`w-10 h-10 rounded-full flex items-center justify-center font-label-sm text-label-sm transition-colors ${pagina === numero ? 'bg-primary text-on-primary' : 'bg-white border border-outline-variant text-on-surface-variant hover:bg-surface-container-high'}`}
                         >
                             {numero}
                         </button>
@@ -75,9 +80,9 @@ export default function TableCard() {
                         type="button"
                         disabled={pagina === totalPaginas}
                         onClick={() => setPagina((prev) => Math.min(prev + 1, totalPaginas))}
-                        className={`w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === totalPaginas ? 'opacity-40 cursor-not-allowed' : ''}`}
+                        className={`w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === totalPaginas ? 'opacity-40 cursor-not-allowed' : ''}`}
                     >
-                        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 0" }}>chevron_right</span>
+                        <FiChevronRight size={20} aria-hidden className="text-on-surface-variant" />
                     </button>
                 </div>
             )}

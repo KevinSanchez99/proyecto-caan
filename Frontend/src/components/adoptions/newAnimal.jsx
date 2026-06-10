@@ -75,177 +75,112 @@ export default function ModalAnimal() {
         <>
            
             {isAuthenticated && (
-                         <button className="p-3 rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant" onClick={abrirModal}>
-                        Nuevo 
-                    </button>
-   
+                         <button className="flex items-center justify-center gap-2 px-4 py-3 min-w-40 rounded-full border border-outline-variant bg-white text-slate-600 shadow-sm hover:bg-slate-100 transition-colors" onClick={abrirModal}>
+                            <span className="text-xl font-bold text-slate-600">+</span>
+                            <span className="font-label-sm text-label-sm text-slate-600">Nuevo Rescatado</span>
+                        </button>
             )}
 
             <dialog ref={modalRef} className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface">
-                <h2 className="text-xl font-semibold mb-5">Ingresar Nuevo Rescatado</h2>
+                <h2 className="font-h2 text-h2 text-emerald-800 mb-6">Ingresar Nuevo Rescatado</h2>
                 
-                <form className="flex flex-col gap-4 " onSubmit={handleSubmit}>
-                    <div className= " flex flex-row gap-10">
-                        <div className = "flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3">Datos generales</h3>
-
-                                <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Nombre del perro</label>
-                                <input 
-                                    type="text" 
-                                    className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" 
-                                    placeholder="Ej: Firulais"
-                                    name="nombre" 
-                                    required
-                                />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm mb-1 text-on-surface-variant">Raza</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" 
-                                        placeholder="Ej: Mestizo" 
-                                        name="raza"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className="block text-sm mb-1 text-on-surface-variant">Pelaje</label>
-                                    <input 
-                                        type="text" 
-                                        className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" 
-                                        placeholder="Ej: Mestizo" 
-                                        name="pelaje"
-                                        required
-                                    />
-                                </div>
-
-                                <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Sexo</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="sexo" required>
+                <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                    <div className="flex flex-row gap-10">
+                        {/* DATOS GENERALES */}
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos generales</h3>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Nombre del perro</label>
+                                <input type="text" name="nombre" required placeholder="Ej: Firulais" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                            </div>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Raza</label>
+                                <input type="text" name="raza" required placeholder="Ej: Mestizo" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                            </div>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Pelaje</label>
+                                <input type="text" name="pelaje" required placeholder="Ej: Corto" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                            </div>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Sexo</label>
+                                <select name="sexo" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona el sexo</option>
                                     <option value="macho">Macho</option>
                                     <option value="hembra">Hembra</option>
                                 </select>
                             </div>
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Tamaño</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="tamaño" required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Tamaño</label>
+                                <select name="tamaño" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona el tamaño</option>
                                     <option value="Pequeño">Pequeño</option>
                                     <option value="Mediano">Mediano</option>
                                     <option value="Grande">Grande</option>
                                 </select>
                             </div>
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Edad aproximada</label>
-                                    <input 
-                                        type="text" 
-                                        inputMode="numeric" 
-                                        pattern="[0-9]*"
-                                        className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" 
-                                        placeholder="Ej: 2" 
-                                        name="edad"
-                                        required
-                                        onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }}
-                                    />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Edad aproximada</label>
+                                <input type="text" name="edad" inputMode="numeric" pattern="[0-9]*" required placeholder="Ej: 2" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }} />
                             </div>
-
-                                <div>
-                                    <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="unidad_edad" required>
-                                        <option value=""> Unidad</option>
-                                        <option value="meses">Meses</option>
-                                        <option value="años">Años</option>
-                                    </select>
-                                </div>
-                        </div>
-                        
-                        
-
-                        
-
-                        <div className = "flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3" >Datos Medicos</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Vacunado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="vacunado" required>
+                                <select name="unidad_edad" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                    <option value=""> Unidad</option>
+                                    <option value="meses">Meses</option>
+                                    <option value="años">Años</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* DATOS MEDICOS */}
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos Médicos</h3>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Vacunado</label>
+                                <select name="vacunado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Castrado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="castrado" required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Castrado</label>
+                                <select name="castrado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Desparacitado</label>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" name="desparacitado" required>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Desparacitado</label>
+                                <select name="desparacitado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Observaciones</label>
-                                <textarea 
-                                    className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none resize-none h-32" 
-                                    placeholder="Ej: cegera parcial , zordera "
-                                    name="observaciones"
-                                />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Observaciones</label>
+                                <textarea name="observaciones" placeholder="Ej: cegera parcial , zordera " className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
                             </div>
                         </div>
 
-
-                        <div className = "flex flex-1 flex-col gap-5">
-                            <h3 className="font-semibold mb-3">Mas Sobre Mi</h3>
+                        {/* MÁS SOBRE MÍ */}
+                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Más Sobre Mí</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Historia</label>
-                                <textarea 
-                                    className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none resize-none h-32"
-                                    placeholder="Ej: Muy amigable, le gusta jugar con otros"
-                                    name="historia"
-                                    required
-                                />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Historia</label>
+                                <textarea name="historia" required placeholder="Ej: Muy amigable, le gusta jugar con otros" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
                             </div>
-
-                            
-
                             <div>
-                                <label className="block text-sm mb-1 text-on-surface-variant">Cargue una Foto (Requiere configuración en el Backend)</label>
-                                <input 
-                                    type="file" 
-                                    className="w-full p-3 rounded-lg border border-outline-variant bg-surface focus:border-primary outline-none" 
-                                    accept="image/png, image/jpeg, image/webp"
-                                    name="foto"
-                                    required
-                                />
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Cargue una Foto</label>
+                                <input type="file" name="foto" required accept="image/png, image/jpeg, image/webp" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" />
                             </div>
                         </div>
-
                     </div>
-                    
+
                     <div className="flex justify-end gap-3 mt-4">
-                        <button 
-                            type="button" 
-                            onClick={cerrarModal}
-                            className="px-5 py-2.5 rounded-full font-medium text-on-surface-variant hover:bg-surface-container-high transition-colors"
-                        >Cancelar</button>
-                        <button 
-                            type="submit"
-                            className="px-5 py-2.5 rounded-full font-medium bg-primary text-on-primary hover:opacity-90 transition-opacity"
-                        >Crear Ficha</button>
+                        <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
+                        <button type="submit" className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium">Crear Ficha</button>
                     </div>
                 </form>
             </dialog>
