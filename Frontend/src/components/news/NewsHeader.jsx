@@ -6,7 +6,11 @@ const NewsHeader = ({ currentCategory, onCategoryChange, onSearch, currentDate, 
     <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
       <button 
         onClick={() => onCategoryChange('')}
-        className={`px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${currentCategory === '' ? "bg-emerald-700 text-white border-emerald-700" : "border-outline-variant hover:bg-surface-container-high"}`}
+        className={`px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${
+          currentCategory === '' 
+            ? "bg-surface text-primary border-primary font-bold" 
+            : "bg-surface-container-lowest text-black border-outline-variant hover:bg-surface-container-low"
+        }`}
       >
         Todas
       </button>
@@ -14,7 +18,11 @@ const NewsHeader = ({ currentCategory, onCategoryChange, onSearch, currentDate, 
         <button 
           key={cat}
           onClick={() => onCategoryChange(cat)}
-          className={`px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${currentCategory === cat ? "bg-emerald-700 text-white border-emerald-700" : "border-outline-variant hover:bg-surface-container-high"}`}
+          className={`px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${
+            currentCategory === cat 
+              ? "bg-surface text-primary border-primary font-bold" 
+              : "bg-surface-container-lowest text-black border-outline-variant hover:bg-surface-container-low"
+          }`}
         >
           {cat}
         </button>

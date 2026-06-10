@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { IoWarningOutline } from "react-icons/io5";
 const ReportBanner = () => {
 return (
 <div
@@ -8,8 +8,8 @@ return (
     <div className="flex items-start gap-4">
         
         <div className="p-4 bg-error/10 rounded-full text-error shrink-0 hidden sm:flex items-center justify-center">
-            <span className="material-symbols-outlined text-4xl text-error/70" style={{ fontVariationSettings: "'FILL' 1" }}>
-                warning
+            <span className="text-4xl text-error/70">
+                <IoWarningOutline />
             </span>
         </div>
 

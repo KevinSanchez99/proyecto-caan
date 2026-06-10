@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { FaFacebook } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaUniversity } from "react-icons/fa";
 export default function Footer() {
     return (
         <footer className="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-6 lg:py-10 mt-auto">
@@ -40,8 +42,8 @@ export default function Footer() {
                             rel="noreferrer"
                             className="flex items-center gap-3 bg-surface-container-low hover:bg-[#C13584] hover:text-on-primary text-on-surface transition-all px-4 py-2.5 rounded-xl font-label-sm text-sm border border-outline-variant/30 shadow-sm w-fit"
                         >
-                            <span className="material-symbols-outlined text-[20px]">photo_camera</span>
-                            Seguinos en Instagram
+                            <span className="text-[20px]"><FaInstagram /></span>Instagram
+                            
                         </a>
                         <a
                             href="https://www.facebook.com/groups/291987354785530"
@@ -49,8 +51,7 @@ export default function Footer() {
                             rel="noreferrer"
                             className="flex items-center gap-3 bg-surface-container-low hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] text-on-surface transition-all px-4 py-2.5 rounded-xl font-label-sm text-sm border border-outline-variant/30 shadow-sm w-fit"
                         >
-                            <span className="material-symbols-outlined text-[20px]">public</span>
-                            Sumate en Facebook
+                            <span className="text-[20px]"><FaFacebook /></span>Facebook
                         </a>
                     </div>
                 </div>
@@ -61,8 +62,8 @@ export default function Footer() {
                     <div className="flex flex-col gap-4 pt-1">
 
                         {/* Tarjeta UTN adaptada para columna */}
-                        <div className="flex items-start gap-3 text-on-surface-variant bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/50 shadow-sm cursor-default">
-                            <span className="material-symbols-outlined text-[24px] text-primary shrink-0" style={{ fontVariationSettings: "'FILL' 1" }}>school</span>
+                        <div className="flex items-center gap-3 text-on-surface-variant bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/50 shadow-sm cursor-default">
+                            <span className="text-[24px] text-primary"><FaUniversity /></span>
                             <div className="font-body-sm text-sm leading-snug pt-0.5">
                                 Desarrollado por alumnos de la <strong className="text-primary font-bold">Universidad Tecnológica Nacional</strong> (UTN)
                             </div>

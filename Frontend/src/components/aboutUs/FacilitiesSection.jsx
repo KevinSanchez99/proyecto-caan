@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { IoPawSharp } from "react-icons/io5";
 const FacilitiesSection = () => (
     // 1. Unificamos el contenedor principal: bg-green-50/50, rounded-2xl y max-w-6xl
     <section className="flex flex-col items-center gap-8 p-8 md:p-12 bg-green-50/50 rounded-2xl max-w-6xl mx-auto mt-8 relative overflow-hidden">
@@ -41,13 +41,12 @@ const FacilitiesSection = () => (
                 felicidad y sanación. Gracias a vuestro apoyo, este espacio es una realidad llena de esperanza.
             </p>
 
-            <div className="flex justify-center gap-6 mt-8 opacity-30 text-green-800">
-                <span className="material-symbols-outlined text-4xl transform -rotate-12">pets</span>
-                <span className="material-symbols-outlined text-4xl translate-y-3">pets</span>
-                <span className="material-symbols-outlined text-4xl transform rotate-12">pets</span>
+            <div className="flex justify-center gap-6 mt-8 opacity-30 text-primary">
+                <span className="text-3xl transform -rotate-14"><IoPawSharp /></span>
+                <span className="text-3xl translate-y-3"><IoPawSharp /></span>
+                <span className="text-3xl transform rotate-12"><IoPawSharp /></span>
             </div>
         </div>
-
     </section>
 );
 

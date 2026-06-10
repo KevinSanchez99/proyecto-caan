@@ -71,8 +71,8 @@ export default function Faq() {
                   question="¿Cuáles son los requisitos básicos para adoptar?" 
                   defaultOpen={true}
                 >
-                  <p>Para adoptar en el CAAN necesitas:</p>
-                  <ul className="list-disc pl-md mt-sm space-y-xs">
+                  <h3 className="text-black font-semibold">Para adoptar en el CAAN necesitas:</h3>
+                  <ul className="list-disc pl-md mt-sm space-y-xs text-black">
                     <li>Ser mayor de 21 años.</li>
                     <li>Presentar identificación oficial y comprobante de domicilio.</li>
                     <li>Llenar el formulario de solicitud de adopción.</li>
@@ -82,7 +82,7 @@ export default function Faq() {
                 </FaqAccordionItem>
 
                 <FaqAccordionItem question="¿La adopción tiene algún costo?">
-                  <p>Sí, solicitamos una cuota de recuperación. Esta cuota nos ayuda a cubrir una parte de los gastos médicos que el animal ha recibido mientras estuvo a nuestro cuidado, incluyendo: esterilización/castración, vacunas al día, desparasitación interna y externa, y microchip de identificación.</p>
+                  <p className="text-black">Sí, solicitamos una cuota de recuperación. Esta cuota nos ayuda a cubrir una parte de los gastos médicos que el animal ha recibido mientras estuvo a nuestro cuidado, incluyendo: esterilización, castración, vacunas al día, desparasitación.</p>
                 </FaqAccordionItem>
 
               </div>
@@ -92,9 +92,9 @@ export default function Faq() {
             <div className="scroll-mt-32" id="voluntariado">
               <div className="flex items-center gap-sm mb-lg border-b border-outline-variant/30 pb-sm">
                 <span className="material-symbols-outlined text-tertiary text-3xl">volunteer_activism</span>
-                <h2 className="font-h2 text-h2 text-tertiary">Voluntariado</h2>
+                <h2 className="font-h2 text-h2 text-primary">Voluntariado</h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-black">
                 
                 <VoluntariadoCard 
                   title="¿Cómo puedo ser voluntario?"

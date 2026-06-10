@@ -25,60 +25,55 @@ export default function AnimalCard({ animal}) {
         };
     return (
         
-        <article className=" w-full bg-stone-50 flex flex-col p-md box-border rounded-2xl overflow-hidden">
+        <article className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.05)] group border border-outline-variant/20 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-all duration-300 h-full flex flex-col">
             
-            <div className="relative aspect-[4/3] shrink-0 overflow-hidden w-full rounded-lg">
+            <div className="h-56 overflow-hidden relative shrink-0">
                 <img 
                     alt={animal.nombre}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     src={animal.imagenes} 
                 />
+                <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                    {animal.raza}
+                </div>
             </div>
 
-            <div className="p-md flex flex-col flex-grow">
-                
-                <div className="flex flex-row justify-between items-start mb-sm shrink-0">
-                    <span className="font-h3 text-h3 text-on-surface">{animal.nombre}</span>
-
-                    <span className="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-[12px]">
-                    {animal.raza}
-                    </span>
-
-                </div>
-                
-                <p className="font-body-md text-body-md text-on-surface-variant mb-2 shrink-0">
+            <div className="p-8 grow flex flex-col items-start">
+                <div className="text-outline font-label-sm text-label-sm mb-2 text-xs">
                     {animal.edad.valor} {animal.edad.unidad}
-                </p>
-                
-                <p className="font-body-sm text-sm text-on-surface-variant line-clamp-3 break-all w-full mb-4 ">
+                </div>
+
+                <h3 className="font-h3 text-h3 text-on-surface mb-3 line-clamp-2 group-hover:text-emerald-700 transition-colors">
+                    {animal.nombre}
+                </h3>
+
+                <p className="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 break-all w-full">
                     {animal.descripcion}
                 </p>
-                
-                
-                {/* Contenedor padre que organiza los botones */}
-                <div className="flex flex-col gap-2 mt-auto w-full px-4">
+
+                <div className="mt-6 w-full flex flex-col gap-3">
                     <button
-                        className="w-full py-3 border border-primary text-primary font-label-sm text-label-sm rounded-full hover:bg-primary hover:text-on-primary transition-colors shrink-0"
+                        className="w-full py-3 rounded-md bg-emerald-200 border border-emerald-300 text-emerald-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]"
                         onClick={() => setMostrarInfo(true)}
                     >
-                        Más Información
+                        Más información
                     </button>
 
                     {isAuthenticated && (
-                        <button className="w-full py-3 border border-blue-900 text-blue-900 font-label-sm text-label-sm rounded-full hover:bg-blue-900 hover:text-white transition-colors shrink-0"
-                           onClick={() => setMostrarEditor(true)} 
-                        >
-                            Modificar 
-                        </button>
-                    )}
-
-                    {isAuthenticated && (
-                        <button
-                            className="w-full py-3 border border-red-600 text-red-600 font-label-sm text-label-sm rounded-full hover:bg-red-600 hover:text-white transition-colors shrink-0"
-                            onClick={handleDelete}
-                        >
-                            Borrar
-                        </button>
+                        <div className="grid grid-cols-2 gap-3">
+                            <button
+                                className="w-full py-3 rounded-md bg-blue-300 border border-blue-400 text-blue-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]"
+                                onClick={() => setMostrarEditor(true)}
+                            >
+                                Modificar
+                            </button>
+                            <button
+                                className="w-full py-3 rounded-md bg-red-300 border border-red-400 text-red-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]"
+                                onClick={handleDelete}
+                            >
+                                Borrar
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>
