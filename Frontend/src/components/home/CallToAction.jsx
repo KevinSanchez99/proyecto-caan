@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {MdFavorite} from 'react-icons/md';
 const CallToAction = () => (
     <section className="py-16 md:py-24 bg-background">
         <div className="max-w-[93%] mx-auto px-6">
@@ -10,7 +11,7 @@ const CallToAction = () => (
                     <h2 className="font-bold text-[32px] md:text-[40px] mb-4">¿No puedes adoptar hoy?</h2>
                     <p className="text-lg mb-8 opacity-90">Tu aporte económico nos permite comprar alimento, medicinas y pagar cirugías de emergencia para animales rescatados en condiciones críticas.</p>
                     <a href="/donaciones" className="inline-flex bg-white text-emerald-900 font-semibold px-8 py-4 rounded-full hover:bg-stone-100 active:scale-95 transition-all items-center gap-2">
-                        <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span> Haz una donación
+                        <span className="text-xl"><MdFavorite/></span> Haz una donación
                     </a>
                 </div>
                 <div className="relative w-70% md:w-1/2 h-full md:h-auto ">

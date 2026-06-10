@@ -2,6 +2,10 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import CopyRow from '../components/donations/CopyRow';
+
+import { GiDogBowl} from "react-icons/gi";
+import { MdAccountBalance, MdAttachMoney, MdVolunteerActivism, MdPayments, MdPets, MdLocalLaundryService, MdHandyman, MdStar, MdGroupAdd} from 'react-icons/md';
+
 export default function Donations() {
   return (
     <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
@@ -25,7 +29,7 @@ export default function Donations() {
           {/* COLUMNA 1: Donaciones Económicas */}
           <section className="flex flex-col gap-6">
             <div className="flex items-center gap-3 border-b border-outline-variant/30 pb-3">
-              <span className="material-symbols-outlined text-primary text-3xl">account_balance</span>
+              <span className="material-symbols-outlined text-primary text-3xl"><MdAccountBalance/></span>
               <h2 className="font-h2 text-2xl md:text-3xl text-on-surface">Aportes Económicos</h2>
             </div>
             <p className="text-on-surface-variant font-body-md">
@@ -36,10 +40,10 @@ export default function Donations() {
             <div className="bg-surface-container-lowest border border-outline-variant/40 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="font-bold text-lg text-on-surface">Banco Provincia</h3>
-                  <p className="text-sm text-on-surface-variant">Caja de Ahorros en Pesos</p>
+                  <h3 className="font-bold text-lg text-primary">Banco Provincia</h3>
+                  <p className="text-sm text-primary/70">Caja de Ahorros en Pesos</p>
                 </div>
-                <span className="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Oficial</span>
+                <span className="material-symbols-outlined text-primary text-3xl"><MdAttachMoney/></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
                 <CopyRow label="Alias" value="CAAN.NECOCHEA.DONAR" colorClass="text-primary" />
@@ -52,9 +56,9 @@ export default function Donations() {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="font-bold text-lg text-[#009EE3]">Mercado Pago</h3>
-                  <p className="text-sm text-on-surface-variant">Billetera Virtual</p>
+                  <p className="text-sm text-primary/70">Billetera Virtual</p>
                 </div>
-                <span className="material-symbols-outlined text-[#009EE3] text-3xl">payments</span>
+                <span className="material-symbols-outlined text-[#009EE3] text-3xl"><MdPayments/></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
                 <CopyRow label="Alias" value="CAAN.MP.DONACIONES" colorClass="text-[#009EE3]" />
@@ -66,14 +70,14 @@ export default function Donations() {
           {/* COLUMNA 2: Donaciones Materiales y Socios */}
           <section className="flex flex-col gap-4">
             <div className="flex items-center gap-3 border-b border-outline-variant/30 pb-3 mb-2">
-              <span className="material-symbols-outlined text-secondary text-3xl">volunteer_activism</span>
+              <span className="material-symbols-outlined text-secondary text-3xl"><MdVolunteerActivism/></span>
               <h2 className="font-h2 text-2xl md:text-3xl text-on-surface">Otras formas de ayudar</h2>
             </div>
             
             {/* Lista de materiales */}
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined">pet_supplies</span>
+                <span className="material-symbols-outlined text-3xl"><GiDogBowl/></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Alimentos no perecederos</h3>
@@ -85,7 +89,7 @@ export default function Donations() {
 
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined">laundry</span>
+                <span className="material-symbols-outlined text-3xl"><MdLocalLaundryService/></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Ropa y Abrigo</h3>
@@ -98,7 +102,7 @@ export default function Donations() {
 
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined">handyman</span>
+                <span className="material-symbols-outlined text-3xl"><MdHandyman/></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Materiales de construcción</h3>
@@ -111,10 +115,10 @@ export default function Donations() {
             {/* Banner de Socio */}
             <div className="flex gap-4 p-6 bg-secondary-container text-on-secondary-container rounded-2xl shadow-md mt-2 relative overflow-hidden">
               <div className="absolute -right-6 -top-6 opacity-10">
-                <span className="material-symbols-outlined text-[120px]">stars</span>
+                <span className="material-symbols-outlined text-[120px]"><MdStar/></span>
               </div>
               <div className="w-12 h-12 rounded-full bg-on-secondary-container/10 flex items-center justify-center shrink-0 relative z-10">
-                <span className="material-symbols-outlined">group_add</span>
+                <span className="material-symbols-outlined text-3xl"><MdGroupAdd/></span>
               </div>
               <div className="relative z-10">
                 <h3 className="font-bold text-xl mb-1">¡Hazte Socio del CAAN!</h3>

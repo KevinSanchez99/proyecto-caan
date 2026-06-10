@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { MdCopyAll, MdCheck } from "react-icons/md";
+
 const CopyRow = ({ label, value, colorClass = "" }) => {
     const [copied, setCopied] = useState(false);
 
@@ -21,10 +23,11 @@ const CopyRow = ({ label, value, colorClass = "" }) => {
                     onClick={handleCopy}
                     title="Copiar al portapapeles"
                     className="p-1.5 rounded-md hover:bg-outline-variant/30 text-on-surface-variant transition-colors flex items-center justify-center active:scale-95"
-                >
-                    <span className={`material-symbols-outlined text-[18px] ${copied ? 'text-primary' : ''}`}>
-                        {copied ? 'check' : 'content_copy'}
-                    </span>
+                >   {copied ? (
+                    <MdCheck className="text-[18px] text-primary" />
+                ) : (
+                    <MdCopyAll className="text-[18px]" />
+                )}
                 </button>
             </div>
         </div>

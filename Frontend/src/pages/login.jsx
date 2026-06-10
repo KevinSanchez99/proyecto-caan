@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+// Importamos todos los iconos necesarios, añadiendo MdLogin y MdError
+import { MdPerson, MdLock, MdVisibility, MdVisibilityOff, MdLogin, MdError } from "react-icons/md";
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
+    // 1. Estado para controlar la visibilidad de la contraseña
+    const [showPassword, setShowPassword] = useState(false);
 
     const { signin, errors, isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -41,6 +46,7 @@ export default function Login() {
                     </p>
                 </div>
 
+                {/* Manejo de errores actualizado a React Icons */}
                 {errors && errors.length > 0 && (
                     <div className="mb-6 space-y-3">
                         {errors.map((error, i) => (
@@ -48,9 +54,7 @@ export default function Login() {
                                 className="bg-error-container text-on-error-container p-4 rounded-2xl flex items-start gap-3 border border-error/20 shadow-sm"
                                 key={i}
                             >
-                                <span className="material-symbols-outlined text-error shrink-0" style={{ fontVariationSettings: "'FILL' 1" }}>
-                                    error
-                                </span>
+                                <MdError className="text-error text-xl shrink-0 mt-0.5" />
                                 <span className="font-body-md text-sm mt-0.5">{error}</span>
                             </div>
                         ))}
@@ -67,9 +71,8 @@ export default function Login() {
                             Usuario
                         </label>
                         <div className="relative">
-                            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">
-                                person
-                            </span>
+                            {/* 2. Etiqueta span reemplazada por el componente MdPerson */}
+                            <MdPerson className="absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl" />
                             <input
                                 id="username"
                                 type="text"
@@ -91,33 +94,49 @@ export default function Login() {
                             Contraseña
                         </label>
                         <div className="relative">
-                            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">
-                                lock
-                            </span>
+                            {/* 3. Etiqueta span reemplazada por MdLock */}
+                            <MdLock className="absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl" />
                             <input
                                 id="password"
-                                type="password"
+                                // 4. El tipo cambia dinámicamente según el estado
+                                type={showPassword ? "text" : "password"}
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full pl-12 pr-4 py-4 bg-surface-bright border border-outline-variant rounded-2xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md text-on-surface placeholder-outline/60 shadow-sm"
+                                // NOTA: Aumenté el padding derecho (pr-12) para que el texto no pise el ícono del ojo
+                                className="w-full pl-12 pr-12 py-4 bg-surface-bright border border-outline-variant rounded-2xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md text-on-surface placeholder-outline/60 shadow-sm"
                                 placeholder="••••••••"
                             />
+                            
+                            {/* 5. Botón interactivo para ver/ocultar contraseña */}
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors p-1"
+                                title={showPassword ? "Ocultar contraseña" : "Ver contraseña"}
+                            >
+                                {showPassword ? (
+                                    <MdVisibilityOff className="text-xl" />
+                                ) : (
+                                    <MdVisibility className="text-xl" />
+                                )}
+                            </button>
                         </div>
                     </div>
 
-                    {/* Botón Ingresar*/}
+                    {/* Botón Ingresar */}
                     <div className="pt-4">
                         <button
                             type="submit"
                             className="w-full bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-primary/90 active:scale-95 transition-all shadow-sm flex justify-center items-center gap-2"
                         >
                             Ingresar
-                            <span className="material-symbols-outlined text-[18px]">login</span>
+                            {/* 6. Icono del botón actualizado a React Icons */}
+                            <MdLogin className="text-[18px]" />
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     );
-};
+}

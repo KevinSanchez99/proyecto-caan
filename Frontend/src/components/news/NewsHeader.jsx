@@ -1,3 +1,5 @@
+import { FaSearch } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 const categories = ["Rescate", "Instalaciones", "Comunidad", "Salud", "Adopciones"];
 
 const NewsHeader = ({ currentCategory, onCategoryChange, onSearch, currentDate, onDateChange }) => (
@@ -46,14 +48,14 @@ const NewsHeader = ({ currentCategory, onCategoryChange, onSearch, currentDate, 
             title="Limpiar fecha"
             type="button"
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+            <span className="text-2xl"><MdClose/></span>
           </button>
         )}
       </div>
 
       {/* Buscador de Texto */}
       <div className="relative w-full md:w-64">
-        <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-outline"><FaSearch/></span>
         <input 
           className="w-full pl-10 pr-4 py-3 rounded-full border border-outline-variant bg-surface-container-lowest focus:border-primary outline-none transition-all"
           placeholder="Buscar por título..." 

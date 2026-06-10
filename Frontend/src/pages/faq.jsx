@@ -3,6 +3,10 @@ import FaqAccordionItem from '../components/faq/AcordionItems';
 import VoluntariadoCard from '../components/faq/VoluntariadoCard';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+
+import { MdPets, MdVolunteerActivism, MdFavorite, MdHelp} from "react-icons/md";
+import { IoMdArrowRoundForward } from "react-icons/io";
+
 export default function Faq() {
   return (
     <div className="bg-background text-on-background font-body-md min-h-screen flex flex-col">
@@ -24,19 +28,19 @@ export default function Faq() {
           <aside className="md:col-span-3 relative md:sticky md:top-32 space-y-sm">
             <nav className="bg-surface-container-lowest rounded-xl p-md shadow-[0_15px_30px_rgba(0,0,0,0.05)] flex flex-col gap-sm border border-outline-variant/30">
               <a className="flex items-center gap-sm text-primary font-label-sm text-label-sm p-sm bg-surface-container-low rounded-lg transition-colors" href="#adopcion">
-                <span className="material-symbols-outlined">pets</span>
+                <span className="text-2xl"><MdPets/></span>
                 Proceso de Adopción
               </a>
               <a className="flex items-center gap-sm text-on-surface-variant hover:text-primary font-label-sm text-label-sm p-sm hover:bg-surface-container-low rounded-lg transition-colors" href="#voluntariado">
-                <span className="material-symbols-outlined">volunteer_activism</span>
+                <span className="text-2xl"><MdVolunteerActivism/></span>
                 Voluntariado
               </a>
               <a className="flex items-center gap-sm text-on-surface-variant hover:text-primary font-label-sm text-label-sm p-sm hover:bg-surface-container-low rounded-lg transition-colors" href="#donaciones">
-                <span className="material-symbols-outlined">favorite</span>
+                <span className="text-2xl"><MdFavorite/></span>
                 Donaciones
               </a>
               <a className="flex items-center gap-sm text-on-surface-variant hover:text-primary font-label-sm text-label-sm p-sm hover:bg-surface-container-low rounded-lg transition-colors" href="#general">
-                <span className="material-symbols-outlined">help</span>
+                <span className="text-2xl"><MdHelp/></span>
                 General
               </a>
             </nav>
@@ -51,7 +55,7 @@ export default function Faq() {
               </p>
               <a className="inline-flex items-center gap-xs font-label-sm text-label-sm bg-on-primary-container text-primary-container px-4 py-2 rounded-full hover:bg-white transition-colors" href="/contacto">
                 Contáctanos
-                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                <span className="text-[18px]"><IoMdArrowRoundForward/></span>
               </a>
             </div>
           </aside>
@@ -62,15 +66,14 @@ export default function Faq() {
             {/* Adopcion Section */}
             <div className="scroll-mt-32" id="adopcion">
               <div className="flex items-center gap-sm mb-lg border-b border-outline-variant/30 pb-sm">
-                <span className="material-symbols-outlined text-primary text-3xl">pets</span>
+                <span className="text-primary text-3xl"><MdPets/></span>
                 <h2 className="font-h2 text-h2 text-primary">Proceso de Adopción</h2>
               </div>
               <div className="space-y-md">
                 
                 <FaqAccordionItem 
                   question="¿Cuáles son los requisitos básicos para adoptar?" 
-                  defaultOpen={true}
-                >
+                  defaultOpen={true}>
                   <h3 className="text-black font-semibold">Para adoptar en el CAAN necesitas:</h3>
                   <ul className="list-disc pl-md mt-sm space-y-xs text-black">
                     <li>Ser mayor de 21 años.</li>
@@ -91,7 +94,7 @@ export default function Faq() {
             {/* Voluntariado Section */}
             <div className="scroll-mt-32" id="voluntariado">
               <div className="flex items-center gap-sm mb-lg border-b border-outline-variant/30 pb-sm">
-                <span className="material-symbols-outlined text-tertiary text-3xl">volunteer_activism</span>
+                <span className="material-symbols-outlined text-primary text-3xl"><MdVolunteerActivism/></span>
                 <h2 className="font-h2 text-h2 text-primary">Voluntariado</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-black">
