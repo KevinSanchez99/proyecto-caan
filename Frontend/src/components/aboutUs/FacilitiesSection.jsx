@@ -1,4 +1,3 @@
-import React from 'react';
 import { IoPawSharp } from "react-icons/io5";
 const FacilitiesSection = () => (
     // 1. Unificamos el contenedor principal: bg-green-50/50, rounded-2xl y max-w-6xl
@@ -12,21 +11,21 @@ const FacilitiesSection = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 w-full relative z-10 px-4 mt-6">
 
             {/* Polaroid 1 */}
-            <div className="relative group mx-auto w-full max-w-[300px]">
+            <div className="relative group mx-auto w-full max-w-75">
                 <div className="bg-[#fcfbf9] p-3 pb-10 shadow-lg border border-stone-200/50 transform transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 rotate-1 rounded-sm">
                     <img src="./im1.jpeg" alt="Entrada al refugio" className="w-full aspect-square object-cover contrast-125" />
                 </div>
             </div>
 
             {/* Polaroid 2 */}
-            <div className="relative group mx-auto w-full max-w-[300px] md:-translate-y-6">
+            <div className="relative group mx-auto w-full max-w-75 md:-translate-y-6">
                 <div className="bg-[#fcfbf9] p-3 pb-10 shadow-lg border border-stone-200/50 transform transition-all duration-500 group-hover:scale-105 group-hover:rotate-2 -rotate-1 rounded-sm">
                     <img src="./im2.jpeg" alt="Zonas de recreo" className="w-full aspect-square object-cover contrast-125" />
                 </div>
             </div>
 
             {/* Polaroid 3 */}
-            <div className="relative group mx-auto w-full max-w-[300px]">
+            <div className="relative group mx-auto w-full max-w-75">
                 <div className="bg-[#fcfbf9] p-3 pb-10 shadow-lg border border-stone-200/50 transform transition-all duration-500 group-hover:scale-105 group-hover:-rotate-2 rotate-2 rounded-sm">
                     <img src="./mi3.jpeg" alt="Caniles limpios y seguros" className="w-full aspect-square object-cover contrast-125" />
                 </div>

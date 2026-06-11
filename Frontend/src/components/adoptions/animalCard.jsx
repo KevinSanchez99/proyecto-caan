@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from "../../context/AuthContext";
 import { deleteAnimalRequest } from '../../../api/auth';
 import EditAnimal from './editAnimal';
@@ -11,7 +11,7 @@ export default function AnimalCard({ animal}) {
         const [mostrarInfo, setMostrarInfo] = useState(false);
 
         const handleDelete = async () => {
-            const confirmDelete = window.confirm('Usted está por borrar una adopción. ¿Desea continuar?');
+            const confirmDelete = window.confirm('Usted está por borrar un perro. ¿Desea continuar?');
             if (!confirmDelete) return;
 
             try {
@@ -40,7 +40,7 @@ export default function AnimalCard({ animal}) {
 
             <div className="p-8 grow flex flex-col items-start">
                 <div className="text-outline font-label-sm text-label-sm mb-2 text-xs">
-                    {animal.edad.valor} {animal.edad.unidad}
+                    {animal.edad}
                 </div>
 
                 <h3 className="font-h3 text-h3 text-on-surface mb-3 line-clamp-2 group-hover:text-emerald-700 transition-colors">

@@ -1,9 +1,5 @@
-import React from 'react';
-import { FaPaw } from 'react-icons/fa';
-
 export default function CabeceraAdopcion() {
   
-  // (Aquí iría la lógica de tu useState si la necesitas más adelante)
 
   return (
     <>

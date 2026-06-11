@@ -1,11 +1,5 @@
 import { z } from 'zod';
 
-// Esquema para la edad
-const edadSchema = z.object({
-    valor: z.number().int().positive("La edad debe ser un número positivo"),
-    unidad: z.enum(['meses', 'años'], "Unidad de edad debe ser 'meses' o 'años'")
-});
-
 // Esquema para la salud del animal
 const saludSchema = z.object({
     vacunado: z.boolean(),
@@ -18,7 +12,10 @@ export const animalSchema = z.object({
     nombre: z.string().min(2, "El nombre del animal debe tener al menos 2 caracteres"),
     especie: z.string().min(2, "La especie debe tener al menos 2 caracteres"), 
     raza: z.string().min(2, "La raza debe tener al menos 2 caracteres"), 
-    edad: edadSchema,  
+    fecha_nacimiento: z.coerce.date({
+        required_error: "La fecha de nacimiento es requerida",
+        invalid_type_error: "Debe ser una fecha válida",
+    }),  
     sexo: z.enum(['Macho', 'Hembra'], "El sexo debe ser 'Macho' o 'Hembra'"),  
     tamaño: z.enum(['Pequeño', 'Mediano', 'Grande'], "El tamaño debe ser 'Pequeño', 'Mediano' o 'Grande'"), 
     estado: z.enum(['Disponible', 'En Proceso', 'Adoptado'], "El estado debe ser 'Disponible', 'En Proceso' o 'Adoptado'"), 
@@ -32,7 +29,7 @@ export const updateAnimalSchema = z.object({
     nombre: z.string().min(2, "El nombre del animal debe tener al menos 2 caracteres").optional(),
     especie: z.string().min(2, "La especie debe tener al menos 2 caracteres").optional(),
     raza: z.string().min(2, "La raza debe tener al menos 2 caracteres").optional(),
-    edad: edadSchema.optional(),
+    fecha_nacimiento: z.coerce.date().optional(),
     sexo: z.enum(['Macho', 'Hembra']).optional(),
     tamaño: z.enum(['Pequeño', 'Mediano', 'Grande']).optional(),
     estado: z.enum(['Disponible', 'En Proceso', 'Adoptado']).optional(),

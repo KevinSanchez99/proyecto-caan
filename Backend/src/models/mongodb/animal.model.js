@@ -2,19 +2,6 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-// Esquema para la unidad de edad
-const edadSchema = new Schema({
-    valor: {
-        type: Number,
-        required: true,
-    },
-    unidad: {
-        type: String,
-        enum: ['meses', 'años'],
-        required: true,
-    },
-});
-
 // Esquema para la salud del animal
 const saludSchema = new Schema({
     vacunado: {
@@ -53,8 +40,8 @@ const animalSchema = new Schema({
         type: String,
         required: true,
     },
-    edad: {
-        type: edadSchema,
+    fecha_nacimiento: {       
+        type: Date,
         required: true,
     },
     sexo: {
@@ -85,6 +72,31 @@ const animalSchema = new Schema({
         required: true,
     }
 }, { timestamps: true });
+
+// Cálculo dinámico de la edad mediante un campo virtual
+animalSchema.virtual('edad').get(function() {
+    if (!this.fecha_nacimiento) return null;
+    
+    const hoy = new Date();
+    const nacimiento = this.fecha_nacimiento;
+    
+    let meses = (hoy.getFullYear() - nacimiento.getFullYear()) * 12;
+    meses -= nacimiento.getMonth();
+    meses += hoy.getMonth();
+    
+    if (meses < 1) {
+        return "Menos de 1 mes";
+    } else if (meses < 12) {
+        return `${meses} meses`;
+    } else {
+        const anios = Math.floor(meses / 12);
+        return `${anios} año${anios > 1 ? 's' : ''}`;
+    }
+});
+
+// Configuración para incluir los campos virtuales al transformar el documento
+animalSchema.set('toJSON', { virtuals: true });
+animalSchema.set('toObject', { virtuals: true });
 
 const Animal = mongoose.model('Animal', animalSchema);
 

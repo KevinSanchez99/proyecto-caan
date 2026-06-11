@@ -1,4 +1,3 @@
-import React from 'react';
 import { IoWarningOutline } from "react-icons/io5";
 const ReportBanner = () => {
 return (

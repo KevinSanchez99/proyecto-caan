@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getAnimalByIdRequest } from '../../../api/auth';
 
 export default function InfoAnimal({ animalId, onClose }) {
@@ -169,7 +169,7 @@ export default function InfoAnimal({ animalId, onClose }) {
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <p className="text-xs uppercase text-on-surface-variant font-semibold">Edad</p>
-                                            <p className="font-semibold text-on-surface">{animal?.edad?.valor ?? '-'} {animal?.edad?.unidad || ''}</p>
+                                            <p className="font-semibold text-on-surface">{animal?.edad || '-'}</p>
                                         </div>
                                         <div className="flex items-center justify-between">
                                             <p className="text-xs uppercase text-on-surface-variant font-semibold">Tamaño</p>

@@ -3,7 +3,7 @@ import { createAnimalRequest } from '../../../api/auth';
 import { useAuth } from "../../context/AuthContext";
 
 export default function ModalAnimal() {
-   const { isAuthenticated, logout } = useAuth();
+   const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
 
     const abrirModal = () => {
@@ -45,10 +45,7 @@ export default function ModalAnimal() {
             sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
             tamaño: rawData.tamaño,
             estado: 'Disponible', 
-            edad: {
-                valor: Number(rawData.edad), 
-                unidad: rawData.unidad_edad 
-            },
+            fecha_nacimiento: rawData.fecha_nacimiento,
             salud: {
                 vacunado: rawData.vacunado === "1",
                 castrado: rawData.castrado === "1",
@@ -119,15 +116,8 @@ export default function ModalAnimal() {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Edad aproximada</label>
-                                <input type="text" name="edad" inputMode="numeric" pattern="[0-9]*" required placeholder="Ej: 2" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }} />
-                            </div>
-                            <div>
-                                <select name="unidad_edad" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
-                                    <option value=""> Unidad</option>
-                                    <option value="meses">Meses</option>
-                                    <option value="años">Años</option>
-                                </select>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha de Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                         </div>
 

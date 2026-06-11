@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getAnimalsRequest } from '../../../api/auth';
 import AnimalCard from './animalCard'; 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';

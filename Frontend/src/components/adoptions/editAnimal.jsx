@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getAnimalByIdRequest, updateAnimalRequest } from '../../../api/auth'; 
-import { useAuth } from "../../context/AuthContext";
 
 export default function EditAnimal({ animalId, onClose }) {
-    const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
     const [formData, setFormData] = useState(null);
 
@@ -45,6 +43,12 @@ export default function EditAnimal({ animalId, onClose }) {
         });
     };
 
+    const formatDateForInput = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        return date.toISOString().split('T')[0];
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
@@ -61,10 +65,7 @@ export default function EditAnimal({ animalId, onClose }) {
             sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
             tamaño: rawData.tamaño,
             estado: 'Disponible', 
-            edad: {
-                valor: Number(rawData.edad), 
-                unidad: rawData.unidad_edad 
-            },
+            fecha_nacimiento: rawData.fecha_nacimiento,
             salud: {
                 vacunado: rawData.vacunado === "1",
                 castrado: rawData.castrado === "1",
@@ -134,15 +135,8 @@ export default function EditAnimal({ animalId, onClose }) {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Edad aproximada</label>
-                                <input type="text" inputMode="numeric" pattern="[0-9]*" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="edad" defaultValue={formData.edad?.valor} required onInput={(e) => { e.target.value = e.target.value.replace(/[^0-9]/g, ''); }} />
-                            </div>
-                            <div>
-                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="unidad_edad" defaultValue={formData.edad?.unidad} required>
-                                    <option value=""> Unidad</option>
-                                    <option value="meses">Meses</option>
-                                    <option value="años">Años</option>
-                                </select>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha de Nacimiento</label>
+                                <input type="date" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="fecha_nacimiento" defaultValue={formatDateForInput(formData.fecha_nacimiento)} required />
                             </div>
                         </div>
 

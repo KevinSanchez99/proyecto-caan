@@ -1,4 +1,3 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 
@@ -9,7 +8,7 @@ export default function Reports() {
     <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
       <NavBar />
 
-      <main className="max-w-4xl mx-auto px-gutter py-xl flex-grow w-full">
+      <main className="max-w-4xl mx-auto px-gutter py-xl grow w-full">
 
         {/* Cabecera */}
         <section className="max-w-container_max mx-auto px-8 py-4 text-center">
@@ -95,35 +94,35 @@ export default function Reports() {
 
             <ul className="space-y-4 font-body-md text-on-surface">
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">1</span>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">1</span>
                 <div>
                   <strong className="block mb-1">Relatar los hechos con detalles</strong>
                   <span className="text-on-surface-variant text-sm">Describe exactamente qué sucedió, cómo y en qué momento. Fechas y horarios son muy importantes.</span>
                 </div>
               </li>
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">2</span>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">2</span>
                 <div>
                   <strong className="block mb-1">Adjuntar pruebas visuales</strong>
                   <span className="text-on-surface-variant text-sm">Fotos y videos claros que demuestren el maltrato o la situación en la que se encuentra el animal.</span>
                 </div>
               </li>
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">3</span>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">3</span>
                 <div>
                   <strong className="block mb-1">Dirección del hecho</strong>
                   <span className="text-on-surface-variant text-sm">Ubicación exacta o referencias claras para que las autoridades puedan localizar el lugar.</span>
                 </div>
               </li>
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">4</span>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">4</span>
                 <div>
                   <strong className="block mb-1">Datos del agresor</strong>
                   <span className="text-on-surface-variant text-sm">Nombre, apellido o cualquier dato identificatorio de la persona que está realizando el maltrato (si se conocen).</span>
                 </div>
               </li>
               <li className="flex gap-4 items-start bg-surface-container-high p-4 rounded-lg">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">5</span>
+                <span className="shrink-0 w-8 h-8 rounded-full bg-error text-white flex items-center justify-center font-bold text-sm mt-0.5">5</span>
                 <div>
                   <strong className="block mb-1">Informe veterinario</strong>
                   <span className="text-on-surface-variant text-sm">Detallar en qué estado físico y de salud se vio al animal en los últimos días antes de realizar la denuncia.</span>
