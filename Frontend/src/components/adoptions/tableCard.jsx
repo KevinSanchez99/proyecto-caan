@@ -56,7 +56,7 @@ export default function TableCard({ filters = {} }) {
     const animalesAMostrar = animales.slice(inicio, inicio + itemsPorPagina);
 
     return (
-        <div className="w-[90%] mx-auto mb-16">
+        <div className="w-full mx-auto mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">        
                 {animalesAMostrar.map((animal) => (
                     <AnimalCard key={animal._id} animal={animal} />

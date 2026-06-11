@@ -20,7 +20,7 @@ function Adoptions() {
       <main className="max-w-container_max mx-auto px-8 py-12 grow ">
         <Presentation/>
         <section className="px-4 py-6 w-full">
-          <div className="w-[90%] mx-auto flex items-center justify-end gap-4">
+          <div className="w-full mx-auto flex items-center justify-end gap-4">
             <NewAnimal/>
             <FilterAnimal onApplyFilters={handleApplyFilters} />
           </div>
