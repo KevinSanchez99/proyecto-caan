@@ -30,14 +30,14 @@ const QuickAdoptions = () => (
                                 <span className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-[12px] font-semibold">{animal.type}</span>
                             </div>
                             <p className="text-sm text-stone-600 mb-4">{animal.desc}</p>
-                            <a href="../adoptions" className="block text-center w-full py-2 border border-emerald-800 text-emerald-800 font-semibold rounded-full hover:bg-emerald-800 hover:text-white transition-colors">Conocer a {animal.name}</a>
+                            <a href="/adoptions" className="block text-center w-full py-2 border border-emerald-800 text-emerald-800 font-semibold rounded-full hover:bg-emerald-800 hover:text-white transition-colors">Conocer a {animal.name}</a>
                         </div>
                     </article>
                 ))}
             </div>
 
             <div className="mt-8 text-center sm:hidden">
-                <a href="/adopciones" className="inline-flex bg-stone-200 text-stone-900 font-semibold px-6 py-3 rounded-full">Ver todos los animales</a>
+                <a href="/adoptions" className="inline-flex bg-stone-200 text-stone-900 font-semibold px-6 py-3 rounded-full">Ver todos los animales</a>
             </div>
         </div>
     </section>
