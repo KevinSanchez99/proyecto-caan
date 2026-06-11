@@ -60,12 +60,12 @@ export default function News() {
     };
 
     return (
-      <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
+      <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
         <Navbar />
         <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
           <section className="mb-xl">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="font-h1 text-[40px] md:text-[50px] text-primary leading-tight text-center grow py-12">
+              <h1 className="font-h1 text-[40px] md:text-[50px] text-primary text-center grow py-12">
                 Noticias del CAAN
               </h1>
               {isAuthenticated && (
