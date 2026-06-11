@@ -68,8 +68,8 @@ export default function Footer() {
                         </div>
 
                         <div className="flex flex-col gap-1.5 mt-1">
-                            <p className="font-body-md text-xs text-outline leading-relaxed">
-                                © {new Date().getFullYear()} CAAN. <br className="hidden sm:block lg:hidden" />Todos los derechos reservados.
+                            <p className="font-body-md text-xs text-center leading-relaxed">
+                                &copy; {new Date().getFullYear()} CAAN. <br className="hidden sm:block lg:hidden" />Todos los derechos reservados.
                             </p>
                         </div>
 

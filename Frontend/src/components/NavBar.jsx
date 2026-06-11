@@ -62,13 +62,13 @@ export default function Navbar() {
                     {isAuthenticated && (
                         <button 
                             onClick={logout} 
-                            className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-sm px-4 py-2 rounded-full transition-colors"
+                            className="px-6 py-3 rounded-full bg-red-300 border border-red-400 text-red-900 font-label-sm text-label-sm shadow-sm active:scale-95 transition-transform duration-200 hover:bg-red-400 "
                         >
                             Cerrar Sesión
                         </button>
                     )}
                     <Link to="/donations" className="hidden lg:block">
-                        <button className="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded-full hover:bg-primary-container active:scale-95 transition-transform duration-200">
+                        <button className="bg-primary/90 border-primary text-white font-label-sm text-label-sm px-6 py-3.5 rounded-full active:scale-95 transition-transform duration-200 hover:bg-primary/70">
                             Donar
                         </button>
                     </Link>
