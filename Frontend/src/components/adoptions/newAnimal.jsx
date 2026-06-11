@@ -72,9 +72,9 @@ export default function ModalAnimal() {
         <>
            
             {isAuthenticated && (
-                         <button className="flex items-center justify-center gap-2 px-4 py-3 min-w-40 rounded-full border border-outline-variant bg-white text-slate-600 shadow-sm hover:bg-slate-100 transition-colors" onClick={abrirModal}>
-                            <span className="text-xl font-bold text-slate-600">+</span>
-                            <span className="font-label-sm text-label-sm text-slate-600">Nuevo Rescatado</span>
+                         <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-700 transition" onClick={abrirModal}>
+                            <span className="text-xl font-bold text-white">+</span>
+                            <span className="font-label-sm text-label-sm text-white">Nuevo Rescatado</span>
                         </button>
             )}
 
@@ -149,7 +149,7 @@ export default function ModalAnimal() {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Observaciones</label>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Condiciones Especiales</label>
                                 <textarea name="observaciones" placeholder="Ej: cegera parcial , zordera " className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
                             </div>
                         </div>

@@ -43,10 +43,10 @@ export default function FilterAnimal({ onApplyFilters }) {
                     type="button"
                     aria-label="Más opciones"
                     onClick={abrirModalFiltros}
-                    className="p-2 rounded-full bg-white border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant"
+                    className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-sm text-label-sm"
                 >
                     <FiFilter size={24} aria-hidden className="text-on-surface-variant" />
-                    <span className="sr-only">Más opciones</span>
+                    <span>Filtros</span>
                 </button>
             </div>
 
