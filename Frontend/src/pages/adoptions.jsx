@@ -15,12 +15,12 @@ function Adoptions() {
   };
 
   return (
-    <>
+    <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
       <Navbar/>
-      <main className="grow w-full mt-20 bg-background">
+      <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
         <Presentation/>
         <section className="px-4 py-6 w-full">
-          <div className="w-[90%] mx-auto flex items-center justify-end gap-4">
+          <div className="w-full mx-auto flex items-center justify-end gap-4">
             <NewAnimal/>
             <FilterAnimal onApplyFilters={handleApplyFilters} />
           </div>
@@ -28,7 +28,7 @@ function Adoptions() {
         <TableAdop filters={filters} />
       </main>
       <Footer/>
-    </>
+    </div>
   );
 }
 

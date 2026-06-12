@@ -56,7 +56,7 @@ export default function TableCard({ filters = {} }) {
     const animalesAMostrar = animales.slice(inicio, inicio + itemsPorPagina);
 
     return (
-        <div className="w-[90%] mx-auto mb-16">
+        <div className="w-full mx-auto mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">        
                 {animalesAMostrar.map((animal) => (
                     <AnimalCard key={animal._id} animal={animal} />
@@ -71,7 +71,7 @@ export default function TableCard({ filters = {} }) {
                         onClick={() => setPagina((prev) => Math.max(prev - 1, 1))}
                         className={`w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === 1 ? 'opacity-40 cursor-not-allowed' : ''}`}
                     >
-                        <FiChevronLeft size={20} aria-hidden className="text-on-surface-variant" />
+                        <FiChevronLeft aria-hidden className="text-on-surface-variant text-lg" />
                     </button>
 
                     {Array.from({ length: totalPaginas }, (_, index) => index + 1).map((numero) => (
@@ -91,7 +91,7 @@ export default function TableCard({ filters = {} }) {
                         onClick={() => setPagina((prev) => Math.min(prev + 1, totalPaginas))}
                         className={`w-10 h-10 rounded-full bg-white border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors ${pagina === totalPaginas ? 'opacity-40 cursor-not-allowed' : ''}`}
                     >
-                        <FiChevronRight size={20} aria-hidden className="text-on-surface-variant" />
+                        <FiChevronRight aria-hidden className="text-lg text-on-surface-variant" />
                     </button>
                 </div>
             )}
