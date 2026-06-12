@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/NavBar";
 import Presentation from "../components/adoptions/Prest";
 import NewAnimal from "../components/adoptions/newAnimal";
@@ -8,6 +9,7 @@ import Footer from "../components/Footer";
 
 
 function Adoptions() {
+  const { isAuthenticated } = useAuth();
   const [filters, setFilters] = useState({});
 
   const handleApplyFilters = (newFilters) => {
@@ -22,7 +24,7 @@ function Adoptions() {
         <section className="px-4 py-6 w-full">
           <div className="w-full mx-auto flex items-center justify-end gap-4">
             <NewAnimal/>
-            <FilterAnimal onApplyFilters={handleApplyFilters} />
+            <FilterAnimal onApplyFilters={handleApplyFilters} isAuthenticated={isAuthenticated} />
           </div>
         </section>
         <TableAdop filters={filters} />

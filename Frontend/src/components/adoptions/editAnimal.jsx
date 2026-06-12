@@ -4,10 +4,12 @@ import { getAnimalByIdRequest, updateAnimalRequest } from '../../../api/auth';
 export default function EditAnimal({ animalId, onClose }) {
     const modalRef = useRef(null);
     const [formData, setFormData] = useState(null);
+    const [error, setError] = useState(null);
 
     
     const cerrarModal = () => {
         if (modalRef.current) modalRef.current.close();
+        setError(null);
         if (onClose) onClose(); 
     };
 
@@ -66,6 +68,7 @@ export default function EditAnimal({ animalId, onClose }) {
             tamaño: rawData.tamaño,
             estado: 'Disponible', 
             fecha_nacimiento: rawData.fecha_nacimiento,
+            estado: rawData.estado,
             salud: {
                 vacunado: rawData.vacunado === "1",
                 castrado: rawData.castrado === "1",
@@ -85,7 +88,14 @@ export default function EditAnimal({ animalId, onClose }) {
             cerrarModal();
             window.location.reload(); 
         } catch (error) {
-            alert.error('Error al actualizar el animal:', error);
+            console.error('Error al actualizar el animal:', error);
+            // Validamos si viene el array de errores desde Zod/Validator
+            if (error.response?.data?.errors) {
+                setError(error.response.data.errors); 
+            } else {
+                // Si es un error general (ej. 500)
+                setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
+            }
         }
     };
 
@@ -138,6 +148,23 @@ export default function EditAnimal({ animalId, onClose }) {
                                 <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha de Nacimiento</label>
                                 <input type="date" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="fecha_nacimiento" defaultValue={formatDateForInput(formData.fecha_nacimiento)} required />
                             </div>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Estado</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="estado" defaultValue={formData.estado} required>
+                                    <option value="">Selecciona el estado</option>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="Adoptado">Adoptado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Tamaño</label>
+                                <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="tamaño" defaultValue={formData.tamaño} required>
+                                    <option value="">Selecciona el tamaño</option>
+                                    <option value="Pequeño">Pequeño</option>
+                                    <option value="Mediano">Mediano</option>
+                                    <option value="Grande">Grande</option>
+                                </select>
+                            </div>
                         </div>
 
                         {/* DATOS MÉDICOS */}
@@ -184,6 +211,23 @@ export default function EditAnimal({ animalId, onClose }) {
                                 <label className="block text-lg mb-2 text-emerald-800 font-semibold">Cambiar Foto (Opcional)</label>
                                 <input type="file" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" accept="image/png, image/jpeg, image/webp" name="foto" />
                             </div>
+
+                            {error && (
+                                <div className="p-4 rounded-lg bg-red-100 border border-red-300 text-red-800">
+                                    <p className="font-semibold mb-2">Por favor corregí lo siguiente:</p>
+                                    {Array.isArray(error) ? (
+                                        <ul className="list-disc list-inside text-sm">
+                                            {error.map((err, index) => (
+                                                <li key={index}>
+                                                    <span className="capitalize font-medium">{err.path}:</span> {err.message}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="text-sm">{error}</p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                     

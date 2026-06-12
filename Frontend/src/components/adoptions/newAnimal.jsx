@@ -1,17 +1,20 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { createAnimalRequest } from '../../../api/auth'; 
 import { useAuth } from "../../context/AuthContext";
 
 export default function ModalAnimal() {
    const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
+    const [error, setError] = useState(null);
 
     const abrirModal = () => {
         if (modalRef.current) modalRef.current.showModal();
+        setError(null);
     };
 
     const cerrarModal = () => {
         if (modalRef.current) modalRef.current.close();
+        setError(null);
     };
 
     {/* Funcion para convertir la imagen a texto 3/06/2026 */}
@@ -31,6 +34,7 @@ export default function ModalAnimal() {
     {/* Funcion que recopila los datos del formulario 3/06/2026 */}
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
         const formData = new FormData(e.target);
         const rawData = Object.fromEntries(formData.entries());
 
@@ -64,7 +68,13 @@ export default function ModalAnimal() {
              window.location.reload(); 
         } catch (error) {
             console.error('Error al crear el animal:', error);
-            alert("Hubo un error al guardar. Revisa la consola para más detalles.");
+            // Validamos si viene el array de errores desde Zod/Validator
+            if (error.response?.data?.errors) {
+                setError(error.response.data.errors); 
+            } else {
+                // Si es un error general (ej. 500)
+                setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
+            }
         }
     };
 
@@ -165,7 +175,25 @@ export default function ModalAnimal() {
                                 <label className="block text-lg mb-2 text-emerald-800 font-semibold">Cargue una Foto</label>
                                 <input type="file" name="foto" required accept="image/png, image/jpeg, image/webp" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" />
                             </div>
+                            
+                            {error && (
+                                <div className="p-4 rounded-lg bg-red-100 border border-red-300 text-red-800">
+                                    <p className="font-semibold mb-2">Por favor corregí lo siguiente:</p>
+                                    {Array.isArray(error) ? (
+                                        <ul className="list-disc list-inside text-sm">
+                                            {error.map((err, index) => (
+                                                <li key={index}>
+                                                    <span className="capitalize font-medium">{err.path}:</span> {err.message}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="text-sm">{error}</p>
+                                    )}
+                                </div>
+                            )}
                         </div>
+
                     </div>
 
                     <div className="flex justify-end gap-3 mt-4">

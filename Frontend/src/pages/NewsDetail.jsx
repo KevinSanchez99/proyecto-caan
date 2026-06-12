@@ -100,7 +100,7 @@ export default function NewsDetail() {
                 {isAuthenticated && (
                     <div className="flex gap-3">
                         <Link to={`/news/edit/${article.slug}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
-                            Editar
+                            Modificar
                         </Link>
                         <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-700 transition">
                             Eliminar

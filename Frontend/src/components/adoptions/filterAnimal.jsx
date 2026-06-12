@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { FiFilter } from 'react-icons/fi';
 
-export default function FilterAnimal({ onApplyFilters }) {
+export default function FilterAnimal({ onApplyFilters, isAuthenticated = false }) {
     const modalRef = useRef(null);
     const [filters, setFilters] = useState({
         nombre: '',
@@ -9,6 +9,9 @@ export default function FilterAnimal({ onApplyFilters }) {
         pelaje: '',
         sexo: '',
         tamaño: '',
+        estado: '',
+        fechaDesde: '',
+        fechaHasta: '',
         edadMin: '',
         edadMax: '',
     });
@@ -65,6 +68,17 @@ export default function FilterAnimal({ onApplyFilters }) {
                         <label className="block text-lg mb-2 text-emerald-800 font-semibold">Pelaje</label>
                         <input type="text" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" placeholder="Ej: Corto" name="pelaje" value={filters.pelaje} onChange={(e) => setFilters((prev) => ({ ...prev, pelaje: e.target.value }))} />
                     </div>
+
+                    <div className="flex flex-row gap-4">
+                        <div>
+                            <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha desde</label>
+                            <input type="date" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" value={filters.fechaDesde} onChange={(e) => setFilters((prev) => ({ ...prev, fechaDesde: e.target.value }))} />
+                        </div>
+                        <div>
+                            <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha hasta</label>
+                            <input type="date" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" value={filters.fechaHasta} onChange={(e) => setFilters((prev) => ({ ...prev, fechaHasta: e.target.value }))} />
+                        </div>
+                    </div>
                     <div>
                         <label className="block text-lg mb-2 text-emerald-800 font-semibold">Edad (Rango)</label>
                         <div className="flex gap-2">
@@ -95,9 +109,19 @@ export default function FilterAnimal({ onApplyFilters }) {
                             <option value="Grande">Grande</option>
                         </select>
                     </div>
+                    {isAuthenticated && (
+                    <div>
+                        <label className="block text-lg mb-2 text-emerald-800 font-semibold">Estado</label>
+                        <select className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium" name="estado" value={filters.estado} onChange={(e) => setFilters((prev) => ({ ...prev, estado: e.target.value }))}>
+                            <option value="">Selecciona el estado</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Adoptado">Adoptado</option>
+                        </select>
+                    </div>
+                    )}
                 </div>
                 <div className="flex justify-end gap-3 mt-6">
-                    <button type="button" onClick={() => { setFilters({ nombre: '', raza: '', pelaje: '', sexo: '', tamaño: '', edadMin: '', edadMax: '' }); if (onApplyFilters) onApplyFilters({}); cerrarModalFiltros(); }} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Resetear</button>
+                    <button type="button" onClick={() => { setFilters({ nombre: '', raza: '', pelaje: '', sexo: '', tamaño: '', estado: '', fechaDesde: '', fechaHasta: '', edadMin: '', edadMax: '' }); if (onApplyFilters) onApplyFilters({}); cerrarModalFiltros(); }} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Resetear</button>
                     <button onClick={cerrarModalFiltros} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cerrar</button>
                     <button type="button" onClick={() => { const appliedFilters = {}; Object.entries(filters).forEach(([key, value]) => { if (value && value.toString().trim() !== '') appliedFilters[key] = value; }); if (onApplyFilters) onApplyFilters(appliedFilters); cerrarModalFiltros(); }} className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium">Filtrar</button>
                 </div>

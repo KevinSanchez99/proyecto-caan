@@ -56,7 +56,7 @@ const animalSchema = new Schema({
     },
     estado: {
         type: String,
-        enum: ['Disponible', 'En Proceso', 'Adoptado'], // Estado de adopción
+        enum: ['Disponible', 'Adoptado'], // Estado de adopción
         required: true,
     },
     salud: {
@@ -102,10 +102,10 @@ const Animal = mongoose.model('Animal', animalSchema);
 
 export class AnimalModel {
 
-    // Obtener todos los animales, con filtro opcional
+    // Obtener todos los animales, con filtro opcional, ordenados por fecha más reciente
     static async getAllAnimals(filters = {}) {
         try {
-            return await Animal.find(filters);
+            return await Animal.find(filters).sort({ createdAt: -1 });
         } catch (error) {
             throw new Error('No se pudieron obtener los animales.');
         }

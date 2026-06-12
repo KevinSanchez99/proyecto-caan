@@ -1,10 +1,13 @@
 import { AnimalModel } from "../models/mongodb/animal.model.js";
+import jwt from 'jsonwebtoken';
+import { SECRET_JWT_KEY } from "../config/config.js";
+import { UserModel } from "../models/mongodb/user.model.js";
 
 export class AnimalController {
 
     static async getAllAnimals(req, res) {
         try {
-            const { nombre, raza, pelaje, sexo, tamaño, especie, estado, edadMin, edadMax } = req.query;
+            const { nombre, raza, pelaje, sexo, tamaño, especie, estado, fechaDesde, fechaHasta, edadMin, edadMax } = req.query;
             const filters = {};
 
             if (nombre) filters.nombre = { $regex: nombre, $options: 'i' };
@@ -15,9 +18,19 @@ export class AnimalController {
             if (especie) filters.especie = especie;
             if (estado) filters.estado = estado;
 
+           if (fechaDesde || fechaHasta) {
+                filters.createdAt = {};
+                if (fechaDesde) filters.createdAt.$gte = new Date(fechaDesde);
+                if (fechaHasta) {
+                    const hasta = new Date(fechaHasta);
+                    hasta.setDate(hasta.getDate() + 1); // Le sumamos un día
+                    filters.createdAt.$lt = hasta;       // Cambiamos a $lt (menor que)
+                }
+            }
+            
             if (edadMin || edadMax) {
                 const hoy = new Date();
-                filters.fecha_nacimiento = {};
+                filters.fecha_nacimiento = filters.fecha_nacimiento || {};
                 if (edadMax) {
                     const fechaMax = new Date();
                     fechaMax.setFullYear(hoy.getFullYear() - edadMax);
@@ -28,6 +41,22 @@ export class AnimalController {
                     fechaMin.setFullYear(hoy.getFullYear() - edadMin);
                     filters.fecha_nacimiento.$lte = fechaMin;
                 }
+            }
+
+            let isAuthenticated = false;
+            const accessToken = req.cookies?.accessToken;
+            if (accessToken) {
+                try {
+                    const decoded = jwt.verify(accessToken, SECRET_JWT_KEY);
+                    const user = await UserModel.obtainUserByID(decoded.id);
+                    if (user) isAuthenticated = true;
+                } catch (error) {
+                    isAuthenticated = false;
+                }
+            }
+
+            if (!isAuthenticated) {
+                filters.estado = 'Disponible';
             }
 
             const animals = await AnimalModel.getAllAnimals(filters);

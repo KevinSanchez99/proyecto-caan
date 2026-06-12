@@ -71,7 +71,7 @@ export default function AnimalCard({ animal}) {
                                 className="w-full py-3 rounded-md bg-red-300 border border-red-400 text-red-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]"
                                 onClick={handleDelete}
                             >
-                                Borrar
+                                Eliminar
                             </button>
                         </div>
                     )}
