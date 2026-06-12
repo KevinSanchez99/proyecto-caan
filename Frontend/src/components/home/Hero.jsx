@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 const Hero = () => (
     <section className="relative text-on-background overflow-hidden">
         <div className="max-w-[93%] mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
@@ -18,16 +16,16 @@ const Hero = () => (
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                    <a href="/adopciones" className="bg-secondary-container text-on-secondary border border-outline-variant font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-secondary-container/70 transition-all text-center">
+                    <a href="/adoptions" className="bg-secondary-container text-on-secondary border border-outline-variant font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-secondary-container/70 transition-all text-center">
                         Adoptar ahora
                     </a>
-                    <a href="/donaciones" className="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-primary/90 active:scale-95 transition-all shadow-sm text-center">
+                    <a href="/donations" className="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4 rounded-full hover:bg-primary/90 active:scale-95 transition-all shadow-sm text-center">
                         Hacer una donación
                     </a>
                 </div>
             </div>
 
-            <div className="flex-1 relative z-10 w-full h-[400px] md:h-[500px]">
+            <div className="flex-1 relative z-10 w-full h-100 md:h-125">
                 <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Perro feliz al aire libre" className="w-full h-full object-cover rounded-2xl shadow-xl" />
             </div>
 

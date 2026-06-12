@@ -7,13 +7,11 @@ import QuickAdoptions from "../components/home/QuickAdoptions";
 import CallToAction from "../components/home/CallToAction";
 import ReportBanner from "../components/home/ReportBanner";
 
-import React, { useState } from 'react';
-
 export default function Home() {
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-10">
       <NavBar />
-      <main className="flex-grow w-full">
+      <main className="grow w-full">
         <Hero />
         <section className="py-12">
           <ReportBanner />

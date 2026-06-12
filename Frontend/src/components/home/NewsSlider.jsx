@@ -1,7 +1,31 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getNewsRequest } from '../../../api/auth.js'; 
+import { MdArrowForward } from 'react-icons/md';
+
 const NewsSlider = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const totalSlides = 3;
+    const [news, setNews] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchNews = async () => {
+            try {
+                // Traemos las 3 noticias más recientes
+                const res = await getNewsRequest(1, 3);
+                if (res.data && res.data.docs) {
+                    setNews(res.data.docs);
+                }
+            } catch (error) {
+                console.error("Error al obtener las noticias:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchNews();
+    }, []);
+
+    const totalSlides = news.length;
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
@@ -11,67 +35,132 @@ const NewsSlider = () => {
         setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
     };
 
+    // Función auxiliar para extraer el texto de previsualización del contenido mixto
+    const getPreviewText = (contenido) => {
+        if (!contenido) return "";
+        if (typeof contenido === 'string') {
+            return contenido.length > 180 ? contenido.substring(0, 180) + "..." : contenido;
+        }
+        if (Array.isArray(contenido)) {
+            for (const block of contenido) {
+                if (block.content && Array.isArray(block.content) && block.content.length > 0) {
+                    const text = block.content.map(t => t.text).join("");
+                    if (text.trim().length > 0) {
+                        return text.length > 180 ? text.substring(0, 180) + "..." : text;
+                    }
+                }
+            }
+        }
+        return "";
+    };
+
+    if (loading) {
+        return <div className="text-center py-16 text-stone-500 font-medium">Cargando noticias recientes...</div>;
+    }
+
+    if (news.length === 0) {
+        return null; 
+    }
+
     return (
-        <section className="mb-lg mt-lg relative max-w-[93%] md:w-[75%] lg:w-[83%] mx-auto overflow-hidden bg-white shadow-sm border border-outline-variant/20 rounded-xl">
-            <div
-                className="flex transition-transform duration-500 ease-in-out w-full"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-                {/* Slide 1 */}
-                <article className="w-full flex-shrink-0 flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 h-64 md:h-[350px] lg:h-[400px] relative overflow-hidden">
-                        <img alt="Gatito recién rescatado" className="w-full h-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwMrTlVsdeH3XtY0W76smRzG2FCYHG-A01v1hiGQ--BFfLOaHqGtKvEJ0BaQCeBwV5X-qHCbcjUUlInKAwdSAVFGqUJrRZoJP5iCpUysx08hoWaQD3nu7mnqJvNS86oUfGf6sRw0YmO3p9MDydsELLIooX-e3ZJCt0obZXsPEMHBAzUQ5Gp4upLG7yrXpVM_e3aPR9HOxCFLodtercdj49BGj1xXKTohc-FyNm0T8DsK6mK3RBZZcXOjcBs4VBrKYhu2WOBuiLW7KO" />
-                        <div className="absolute top-4 left-4">
-                            <span className="bg-white/90 backdrop-blur text-stone-800 font-semibold px-3 py-1 rounded-md text-xs shadow">Rescate</span>
-                        </div>
+        <section className="py-16 md:py-24 bg-background">
+            <div className="max-w-[93%] mx-auto px-6">
+                
+                {/* Título de la sección */}
+                <div className="flex justify-between items-end mb-10">
+                    <div>
+                        <h2 className="text-3xl font-bold text-stone-900 mb-2">Últimas Novedades</h2>
+                        <p className="text-stone-600">Entérate de las actividades, eventos y noticias de nuestra comunidad.</p>
                     </div>
-                    <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center bg-stone-50">
-                        <div className="text-stone-500 font-semibold text-sm mb-3">15 Octubre, 2025</div>
-                        <h3 className="text-2xl md:text-3xl text-emerald-800 font-bold mb-3 leading-tight">Rescatamos a 5 gatitos abandonados en el centro</h3>
-                        <p className="text-base text-stone-600 mb-6 line-clamp-4 w-[70%]">Gracias al aviso rápido de la comunidad, pudimos rescatar a esta camada antes de la tormenta. Ya están recibiendo cuidados veterinarios.</p>
-                        <a href="#" className="text-emerald-700 font-semibold hover:underline mt-auto md:mt-0">Leer noticia completa</a>
-                    </div>
-                </article>
+                    <a href="/news" className="hidden sm:flex font-semibold text-emerald-900 hover:text-emerald-700 transition-colors items-center gap-1">
+                                            Ver todas <span className="flex items-center"><MdArrowForward/></span>
+                    </a>
+                </div>
+                
+                <div className="relative w-full bg-white shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-outline-variant/20 rounded-3xl group">
+                    
+                    <div className="relative overflow-hidden rounded-3xl">
+                        <div
+                            className="flex transition-transform duration-500 ease-in-out w-full"
+                            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                        >
+                            {news.map((item, index) => {
+                                const formattedDate = new Date(item.createdAt).toLocaleDateString('es-ES', {
+                                    day: 'numeric', month: 'long', year: 'numeric'
+                                });
 
-                {/* Slide 2 */}
-                <article className="w-full flex-shrink-0 flex flex-col md:flex-row-reverse">
-                    <div className="w-full md:w-1/2 h-64 md:h-[350px] lg:h-[400px] relative overflow-hidden">
-                        <img alt="Nuevo centro de juegos" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxKRakfasxoMGhmcBgzDfYJ_lbaNg2Tit7sSfytdLIRfGrN7PodAoX4RozksxQQq8AJ6VVuA96soc1c5cyUUSDa4XJE8SOg9ABgCxRw1fUCRqqdvlnwdJduuuw8e4MM6O6oAD1FnX3b6l8bf8DYTGWAzmkcPosHAvJR6mtWxFLqAtjZnn518ak2ghN33_WtMA_WLoAlr6oUqqBqhTmwk5TplaDY2tk0ZshV2V4lAXEwS0ZUVTsgn9AuGSDcQvZf4v4APGX8VOU5eKb" />
-                        <div className="absolute top-4 right-4 md:left-4 md:right-auto">
-                            <span className="bg-white/90 backdrop-blur text-stone-800 font-semibold px-3 py-1 rounded-md text-xs shadow">Instalaciones</span>
-                        </div>
-                    </div>
-                    <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center bg-stone-50">
-                        <div className="text-stone-500 font-semibold text-sm mb-3">10 Octubre, 2025</div>
-                        <h3 className="text-2xl md:text-3xl text-emerald-800 font-bold mb-3 leading-tight">¡Inauguramos nuestra nueva área de juegos!</h3>
-                        <p className="text-base text-stone-600 mb-6 line-clamp-4 w-[70%]">Gracias a sus donaciones, hemos completado la construcción del patio techado para días de lluvia. Los animales ya lo están disfrutando.</p>
-                        <a href="#" className="text-emerald-700 font-semibold hover:underline mt-auto md:mt-0">Leer noticia completa</a>
-                    </div>
-                </article>
+                                return (
+                                    <article key={item._id || index} className="w-full shrink-0 flex flex-col md:flex-row min-h-100 lg:h-112.5">
+                                        
+                                        {/* Bloque Izquierdo: Imagen de portada */}
+                                        <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden shrink-0">
+                                            <img 
+                                                src={item.imagen_portada} 
+                                                alt={item.titulo} 
+                                                className="w-full h-full object-cover"
+                                            />
+                                            <div className="absolute top-6 left-6">
+                                                <span className="bg-emerald-800 text-white font-semibold text-xs px-3 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
+                                                    {item.categoria}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        {/* Bloque Derecho: Textos y botón de acción */}
+                                        <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center items-start bg-white">
+                                            <span className="text-stone-400 text-xs font-semibold mb-3 tracking-wide uppercase">
+                                                {formattedDate}
+                                            </span>
+                                            <h3 className="text-2xl lg:text-3xl font-bold text-stone-900 mb-4 line-clamp-2 leading-tight">
+                                                {item.titulo}
+                                            </h3>
+                                            <p className="text-stone-600 text-base mb-6 lg:mb-8 line-clamp-3 lg:line-clamp-4 leading-relaxed">
+                                                {getPreviewText(item.contenido)}
+                                            </p>
+                                            <Link 
+                                                to={`/news/${item.slug}`} 
+                                                className="inline-flex items-center justify-center px-6 py-3 bg-emerald-800 text-white font-semibold rounded-full hover:bg-emerald-900 active:scale-95 transition-all shadow-sm gap-2"
+                                            >
+                                                Leer noticia completa
+                                            </Link>
+                                        </div>
 
-                {/* Slide 3 */}
-                <article className="w-full flex-shrink-0 flex flex-col md:flex-row">
-                    <div className="w-full md:w-1/2 h-64 md:h-[350px] lg:h-[400px] relative overflow-hidden">
-                        <img alt="Voluntarios" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdz9bKCRWUgXDGhmyls0FN2f_q23hRv2MwleeUVPV7vEAshTohsyV3yl6Fod-D70ABAHp5Kv92Hm0ZE2xo_3Ybgo7-wmoUaYReHjn38EGWAHt-Ps5vv5yR5qVSo69wPFDUATjMydtIEDBKKoSe_kLmGetxmqmLnfDJvo5hVa2EMUBhil5mWtJhZYSOEj5gPfadLVBqD5iwXCnBXrW9roUCckjIL8gBLWD_rzv8MfcZf1guToqF-MaP_TFtRr2EXpGGLDuIua1AJ0hO" />
-                        <div className="absolute top-4 left-4">
-                            <span className="bg-white/90 backdrop-blur text-stone-800 font-semibold px-3 py-1 rounded-md text-xs shadow">Comunidad</span>
+                                    </article>
+                                );
+                            })}
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center bg-stone-50">
-                        <div className="text-stone-500 font-semibold text-sm mb-3">05 Octubre, 2025</div>
-                        <h3 className="text-2xl md:text-3xl text-emerald-800 font-bold mb-3 leading-tight">Programa de Voluntariado 2025: Inscripciones</h3>
-                        <p className="text-base text-stone-600 mb-6 line-clamp-4 w-[70%]">Buscamos personas apasionadas por el bienestar animal para unirse a nuestro equipo el próximo año. ¡Súmate a la causa!</p>
-                        <a href="#" className="text-emerald-700 font-semibold hover:underline mt-auto md:mt-0">Leer noticia completa</a>
-                    </div>
-                </article>
+
+                    {/* Flechas flotantes de navegación */}
+                    {totalSlides > 1 && (
+                        <>
+                            <button 
+                                onClick={prevSlide} 
+                                className="absolute -left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex justify-center items-center bg-white hover:bg-stone-50 rounded-full shadow-lg border border-stone-150 text-stone-700 transition-all z-10 active:scale-95 md:opacity-0 md:group-hover:opacity-100"
+                                aria-label="Noticia anterior"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                                </svg>
+                            </button>
+                            <button 
+                                onClick={nextSlide} 
+                                className="absolute -right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex justify-center items-center bg-white hover:bg-stone-50 rounded-full shadow-lg border border-stone-150 text-stone-700 transition-all z-10 active:scale-95 md:opacity-0 md:group-hover:opacity-100"
+                                aria-label="Siguiente noticia"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                            </button>
+                        </>
+                    )}
+                </div>
+                <div className="mt-8 text-center sm:hidden">
+                    <a href="/news" className="inline-flex bg-stone-200 text-stone-900 font-semibold px-6 py-3 rounded-full">
+                        Ver todas las noticias
+                    </a>
+                </div>
             </div>
-
-            <button onClick={prevSlide} className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex justify-center items-center bg-white/90 hover:bg-white rounded-full shadow-lg border border-gray-200 text-gray-800 transition-all z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
-            </button>
-            <button onClick={nextSlide} className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 flex justify-center items-center bg-white/90 hover:bg-white rounded-full shadow-lg border border-gray-200 text-gray-800 transition-all z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5 md:w-6 md:h-6"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-            </button>
         </section>
     );
 };
