@@ -6,7 +6,8 @@ export default function InfoAnimal({ animalId, onClose }) {
     const imageModalRef = useRef(null);
     const [animal, setAnimal] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [showImageModal, setShowImageModal] = useState(false);
+
+
 
     useEffect(() => {
         const fetchAnimal = async () => {
@@ -34,13 +35,17 @@ export default function InfoAnimal({ animalId, onClose }) {
         const restoreScroll = () => {
             try {
                 document.body.style.overflow = '';
-            } catch (e) {}
+            } catch (e) {
+                console.warn(e);
+            }
         };
 
         if (dialog && animal) {
             try {
                 document.body.style.overflow = 'hidden';
-            } catch (e) {}
+            } catch (e) {
+                console.warn(e);
+            }
         }
 
         const onClose = () => {
@@ -60,24 +65,25 @@ export default function InfoAnimal({ animalId, onClose }) {
         if (onClose) onClose();
     };
 
+    // Imagen Grande dentro de informacion del animal
     const abrirImagenGrande = () => {
-        setShowImageModal(true);
-        if (imageModalRef.current) {
-            imageModalRef.current.showModal();
-        }
+        if (imageModalRef.current) imageModalRef.current.showModal();
     };
 
     const cerrarImagenGrande = () => {
-        setShowImageModal(false);
-        if (imageModalRef.current) {
-            imageModalRef.current.close();
-        }
+        if (imageModalRef.current) imageModalRef.current.close();
     };
 
     const handleImageModalClick = (e) => {
         if (e.target === imageModalRef.current) {
             cerrarImagenGrande();
         }
+    };
+
+    const handleModalClick = (e) => {
+    if (e.target === modalRef.current) {
+        cerrarModal();
+    }
     };
 
     const handleWhatsapp = () => {
@@ -102,7 +108,7 @@ export default function InfoAnimal({ animalId, onClose }) {
         <>
             <dialog
                 ref={modalRef}
-                onCancel={cerrarModal}
+                onClick={handleModalClick}
                 className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] max-w-5xl bg-surface-container-lowest text-on-surface"
             >
                 <div className="flex flex-col gap-4">
@@ -111,15 +117,6 @@ export default function InfoAnimal({ animalId, onClose }) {
                             <h2 className="text-3xl font-semibold text-primary">Más Información</h2>
                             <p className="text-base text-on-surface-variant mt-1">Ficha completa del animal seleccionado</p>
                         </div>
-                        <button
-                            type="button"
-                            onClick={cerrarModal}
-                            aria-label="Cerrar"
-                            className="rounded-full p-2 text-lg font-medium border border-outline-variant hover:bg-surface-container-high transition-colors text-primary"
-                        >
-                            <span className="sr-only">Cerrar</span>
-                            <span aria-hidden="true" className="text-xl font-bold">×</span>
-                        </button>
                     </div>
 
                     {loading ? (

@@ -16,23 +16,16 @@ export default function TableCard({ filters = {} }) {
                 setCargando(true);
                 const respuesta = await getAnimalsRequest(filters);
                 setAnimales(respuesta.data);
+                setPagina(1);
                 setCargando(false);
             } catch (error) {
-                console.error("Hubo un error al traer los animales del CAAN:", error);
+                console.error("Hubo un error al traer los animales", error);
                 setCargando(false);
             }
         };
 
         traerDatos();
     }, [filters]);
-
-    // para evitar que la pagina quede en un numero que no existe luego de eliminar animales o cosas asi 
-    useEffect(() => {
-        const totalPaginas = Math.max(1, Math.ceil(animales.length / itemsPorPagina));
-        if (pagina > totalPaginas) {
-            setPagina(1);
-        }
-    }, [animales, pagina]);
 
 
     if (cargando) {
@@ -52,7 +45,8 @@ export default function TableCard({ filters = {} }) {
     }
 
     const totalPaginas = Math.max(1, Math.ceil(animales.length / itemsPorPagina));
-    const inicio = (pagina - 1) * itemsPorPagina;
+    const paginaSegura = Math.min(pagina, totalPaginas);
+    const inicio = (paginaSegura - 1) * itemsPorPagina;
     const animalesAMostrar = animales.slice(inicio, inicio + itemsPorPagina);
 
     return (

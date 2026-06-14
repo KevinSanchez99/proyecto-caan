@@ -66,7 +66,6 @@ export default function EditAnimal({ animalId, onClose }) {
             pelaje : rawData.pelaje,
             sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
             tamaño: rawData.tamaño,
-            estado: 'Disponible', 
             fecha_nacimiento: rawData.fecha_nacimiento,
             estado: rawData.estado,
             salud: {
