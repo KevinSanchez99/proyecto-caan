@@ -14,6 +14,8 @@ import NewsEdit from "./pages/NewsEdit";
 
 import { useAuth } from "./context/AuthContext";
 
+import ScrollToTop from "./components/ScrollToTop";
+
 function AppRoutes() {
   const { loading } = useAuth();
 
@@ -47,6 +49,7 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>

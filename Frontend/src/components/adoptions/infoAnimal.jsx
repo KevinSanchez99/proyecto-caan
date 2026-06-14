@@ -255,7 +255,7 @@ export default function InfoAnimal({ animalId, onClose }) {
                 style={{ maxWidth: '90vw', maxHeight: '90vh' }}
             >
                 <div className="flex items-center justify-center w-full h-full p-4">
-                    <div className="w-[700px] h-[700px] rounded-2xl overflow-hidden bg-surface-variant">
+                    <div className="w-175 h-175 rounded-2xl overflow-hidden bg-surface-variant">
                         <img
                             src={imageSrc || 'https://via.placeholder.com/800x800?text=Sin+imagen'}
                             alt={animal?.nombre || 'Imagen del animal'}
