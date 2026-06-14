@@ -2,6 +2,7 @@ import { AnimalModel } from "../models/mongodb/animal.model.js";
 import jwt from 'jsonwebtoken';
 import { SECRET_JWT_KEY } from "../config/config.js";
 import { UserModel } from "../models/mongodb/user.model.js";
+import { uploadMedia, deleteMedia } from '../config/cloudinary.js';
 
 export class AnimalController {
 
@@ -78,7 +79,15 @@ export class AnimalController {
 
     static async createAnimal(req, res) {
         try {
-            const newAnimal = await AnimalModel.createAnimal(req.body);
+            const datosAnimal = req.body.datos ? JSON.parse(req.body.datos) : req.body;
+
+            if (req.file) {
+                // Pasamos el req.file.buffer a la función de Cloudinary
+                const urlImagen = await uploadMedia(req.file.buffer);
+                datosAnimal.imagenes = [urlImagen]; 
+            }
+
+            const newAnimal = await AnimalModel.createAnimal(datosAnimal);
             res.status(201).json(newAnimal);
         } catch (error) {
             return res.status(500).json({ message: error.message });
@@ -88,7 +97,22 @@ export class AnimalController {
     static async updateAnimal(req, res) {
         try {
             const { id } = req.params; 
-            const updatedAnimal = await AnimalModel.updateAnimal(id, req.body);
+            
+            // 4. Misma lógica: parseamos los datos
+            const datosAnimal = req.body.datos ? JSON.parse(req.body.datos) : req.body;
+
+            if (req.file) {
+                // Con multer el buffer viene en req.file.buffer
+                const urlImagenNueva = await uploadMedia(req.file.buffer);
+                datosAnimal.imagenes = [urlImagenNueva];
+
+                // Buscamos el animal viejo para borrar su foto anterior de Cloudinary
+                const animalViejo = await AnimalModel.getAnimalById(id);
+                if (animalViejo && animalViejo.imagenes && animalViejo.imagenes.length > 0) {
+                     await deleteMedia(animalViejo.imagenes[0]);
+                }
+            }
+            const updatedAnimal = await AnimalModel.updateAnimal(id, datosAnimal);
             if (!updatedAnimal) return res.status(404).json({ message: 'Animal no encontrado' });
             return res.status(200).json(updatedAnimal);
         } catch (error) {
@@ -99,6 +123,13 @@ export class AnimalController {
     static async deleteAnimal(req, res) {
         try {
             const { id } = req.params;
+
+            // 5. Antes de borrar el animal de Mongo, buscamos su foto y la borramos de Cloudinary
+            const animalAEliminar = await AnimalModel.getAnimalById(id);
+            if (animalAEliminar && animalAEliminar.imagenes && animalAEliminar.imagenes.length > 0) {
+                await deleteMedia(animalAEliminar.imagenes[0]);
+            }
+
             const deletedAnimal = await AnimalModel.deleteAnimal(id); 
             if (!deletedAnimal) return res.status(404).json({ message: 'Animal no encontrado' });
             return res.status(200).json({ message: 'Animal eliminado exitosamente' });

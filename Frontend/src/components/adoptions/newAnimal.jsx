@@ -3,7 +3,7 @@ import { createAnimalRequest } from '../../../api/auth';
 import { useAuth } from "../../context/AuthContext";
 
 export default function ModalAnimal() {
-   const { isAuthenticated } = useAuth();
+    const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
     const [error, setError] = useState(null);
 
@@ -17,35 +17,20 @@ export default function ModalAnimal() {
         setError(null);
     };
 
-    {/* Funcion para convertir la imagen a texto 3/06/2026 */}
-    const convertirABase64 = (archivo) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(archivo);
-            fileReader.onload = () => {
-                resolve(fileReader.result); // Devuelve el texto larguísimo
-            };
-            fileReader.onerror = (error) => {
-                reject(error);
-            };
-        });
-    };
-
-    {/* Funcion que recopila los datos del formulario 3/06/2026 */}
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-        const formData = new FormData(e.target);
-        const rawData = Object.fromEntries(formData.entries());
+        
+        const form = new FormData(e.target);
+        const rawData = Object.fromEntries(form.entries());
+        const archivoFoto = form.get('foto');
 
-        const archivoFoto = formData.get('foto');
-        const imagenBase64 = await convertirABase64(archivoFoto);
-
+        // Armamos el objeto con los datos, igual que antes pero sin la imagen
         const payload = {
             nombre: rawData.nombre,
             especie: 'Perro',
             raza: rawData.raza,
-            pelaje : rawData.pelaje,
+            pelaje: rawData.pelaje,
             sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
             tamaño: rawData.tamaño,
             estado: 'Disponible', 
@@ -57,27 +42,30 @@ export default function ModalAnimal() {
                 condiciones_especiales: rawData.observaciones || 'Ninguna'
             },
             descripcion: rawData.historia,
-            imagenes: [imagenBase64] 
+            imagenes: ["https://verificameesta.com/foto.jpg"]
         };
 
+        // Empaquetamos todo para enviarlo al backend
+        const dataToSend = new FormData();
+        dataToSend.append('datos', JSON.stringify(payload)); // Mandamos los datos como texto JSON
+        dataToSend.append('foto', archivoFoto); // Mandamos el archivo físico
+
         try {
-            const respuesta = await createAnimalRequest(payload);
+            // Mandamos el FormData directamente
+            await createAnimalRequest(dataToSend);
             alert("¡Ficha creada con éxito!");
             cerrarModal();
             e.target.reset();
-             window.location.reload(); 
+            window.location.reload(); 
         } catch (error) {
             console.error('Error al crear el animal:', error);
-            // Validamos si viene el array de errores desde Zod/Validator
             if (error.response?.data?.errors) {
                 setError(error.response.data.errors); 
             } else {
-                // Si es un error general (ej. 500)
                 setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
             }
         }
     };
-
     return (
         <>
            

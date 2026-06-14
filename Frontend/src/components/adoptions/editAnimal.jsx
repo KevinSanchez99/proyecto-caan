@@ -6,14 +6,12 @@ export default function EditAnimal({ animalId, onClose }) {
     const [formData, setFormData] = useState(null);
     const [error, setError] = useState(null);
 
-    
     const cerrarModal = () => {
         if (modalRef.current) modalRef.current.close();
         setError(null);
         if (onClose) onClose(); 
     };
 
-    
     useEffect(() => {
         const fetchAnimal = async () => {
             try {
@@ -32,19 +30,6 @@ export default function EditAnimal({ animalId, onClose }) {
         }
     }, [formData]);
 
-    const convertirABase64 = (archivo) => {
-        return new Promise((resolve, reject) => {
-            if(!archivo || archivo.size === 0) {
-                resolve(null);
-                return;
-            }
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(archivo);
-            fileReader.onload = () => resolve(fileReader.result);
-            fileReader.onerror = (error) => reject(error);
-        });
-    };
-
     const formatDateForInput = (dateString) => {
         if (!dateString) return '';
         const date = new Date(dateString);
@@ -53,17 +38,15 @@ export default function EditAnimal({ animalId, onClose }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const data = new FormData(e.target);
-        const rawData = Object.fromEntries(data.entries());
-
-        const archivoFoto = data.get('foto');
-        const imagenBase64 = await convertirABase64(archivoFoto);
+        const form = new FormData(e.target);
+        const rawData = Object.fromEntries(form.entries());
+        const archivoFoto = form.get('foto');
 
         const payload = {
             nombre: rawData.nombre,
             especie: 'Perro',
             raza: rawData.raza,
-            pelaje : rawData.pelaje,
+            pelaje: rawData.pelaje,
             sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
             tamaño: rawData.tamaño,
             fecha_nacimiento: rawData.fecha_nacimiento,
@@ -75,24 +58,27 @@ export default function EditAnimal({ animalId, onClose }) {
                 condiciones_especiales: rawData.observaciones || 'Ninguna'
             },
             descripcion: rawData.historia,
+            imagenes: ["https://verificameesta.com/foto.jpg"]
         };
 
-        if(imagenBase64) {
-            payload.imagenes = [imagenBase64];
+        const dataToSend = new FormData();
+        dataToSend.append('datos', JSON.stringify(payload));
+        
+        // Solo enviamos la foto si el usuario seleccionó una nueva
+        if (archivoFoto && archivoFoto.size > 0) {
+            dataToSend.append('foto', archivoFoto);
         }
 
         try {
-            await updateAnimalRequest(animalId, payload);
+            await updateAnimalRequest(animalId, dataToSend);
             alert("¡Ficha actualizada con éxito!");
             cerrarModal();
             window.location.reload(); 
         } catch (error) {
             console.error('Error al actualizar el animal:', error);
-            // Validamos si viene el array de errores desde Zod/Validator
             if (error.response?.data?.errors) {
                 setError(error.response.data.errors); 
             } else {
-                // Si es un error general (ej. 500)
                 setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
             }
         }

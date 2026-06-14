@@ -55,7 +55,6 @@ export const getAnimalByIdRequest = (id) => instance.get(`/animals/${id}`);
 // Peticion de modificar animal 06/06/2026 - Tomas S
 export const updateAnimalRequest = (id, animalData) => instance.patch(`/animals/${id}`, animalData);
 
-
 // Peticion de eliminar animal 06/06/2026 - Tomas S
 export const deleteAnimalRequest = (id) => instance.delete(`/animals/${id}`);
 
