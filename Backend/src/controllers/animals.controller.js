@@ -19,7 +19,7 @@ export class AnimalController {
             if (especie) filters.especie = especie;
             if (estado) filters.estado = estado;
 
-           if (fechaDesde || fechaHasta) {
+            if (fechaDesde || fechaHasta) {
                 filters.createdAt = {};
                 if (fechaDesde) filters.createdAt.$gte = new Date(fechaDesde);
                 if (fechaHasta) {
@@ -79,7 +79,7 @@ export class AnimalController {
 
     static async createAnimal(req, res) {
         try {
-            const datosAnimal = req.body.datos ? JSON.parse(req.body.datos) : req.body;
+            const datosAnimal = req.body;
 
             if (req.file) {
                 // Pasamos el req.file.buffer a la función de Cloudinary
@@ -99,7 +99,7 @@ export class AnimalController {
             const { id } = req.params; 
             
             // 4. Misma lógica: parseamos los datos
-            const datosAnimal = req.body.datos ? JSON.parse(req.body.datos) : req.body;
+            const datosAnimal = req.body;
 
             if (req.file) {
                 // Con multer el buffer viene en req.file.buffer
@@ -109,7 +109,7 @@ export class AnimalController {
                 // Buscamos el animal viejo para borrar su foto anterior de Cloudinary
                 const animalViejo = await AnimalModel.getAnimalById(id);
                 if (animalViejo && animalViejo.imagenes && animalViejo.imagenes.length > 0) {
-                     await deleteMedia(animalViejo.imagenes[0]);
+                    await deleteMedia(animalViejo.imagenes[0]);
                 }
             }
             const updatedAnimal = await AnimalModel.updateAnimal(id, datosAnimal);
