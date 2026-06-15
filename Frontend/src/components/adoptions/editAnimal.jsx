@@ -42,6 +42,7 @@ export default function EditAnimal({ animalId, onClose }) {
         const rawData = Object.fromEntries(form.entries());
         const archivoFoto = form.get('foto');
 
+        // 1. Armamos el payload SIN la propiedad imagenes todavía
         const payload = {
             nombre: rawData.nombre,
             especie: 'Perro',
@@ -58,13 +59,19 @@ export default function EditAnimal({ animalId, onClose }) {
                 condiciones_especiales: rawData.observaciones || 'Ninguna'
             },
             descripcion: rawData.historia,
-            imagenes: ["https://verificameesta.com/foto.jpg"]
         };
+
+        
+        if (archivoFoto && archivoFoto.size > 0) {
+            payload.imagenes = ["https://revotameesta.com/foto.jpg"];
+        } else {
+            payload.imagenes = formData.imagenes; 
+        }
 
         const dataToSend = new FormData();
         dataToSend.append('datos', JSON.stringify(payload));
         
-        // Solo enviamos la foto si el usuario seleccionó una nueva
+        // Solo enviamos el archivo físico si es que seleccionaron uno nuevo
         if (archivoFoto && archivoFoto.size > 0) {
             dataToSend.append('foto', archivoFoto);
         }
