@@ -33,7 +33,7 @@ export default function Login() {
             </div>
 
             {/* Tarjeta de Login */}
-            <div className="w-full max-w-[450px] bg-surface-container-lowest p-8 md:p-10 rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-outline-variant/20 relative z-10">
+            <div className="w-full max-w-112.5 bg-surface-container-lowest p-8 md:p-10 rounded-4xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-outline-variant/20 relative z-10">
                 
                 {/* Logo y Encabezado */}
                 <div className="mb-10 text-center flex flex-col items-center">

@@ -21,7 +21,7 @@ const Hero = () => {
 
     return (
         <section className="relative text-on-background overflow-hidden">
-            <div className="max-w-[93%] mx-auto px-gutter py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
+            <div className="mx-auto py-16 md:py-24 flex flex-col lg:flex-row items-center gap-10">
 
                 <div className="flex-1 space-y-6 z-10 text-center lg:text-left">
                     <h1 className="inline-block px-4 py-2 bg-primary-container text-white font-label-2xl text-label-2xl rounded-full mb-4">
@@ -47,7 +47,7 @@ const Hero = () => {
                 </div>
 
                 {/* Contenedor del Slider */}
-                <div className="flex-1 relative z-10 w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl group">
+                <div className="flex-1 relative z-10 w-full h-100 md:h-125 rounded-2xl overflow-hidden shadow-xl group">
                     {images.map((img, index) => (
                         <img
                             key={index}

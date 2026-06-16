@@ -13,7 +13,7 @@ export default function Home() {
       <NavBar />
       <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
         <Hero />
-        <section className="py-12">
+        <section>
           <ReportBanner />
         </section>
         <NewsSlider />

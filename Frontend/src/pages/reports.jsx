@@ -8,7 +8,7 @@ export default function Reports() {
     <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
       <NavBar />
 
-      <main className="max-w-4xl mx-auto px-gutter py-xl grow w-full">
+      <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
 
         {/* Cabecera */}
         <section className="max-w-container_max mx-auto px-8 py-4 text-center">

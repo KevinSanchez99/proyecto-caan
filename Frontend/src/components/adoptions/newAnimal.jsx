@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { createAnimalRequest } from '../../../api/auth'; 
 import { useAuth } from "../../context/AuthContext";
 
-export default function ModalAnimal() {
+export default function ModalAnimal({ onAnimalCreated }) {
     const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
     const [error, setError] = useState(null);
@@ -25,7 +25,6 @@ export default function ModalAnimal() {
         const rawData = Object.fromEntries(form.entries());
         const archivoFoto = form.get('foto');
 
-        // Armamos el objeto con los datos, igual que antes pero sin la imagen
         const payload = {
             nombre: rawData.nombre,
             especie: 'Perro',
@@ -45,18 +44,18 @@ export default function ModalAnimal() {
             imagenes: ["https://verificameesta.com/foto.jpg"]
         };
 
-        // Empaquetamos todo para enviarlo al backend
         const dataToSend = new FormData();
-        dataToSend.append('datos', JSON.stringify(payload)); // Mandamos los datos como texto JSON
-        dataToSend.append('foto', archivoFoto); // Mandamos el archivo físico
+        dataToSend.append('datos', JSON.stringify(payload)); 
+        dataToSend.append('foto', archivoFoto); 
 
         try {
-            // Mandamos el FormData directamente
             await createAnimalRequest(dataToSend);
             alert("¡Ficha creada con éxito!");
             cerrarModal();
             e.target.reset();
-            window.location.reload(); 
+            
+            if (onAnimalCreated) onAnimalCreated(); 
+            
         } catch (error) {
             console.error('Error al crear el animal:', error);
             if (error.response?.data?.errors) {
@@ -66,14 +65,14 @@ export default function ModalAnimal() {
             }
         }
     };
+
     return (
         <>
-           
             {isAuthenticated && (
-                         <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-700 transition" onClick={abrirModal}>
-                            <span className="text-xl font-bold text-white">+</span>
-                            <span className="font-label-sm text-label-sm text-white">Nuevo Rescatado</span>
-                        </button>
+                <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-700 transition" onClick={abrirModal}>
+                    <span className="text-xl font-bold text-white">+</span>
+                    <span className="font-label-sm text-label-sm text-white">Nuevo Rescatado</span>
+                </button>
             )}
 
             <dialog ref={modalRef} className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface">
@@ -148,7 +147,7 @@ export default function ModalAnimal() {
                             </div>
                             <div>
                                 <label className="block text-lg mb-2 text-emerald-800 font-semibold">Condiciones Especiales</label>
-                                <textarea name="observaciones" placeholder="Ej: cegera parcial , zordera " className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
+                                <textarea name="observaciones" placeholder="Ej: ceguera parcial, sordera" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
                             </div>
                         </div>
 
@@ -181,7 +180,6 @@ export default function ModalAnimal() {
                                 </div>
                             )}
                         </div>
-
                     </div>
 
                     <div className="flex justify-end gap-3 mt-4">

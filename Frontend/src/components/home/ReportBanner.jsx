@@ -2,7 +2,7 @@ import { IoWarningOutline } from "react-icons/io5";
 const ReportBanner = () => {
 return (
 <div
-    className="bg-error-container/50 border border-error/20 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm mx-auto max-w-[90%] px-gutter">
+    className="bg-error-container/50 border border-error/20 rounded-2xl p-8 mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm mx-auto">
 
     <div className="flex items-start gap-4">
         

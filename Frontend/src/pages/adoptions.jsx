@@ -11,9 +11,15 @@ import Footer from "../components/Footer";
 function Adoptions() {
   const { isAuthenticated } = useAuth();
   const [filters, setFilters] = useState({});
+  
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters);
+  };
+
+  const handleAnimalCreated = () => {
+    setRefreshTrigger(prev => prev + 1);
   };
 
   return (
@@ -23,11 +29,11 @@ function Adoptions() {
         <Presentation/>
         <section className="px-4 py-6 w-full">
           <div className="w-full mx-auto flex items-center justify-end gap-4">
-            <NewAnimal/>
+            <NewAnimal onAnimalCreated={handleAnimalCreated} />
             <FilterAnimal onApplyFilters={handleApplyFilters} isAuthenticated={isAuthenticated} />
           </div>
         </section>
-        <TableAdop filters={filters} />
+        <TableAdop filters={filters} refreshTrigger={refreshTrigger} />
       </main>
       <Footer/>
     </div>

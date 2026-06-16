@@ -1,4 +1,3 @@
-import React from 'react';
 import FaqAccordionItem from '../components/faq/AcordionItems';
 import VoluntariadoCard from '../components/faq/VoluntariadoCard';
 import NavBar from '../components/NavBar';
@@ -12,10 +11,10 @@ export default function Faq() {
     <div className="bg-background text-on-background font-body-md min-h-screen flex flex-col">
       <NavBar />
 
-      <main className="flex-grow pt-24 pb-xl">
+      <main className="grow pt-24 pb-xl">
         {/* Header Section */}
         <section className="max-w-container_max mx-auto px-8 py-lg text-center">
-          <h1 className="font-h1 text-h1 text-primary mb-md">Preguntas Frecuentes</h1>
+          <h1 className="font-h1 text-h1 text-on-surface mb-md">Preguntas Frecuentes</h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
             Encuentra respuestas a las dudas más comunes sobre nuestro proceso de adopción, voluntariado y cómo puedes ayudar a los animales del CAAN.
           </p>

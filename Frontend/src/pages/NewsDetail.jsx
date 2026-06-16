@@ -8,8 +8,10 @@ import { useAuth } from "../context/AuthContext";
 import { useCreateBlockNote } from "@blocknote/react";
 import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
+import { temaNoticiasCAAN } from '../utils/themes/temaNoticiasCAAN';
 
 import { MdArrowBack} from "react-icons/md";
+
 
 export default function NewsDetail() {
     const { slug } = useParams(); 
@@ -88,7 +90,7 @@ export default function NewsDetail() {
     return (
         <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
         <Navbar />
-        <main className="max-w-3xl mx-auto px-8 py-12 grow w-full">
+        <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
             
             {/* Controles superiores */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -98,11 +100,11 @@ export default function NewsDetail() {
                 </Link>
 
                 {isAuthenticated && (
-                    <div className="flex gap-3">
-                        <Link to={`/news/edit/${article.slug}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+                    <div className="grid grid-cols-2 gap-3">
+                        <Link to={`/news/edit/${article.slug}`} className="w-full py-3 p-2 rounded-md bg-blue-300 border border-blue-400 text-blue-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]">
                             Modificar
                         </Link>
-                        <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-700 transition">
+                        <button onClick={handleDelete} className="w-full py-3 rounded-md bg-red-300 border border-red-400 text-red-900 font-label-sm text-label-sm shadow-sm transition-transform duration-200 hover:scale-[1.03]">
                             Eliminar
                         </button>
                     </div>
@@ -138,7 +140,7 @@ export default function NewsDetail() {
                 <BlockNoteView 
                 editor={editor} 
                 editable={false}
-                theme="light" 
+                theme={temaNoticiasCAAN} 
                 />
             </div>
             </article>

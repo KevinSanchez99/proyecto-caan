@@ -3,29 +3,28 @@ import { getAnimalsRequest } from '../../../api/auth';
 import AnimalCard from './animalCard'; 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-export default function TableCard({ filters = {} }) {
+export default function TableCard({ filters = {}, refreshTrigger }) {
     const [animales, setAnimales] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [pagina, setPagina] = useState(1);
     const itemsPorPagina = 6;
 
-    // Traer los animales al cargar el componente
-    useEffect(() => {
-        const traerDatos = async () => {
-            try {
-                setCargando(true);
-                const respuesta = await getAnimalsRequest(filters);
-                setAnimales(respuesta.data);
-                setPagina(1);
-                setCargando(false);
-            } catch (error) {
-                console.error("Hubo un error al traer los animales", error);
-                setCargando(false);
-            }
-        };
+    const traerDatos = async () => {
+        try {
+            setCargando(true);
+            const respuesta = await getAnimalsRequest(filters);
+            setAnimales(respuesta.data);
+            setPagina(1);
+            setCargando(false);
+        } catch (error) {
+            console.error("Hubo un error al traer los animales", error);
+            setCargando(false);
+        }
+    };
 
+    useEffect(() => {
         traerDatos();
-    }, [filters]);
+    }, [filters, refreshTrigger]);
 
 
     if (cargando) {
@@ -39,11 +38,10 @@ export default function TableCard({ filters = {} }) {
     if (!cargando && animales.length === 0) {
         return (
             <div className="flex h-48 w-full items-center justify-center">
-                <span className="text-on-surface-variant text-base">Ningún perro coincide con el filtro buscado</span>
+                <span className="text-on-surface-variant text-base">No hay animales disponibles en este momento.</span>
             </div>
         );
     }
-
     const totalPaginas = Math.max(1, Math.ceil(animales.length / itemsPorPagina));
     const paginaSegura = Math.min(pagina, totalPaginas);
     const inicio = (paginaSegura - 1) * itemsPorPagina;
@@ -53,7 +51,11 @@ export default function TableCard({ filters = {} }) {
         <div className="w-full mx-auto mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">        
                 {animalesAMostrar.map((animal) => (
-                    <AnimalCard key={animal._id} animal={animal} />
+                    <AnimalCard 
+                        key={animal._id} 
+                        animal={animal} 
+                        onAnimalChanged={traerDatos} 
+                    />
                 ))}        
             </div>
 

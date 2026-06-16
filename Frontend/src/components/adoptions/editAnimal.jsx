@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getAnimalByIdRequest, updateAnimalRequest } from '../../../api/auth'; 
 
-export default function EditAnimal({ animalId, onClose }) {
+export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
     const modalRef = useRef(null);
     const [formData, setFormData] = useState(null);
     const [error, setError] = useState(null);
@@ -61,7 +61,6 @@ export default function EditAnimal({ animalId, onClose }) {
             descripcion: rawData.historia,
         };
 
-        
         if (archivoFoto && archivoFoto.size > 0) {
             payload.imagenes = ["https://revotameesta.com/foto.jpg"];
         } else {
@@ -80,7 +79,7 @@ export default function EditAnimal({ animalId, onClose }) {
             await updateAnimalRequest(animalId, dataToSend);
             alert("¡Ficha actualizada con éxito!");
             cerrarModal();
-            window.location.reload(); 
+            if (onAnimalChanged) onAnimalChanged(); // Avisa al padre que re-fetchee
         } catch (error) {
             console.error('Error al actualizar el animal:', error);
             if (error.response?.data?.errors) {

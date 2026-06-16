@@ -4,6 +4,7 @@ import { z } from 'zod';
 const saludSchema = z.object({
     vacunado: z.boolean(),
     castrado: z.boolean(),
+    desparacitado: z.boolean(),
     condiciones_especiales: z.string().default('Ninguna'), 
 });
 

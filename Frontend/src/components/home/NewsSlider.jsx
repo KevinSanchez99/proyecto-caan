@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getNewsRequest } from '../../../api/auth.js'; 
 import { MdArrowForward } from 'react-icons/md';
+import { getPreviewText } from '../../utils/newsUtils.js';
 
 const NewsSlider = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,25 +36,6 @@ const NewsSlider = () => {
         setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
     };
 
-    // Función auxiliar para extraer el texto de previsualización del contenido mixto
-    const getPreviewText = (contenido) => {
-        if (!contenido) return "";
-        if (typeof contenido === 'string') {
-            return contenido.length > 180 ? contenido.substring(0, 180) + "..." : contenido;
-        }
-        if (Array.isArray(contenido)) {
-            for (const block of contenido) {
-                if (block.content && Array.isArray(block.content) && block.content.length > 0) {
-                    const text = block.content.map(t => t.text).join("");
-                    if (text.trim().length > 0) {
-                        return text.length > 180 ? text.substring(0, 180) + "..." : text;
-                    }
-                }
-            }
-        }
-        return "";
-    };
-
     if (loading) {
         return <div className="text-center py-16 text-stone-500 font-medium">Cargando noticias recientes...</div>;
     }
@@ -64,7 +46,7 @@ const NewsSlider = () => {
 
     return (
         <section className="py-16 md:py-24 bg-background">
-            <div className="max-w-[93%] mx-auto px-6">
+            <div className="">
                 
                 {/* Título de la sección */}
                 <div className="flex justify-between items-end mb-10">
@@ -115,7 +97,7 @@ const NewsSlider = () => {
                                                 {item.titulo}
                                             </h3>
                                             <p className="text-stone-600 text-base mb-6 lg:mb-8 line-clamp-3 lg:line-clamp-4 leading-relaxed">
-                                                {getPreviewText(item.contenido)}
+                                                {getPreviewText(item.contenido, 180)}
                                             </p>
                                             <Link 
                                                 to={`/news/${item.slug}`} 

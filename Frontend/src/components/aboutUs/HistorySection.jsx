@@ -1,10 +1,7 @@
-import { useState } from "react";
-import {Link} from "react-router-dom";
-
 const HistorySection = () => (
-    <div className="flex flex-col md:flex-row items-center gap-10 p-8 md:p-12 bg-green-50/50 rounded-2xl max-w-6xl mx-auto mt-8">
+    <div className="flex flex-col md:flex-row items-center gap-10 p-8 md:p-12 bg-green-50/50 rounded-2xl mt-8">
         <div className="w-full md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4 capitalize">
+            <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-4 capitalize">
                 Nuestra Historia
             </h2>
             <p className="leading-relaxed text-primary/80 text-md body-md">
@@ -16,7 +13,6 @@ const HistorySection = () => (
 
         <div className="w-full md:w-1/2 relative">
             <div className="absolute inset-0 bg-green-200/60 rounded-xl transform translate-x-3 translate-y-3 -z-10"></div>
-            {/* Asegúrate de que la ruta de la imagen sea correcta (ej. /images/cartel.jpeg o importada) */}
             <img
                 src="./cartel.jpeg"
                 alt="Historia del CAAN"

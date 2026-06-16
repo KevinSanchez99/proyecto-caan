@@ -13,6 +13,8 @@ import { es } from "@blocknote/core/locales";
 
 import { MdArrowBack } from 'react-icons/md';
 
+import { temaNoticiasCAAN } from '../utils/themes/temaNoticiasCAAN';
+
 export default function NewsCreate() {
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
@@ -99,9 +101,9 @@ export default function NewsCreate() {
     };
 
     return (
-        <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-20">
+        <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-25">
         <Navbar />
-        <main className="max-w-4xl mx-auto px-8 py-12 grow w-full">
+        <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
             
             <Link to="/news" className="inline-flex items-center text-emerald-700 hover:text-emerald-800 font-bold mb-8 transition-colors">
                 <span className="text-2xl mr-2"><MdArrowBack/></span>
@@ -173,7 +175,7 @@ export default function NewsCreate() {
             <div className="pt-4">
                 <label className="block text-sm font-bold text-on-surface mb-4">Contenido de la noticia</label>
                 <div className="border border-outline-variant rounded-xl overflow-hidden bg-white shadow-sm min-h-75 py-4">
-                    <BlockNoteView editor={editor} theme="light" />
+                    <BlockNoteView editor={editor} theme={temaNoticiasCAAN} />
                 </div>
                 <p className="text-xs text-outline mt-2">Tip: Usá el atajo "/" dentro del editor para agregar distintos formatos como títulos, listas o negritas.</p>
             </div>

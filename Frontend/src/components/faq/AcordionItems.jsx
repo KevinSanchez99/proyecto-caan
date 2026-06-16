@@ -1,5 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { MdExpandMore } from 'react-icons/md';
 const AcordionItems = ({ question, children, defaultOpen = false }) => (
     <details
@@ -12,7 +10,7 @@ const AcordionItems = ({ question, children, defaultOpen = false }) => (
                 <MdExpandMore/>
             </span>
         </summary>
-        <div className="p-md pt-0 text-body-md font-body-md text-on-surface-variant border-t border-outline-variant/10 mt-sm pt-md">
+        <div className="p-md pt-0 text-body-md font-body-md text-on-surface-variant border-t border-outline-variant/10 mt-sm">
             {children}
         </div>
     </details>

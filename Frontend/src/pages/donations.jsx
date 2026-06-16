@@ -1,21 +1,20 @@
-import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import CopyRow from '../components/donations/CopyRow';
 
 import { GiDogBowl} from "react-icons/gi";
-import { MdAccountBalance, MdAttachMoney, MdVolunteerActivism, MdPayments, MdPets, MdLocalLaundryService, MdHandyman, MdStar, MdGroupAdd} from 'react-icons/md';
+import { MdAccountBalance, MdAttachMoney, MdVolunteerActivism, MdPayments, MdLocalLaundryService, MdHandyman, MdStar, MdGroupAdd} from 'react-icons/md';
 
 export default function Donations() {
   return (
     <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
       <NavBar />
 
-      <main className="max-w-[1280px] mx-auto px-6 md:px-8 py-12 md:py-20 flex-grow w-full">
+      <main className="max-w-320 mx-auto px-6 md:px-8 py-12 md:py-20 grow w-full">
         
         {/* Cabecera */}
         <header className="mb-14 text-center max-w-3xl mx-auto">
-          <h1 className="font-h1 text-4xl md:text-5xl text-primary mb-4">
+          <h1 className="font-h1 text-4xl md:text-5xl text-on-surface mb-4">
             Tu ayuda transforma vidas
           </h1>
           <p className="font-body-lg text-lg text-on-surface-variant">

@@ -1,9 +1,8 @@
 import { IoPawSharp } from "react-icons/io5";
 const FacilitiesSection = () => (
-    // 1. Unificamos el contenedor principal: bg-green-50/50, rounded-2xl y max-w-6xl
-    <section className="flex flex-col items-center gap-8 p-8 md:p-12 bg-green-50/50 rounded-2xl max-w-6xl mx-auto mt-8 relative overflow-hidden">
+    <section className="flex flex-col items-center gap-8 p-8 md:p-12 bg-green-50/50 rounded-2xl mt-8 relative overflow-hidden">
 
-        <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-2 text-center w-full">
+        <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-2 text-center w-full">
             Este es Nuestro Predio
         </h2>
 

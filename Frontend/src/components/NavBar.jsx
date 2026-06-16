@@ -27,7 +27,7 @@ export default function Navbar() {
 
     return (
         <nav className="bg-surface-container-lowest dark:bg-stone-950/95 backdrop-blur-md fixed top-0 w-full z-50 border-b border-stone-100 dark:border-stone-800 shadow-[0_4px_30px_rgba(0,0,0,0.05)]">
-            <div className="max-w-[1280px] mx-auto flex justify-between items-center px-4 lg:px-8 h-20">
+            <div className="max-w-320 mx-auto flex justify-between items-center px-4 lg:px-8 h-20">
                 {/* Logo */}
                 <Link className="flex items-center shrink-0 lg:pt-14" to="/">
                     <img

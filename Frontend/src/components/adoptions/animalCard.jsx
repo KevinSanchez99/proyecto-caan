@@ -5,24 +5,24 @@ import EditAnimal from './editAnimal';
 import InfoAnimal from './infoAnimal';
 
 
-export default function AnimalCard({ animal}) {
-        const { isAuthenticated } = useAuth();
-        const [mostrarEditor, setMostrarEditor] = useState(false);
-        const [mostrarInfo, setMostrarInfo] = useState(false);
+export default function AnimalCard({ animal, onAnimalChanged }) {
+    const { isAuthenticated } = useAuth();
+    const [mostrarEditor, setMostrarEditor] = useState(false);
+    const [mostrarInfo, setMostrarInfo] = useState(false);
 
-        const handleDelete = async () => {
-            const confirmDelete = window.confirm('Usted está por borrar un perro. ¿Desea continuar?');
-            if (!confirmDelete) return;
+    const handleDelete = async () => {
+        const confirmDelete = window.confirm('Usted está por borrar un perro. ¿Desea continuar?');
+        if (!confirmDelete) return;
 
-            try {
-                await deleteAnimalRequest(animal._id);
-                alert('Adopción borrada correctamente.');
-                window.location.reload();
-            } catch (error) {
-                console.error('Error al borrar la adopción:', error);
-                alert('No se pudo borrar la adopción. Revisa la consola.');
-            }
-        };
+        try {
+            await deleteAnimalRequest(animal._id);
+            alert('Adopción borrada correctamente.');
+            if (onAnimalChanged) onAnimalChanged();
+        } catch (error) {
+            console.error('Error al borrar la adopción:', error);
+            alert('No se pudo borrar la adopción. Revisa la consola.');
+        }
+    };
     return (
         
         <article className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.05)] group border border-outline-variant/20 hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] transition-all duration-300 h-full flex flex-col">
@@ -31,7 +31,7 @@ export default function AnimalCard({ animal}) {
                 <img 
                     alt={animal.nombre}
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    src={animal.imagenes} 
+                    src={animal.imagenes && animal.imagenes.length > 0 ? animal.imagenes[0] : ''} 
                 />
                 <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     {animal.raza}
@@ -81,6 +81,7 @@ export default function AnimalCard({ animal}) {
                 <EditAnimal 
                     animalId={animal._id} 
                     onClose={() => setMostrarEditor(false)} 
+                    onAnimalChanged={onAnimalChanged}
                 />
             )}
             {mostrarInfo && (

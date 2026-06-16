@@ -1,30 +1,10 @@
 import { Link } from 'react-router-dom';
+import { getPreviewText } from '../../utils/newsUtils';
 
 const NewsCard = ({ article }) => {
     const formattedDate = new Date(article.createdAt).toLocaleDateString('es-ES', {
         day: 'numeric', month: 'long', year: 'numeric'
     });
-
-    const getPreviewText = (contenido) => {
-        if (!contenido) return "";
-        
-        if (typeof contenido === 'string') {
-            return contenido.length > 120 ? contenido.substring(0, 120) + "..." : contenido;
-        }
-
-        if (Array.isArray(contenido)) {
-            for (const block of contenido) {
-                if (block.content && Array.isArray(block.content) && block.content.length > 0) {
-                    const text = block.content.map(t => t.text).join("");
-                    if (text.trim().length > 0) {
-                        return text.length > 120 ? text.substring(0, 120) + "..." : text;
-                    }
-                }
-            }
-        }
-
-        return "";
-    };
 
     return (
         <Link to={`/news/${article.slug}`} className="block h-full">
@@ -52,7 +32,7 @@ const NewsCard = ({ article }) => {
                     </h3>
                     
                     <p className="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-3 grow">
-                        {getPreviewText(article.contenido)}
+                        {getPreviewText(article.contenido, 120)}
                     </p>
                     
                     <span className="text-emerald-600 font-bold mt-auto group-hover:text-emerald-800 group-hover:underline transition-colors">

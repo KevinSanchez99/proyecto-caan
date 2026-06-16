@@ -7,29 +7,30 @@ const QuickAdoptions = () => {
     const [animals, setAnimals] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchAnimals = async () => {
-            try {
-                // Traemos los animales filtrando por estado 'Disponible'
-                const res = await getAnimalsRequest({ estado: 'Disponible' });
-                
-                if (res.data) {
-                    const data = Array.isArray(res.data) ? res.data : (res.data.docs || []);
-                    // ultimos 3 animales
-                    setAnimals(data.slice(0, 3));
-                }
-            } catch (error) {
-                console.error("Error al obtener los animales en adopción:", error);
-            } finally {
-                setLoading(false);
+    const fetchAnimals = async () => {
+        try {
+            // Traemos los animales filtrando por estado 'Disponible'
+            const res = await getAnimalsRequest({ estado: 'Disponible' });
+            
+            if (res.data) {
+                const data = Array.isArray(res.data) ? res.data : (res.data.docs || []);
+                // ultimos 3 animales
+                setAnimals(data.slice(0, 3));
             }
-        };
+        } catch (error) {
+            console.error("Error al obtener los animales en adopción:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
         fetchAnimals();
     }, []);
 
     return (
         <section className="py-16 md:py-24 bg-background">
-            <div className="max-w-[93%] mx-auto px-6">
+            <div>
                 <div className="flex justify-between items-end mb-10">
                     <div>
                         <h2 className="text-3xl font-bold text-stone-900 mb-2">Esperan por ti</h2>
@@ -49,7 +50,10 @@ const QuickAdoptions = () => {
                                 key={animal._id || idx} 
                                 className={idx === 2 ? 'hidden md:block' : ''}
                             >
-                                <AnimalCard animal={animal} />
+                                <AnimalCard 
+                                    animal={animal} 
+                                    onAnimalChanged={fetchAnimals} 
+                                />
                             </div>
                         ))}
                     </div>
