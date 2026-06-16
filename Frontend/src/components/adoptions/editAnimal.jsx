@@ -5,6 +5,7 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
     const modalRef = useRef(null);
     const [formData, setFormData] = useState(null);
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const cerrarModal = () => {
         if (modalRef.current) modalRef.current.close();
@@ -37,6 +38,7 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
     };
 
     const handleSubmit = async (e) => {
+        setIsSubmitting(true);
         e.preventDefault();
         const form = new FormData(e.target);
         const rawData = Object.fromEntries(form.entries());
@@ -87,6 +89,8 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
             } else {
                 setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
             }
+        }finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -224,7 +228,11 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
                     
                     <div className="flex justify-end gap-3 mt-4">
                         <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
-                        <button type="submit" className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium">Guardar Cambios</button>
+                        <button type="submit" 
+                        disabled={isSubmitting}
+                        className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium disabled:cursor-not-allowed disabled:opacity-50">
+                            {isSubmitting ? "Guardando..." : "Guardar Cambios"}
+                        </button>
                     </div>
                 </form>
             )}

@@ -6,6 +6,7 @@ export default function ModalAnimal({ onAnimalCreated }) {
     const { isAuthenticated } = useAuth();
     const modalRef = useRef(null);
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const abrirModal = () => {
         if (modalRef.current) modalRef.current.showModal();
@@ -18,6 +19,7 @@ export default function ModalAnimal({ onAnimalCreated }) {
     };
 
     const handleSubmit = async (e) => {
+        setIsSubmitting(true);
         e.preventDefault();
         setError(null);
         
@@ -63,6 +65,8 @@ export default function ModalAnimal({ onAnimalCreated }) {
             } else {
                 setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
             }
+        }finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -184,7 +188,13 @@ export default function ModalAnimal({ onAnimalCreated }) {
 
                     <div className="flex justify-end gap-3 mt-4">
                         <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
-                        <button type="submit" className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium">Crear Ficha</button>
+                        <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                        {isSubmitting ? "Guardando..." : "Crear Ficha"}
+                        </button>
                     </div>
                 </form>
             </dialog>
