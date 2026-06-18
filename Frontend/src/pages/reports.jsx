@@ -5,13 +5,13 @@ import { MdListAlt, MdPolicy, MdRoute, MdLocalPolice, MdMail, MdPrivacyTip, MdGr
 
 export default function Reports() {
   return (
-    <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
+    <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-30">
       <NavBar />
 
-      <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
+      <main className="max-w-container_max mx-auto px-8 grow w-full pb-10">
 
         {/* Cabecera */}
-        <section className="max-w-container_max mx-auto px-8 py-4 text-center">
+        <section className="max-w-container_max mx-auto  text-center">
             <div className="inline-flex items-center space-x-2 bg-error-container text-on-error-container px-4 py-2 rounded-full mb-6 shadow-sm border border-error/20">
                 <span className="text-2xl text-error"><MdPolicy /></span>
                 <span span className="font-label-sm text-label-sm font-bold tracking-wide uppercase">

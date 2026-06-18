@@ -2,33 +2,32 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import CopyRow from '../components/donations/CopyRow';
 
-import { GiDogBowl} from "react-icons/gi";
-import { MdAccountBalance, MdAttachMoney, MdVolunteerActivism, MdPayments, MdLocalLaundryService, MdHandyman, MdStar, MdGroupAdd} from 'react-icons/md';
+import { GiDogBowl } from "react-icons/gi";
+import { MdAccountBalance, MdAttachMoney, MdVolunteerActivism, MdPayments, MdLocalLaundryService, MdHandyman, MdStar, MdGroupAdd } from 'react-icons/md';
 
 export default function Donations() {
   return (
-    <div className="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-20">
-      <NavBar />
+    <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-30">
 
-      <main className="max-w-320 mx-auto px-6 md:px-8 py-12 md:py-20 grow w-full">
-        
+      <NavBar />
+      <main className="max-w-320 mx-auto px-8 grow w-full pb-10">
         {/* Cabecera */}
         <header className="mb-14 text-center max-w-3xl mx-auto">
-          <h1 className="font-h1 text-4xl md:text-5xl text-on-surface mb-4">
+          <h1 className="font-h1 text-h1 text-on-surface mb-sm">
             Tu ayuda transforma vidas
           </h1>
-          <p className="font-body-lg text-lg text-on-surface-variant">
+          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto text-justify">
             Cada aporte, sin importar la forma, nos permite seguir rescatando y cuidando a los animales que más nos necesitan. ¡Elige la forma de ayudar que mejor se adapte a ti!
           </p>
         </header>
 
         {/* Contenedor Principal a 2 Columnas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          
+
           {/* COLUMNA 1: Donaciones Económicas */}
           <section className="flex flex-col gap-6">
             <div className="flex items-center gap-3 border-b border-outline-variant/30 pb-3">
-              <span className="material-symbols-outlined text-primary text-3xl"><MdAccountBalance/></span>
+              <span className="material-symbols-outlined text-primary text-3xl"><MdAccountBalance /></span>
               <h2 className="font-h2 text-2xl md:text-3xl text-on-surface">Aportes Económicos</h2>
             </div>
             <p className="text-on-surface-variant font-body-md">
@@ -42,7 +41,7 @@ export default function Donations() {
                   <h3 className="font-bold text-lg text-primary">CAAN Necochea</h3>
                   <p className="text-sm text-primary/70">Billetera Virtual</p>
                 </div>
-                <span className="material-symbols-outlined text-primary text-3xl"><MdAttachMoney/></span>
+                <span className="material-symbols-outlined text-primary text-3xl"><MdAttachMoney /></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
                 <CopyRow label="Alias" value="TORRE.PALOMA.RUBI" colorClass="text-primary" />
@@ -56,7 +55,7 @@ export default function Donations() {
                   <h3 className="font-bold text-lg text-[#009EE3]">Cuenta corriente</h3>
                   <p className="text-sm text-primary/70">Centro de Ayuda al Animal de Necochea</p>
                 </div>
-                <span className="material-symbols-outlined text-[#009EE3] text-3xl"><MdPayments/></span>
+                <span className="material-symbols-outlined text-[#009EE3] text-3xl"><MdPayments /></span>
               </div>
               <div className="space-y-3 bg-surface-container-low p-4 rounded-xl font-mono text-sm md:text-base text-on-surface">
                 <CopyRow label="CUIT" value="30709492701" colorClass="text-[#009EE3]" />
@@ -68,14 +67,14 @@ export default function Donations() {
           {/* COLUMNA 2: Donaciones Materiales y Socios */}
           <section className="flex flex-col gap-4">
             <div className="flex items-center gap-3 border-b border-outline-variant/30 pb-3 mb-2">
-              <span className="material-symbols-outlined text-secondary text-3xl"><MdVolunteerActivism/></span>
+              <span className="material-symbols-outlined text-secondary text-3xl"><MdVolunteerActivism /></span>
               <h2 className="font-h2 text-2xl md:text-3xl text-on-surface">Otras formas de ayudar</h2>
             </div>
-            
+
             {/* Lista de materiales */}
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-3xl"><GiDogBowl/></span>
+                <span className="material-symbols-outlined text-3xl"><GiDogBowl /></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Alimentos no perecederos</h3>
@@ -87,12 +86,12 @@ export default function Donations() {
 
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-3xl"><MdLocalLaundryService/></span>
+                <span className="material-symbols-outlined text-3xl"><MdLocalLaundryService /></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Ropa y Abrigo</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Aceptamos ropa, frazadas, mantas y cuchas. <br/>
+                  Aceptamos ropa, frazadas, mantas y cuchas. <br />
                   <strong className="text-error bg-error-container/30 px-1 rounded">Aclaración importante:</strong> Todo debe estar en buen estado. No se reciben cosas en mal estado o rotas.
                 </p>
               </div>
@@ -100,7 +99,7 @@ export default function Donations() {
 
             <div className="flex gap-4 p-5 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl shadow-sm">
               <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-3xl"><MdHandyman/></span>
+                <span className="material-symbols-outlined text-3xl"><MdHandyman /></span>
               </div>
               <div>
                 <h3 className="font-bold text-on-surface text-lg mb-1">Materiales de construcción</h3>
@@ -113,15 +112,15 @@ export default function Donations() {
             {/* Banner de Socio */}
             <div className="flex gap-4 p-6 bg-secondary-container text-on-secondary-container rounded-2xl shadow-md mt-2 relative overflow-hidden">
               <div className="absolute -right-6 -top-6 opacity-10">
-                <span className="material-symbols-outlined text-[120px]"><MdStar/></span>
+                <span className="material-symbols-outlined text-[120px]"><MdStar /></span>
               </div>
               <div className="w-12 h-12 rounded-full bg-on-secondary-container/10 flex items-center justify-center shrink-0 relative z-10">
-                <span className="material-symbols-outlined text-3xl"><MdGroupAdd/></span>
+                <span className="material-symbols-outlined text-3xl"><MdGroupAdd /></span>
               </div>
               <div className="relative z-10">
                 <h3 className="font-bold text-xl mb-1">¡Hazte Socio del CAAN!</h3>
                 <p className="text-sm leading-relaxed opacity-90">
-                  Colabora activamente con nosotros, la cuota mensual mínima de socio es de <strong>$5000</strong>. ¡Dale! Sumate!<br/>
+                  Colabora activamente con nosotros, la cuota mensual mínima de socio es de <strong>$5000</strong>. ¡Dale! Sumate!<br />
                   <strong>Podes ayudar con dinero y/o participando en los eventos</strong> que se organicen para mejorar la calidad de vida de ellos.
                 </p>
               </div>

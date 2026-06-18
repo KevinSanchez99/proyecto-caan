@@ -46,7 +46,7 @@ export default function FilterAnimal({ onApplyFilters, isAuthenticated = false }
                     type="button"
                     aria-label="Más opciones"
                     onClick={abrirModalFiltros}
-                    className="flex items-center justify-center gap-2 p-2 rounded-lg bg-white border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-sm text-label-sm"
+                    className="flex items-center justify-center gap-2 p-2.5 rounded-lg bg-white border border-outline-variant hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-sm text-label-sm"
                 >
                     <FiFilter size={24} aria-hidden className="text-on-surface-variant" />
                     <span>Filtros</span>

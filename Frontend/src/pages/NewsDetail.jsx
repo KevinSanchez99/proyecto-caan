@@ -136,7 +136,7 @@ export default function NewsDetail() {
                 />
             </div>
 
-            <div className="max-w-none text-on-surface-variant leading-relaxed pb-12">
+            <div className="max-w-none text-on-surface-variant leading-relaxed pb-12 ">
                 <BlockNoteView 
                 editor={editor} 
                 editable={false}

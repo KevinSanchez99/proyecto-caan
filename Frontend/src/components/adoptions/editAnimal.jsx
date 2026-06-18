@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getAnimalByIdRequest, updateAnimalRequest } from '../../../api/auth'; 
+import { getAnimalByIdRequest, updateAnimalRequest } from '../../../api/auth';
 
 export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
     const modalRef = useRef(null);
@@ -10,13 +10,33 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
     const cerrarModal = () => {
         if (modalRef.current) modalRef.current.close();
         setError(null);
-        if (onClose) onClose(); 
+        if (onClose) onClose();
     };
+
+    const handleOutsideClick = (e) => {
+        const dialog = modalRef.current;
+        if (!dialog) return;
+
+        // Obtenemos las coordenadas y dimensiones exactas del cuadro del modal
+        const dialogDimensions = dialog.getBoundingClientRect();
+
+        // Verificamos si el clic del mouse fue FUERA de esos límites
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            cerrarModal();
+        }
+    };
+
+
 
     useEffect(() => {
         const fetchAnimal = async () => {
             try {
-                const res = await getAnimalByIdRequest(animalId); 
+                const res = await getAnimalByIdRequest(animalId);
                 setFormData(res.data);
             } catch (error) {
                 console.error("Error al traer la ficha del animal", error);
@@ -50,7 +70,7 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
             especie: 'Perro',
             raza: rawData.raza,
             pelaje: rawData.pelaje,
-            sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra', 
+            sexo: rawData.sexo === 'macho' ? 'Macho' : 'Hembra',
             tamaño: rawData.tamaño,
             fecha_nacimiento: rawData.fecha_nacimiento,
             estado: rawData.estado,
@@ -66,12 +86,12 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
         if (archivoFoto && archivoFoto.size > 0) {
             payload.imagenes = ["https://revotameesta.com/foto.jpg"];
         } else {
-            payload.imagenes = formData.imagenes; 
+            payload.imagenes = formData.imagenes;
         }
 
         const dataToSend = new FormData();
         dataToSend.append('datos', JSON.stringify(payload));
-        
+
         // Solo enviamos el archivo físico si es que seleccionaron uno nuevo
         if (archivoFoto && archivoFoto.size > 0) {
             dataToSend.append('foto', archivoFoto);
@@ -85,23 +105,24 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
         } catch (error) {
             console.error('Error al actualizar el animal:', error);
             if (error.response?.data?.errors) {
-                setError(error.response.data.errors); 
+                setError(error.response.data.errors);
             } else {
                 setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
             }
-        }finally {
+        } finally {
             setIsSubmitting(false);
         }
     };
 
     return (
-        <dialog 
-            ref={modalRef} 
-            onCancel={cerrarModal} // Maneja si el usuario presiona "ESC"
+        <dialog
+            ref={modalRef}
+            onCancel={cerrarModal}// Maneja si el usuario presiona "ESC"
+            onClick={handleOutsideClick} //Maneja si el usuario toca afuera de la pantalla.
             className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface"
         >
             <h2 className="font-h2 text-h2 text-emerald-800 mb-6">Editar Rescatado</h2>
-            
+
             {!formData ? (
                 <p className="text-center py-4">Cargando datos de la ficha...</p>
             ) : (
@@ -225,12 +246,12 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
                             )}
                         </div>
                     </div>
-                    
+
                     <div className="flex justify-end gap-3 mt-4">
                         <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
-                        <button type="submit" 
-                        disabled={isSubmitting}
-                        className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium disabled:cursor-not-allowed disabled:opacity-50">
+                        <button type="submit"
+                            disabled={isSubmitting}
+                            className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium disabled:cursor-not-allowed disabled:opacity-50">
                             {isSubmitting ? "Guardando..." : "Guardar Cambios"}
                         </button>
                     </div>

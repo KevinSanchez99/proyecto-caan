@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 const Hero = () => {
     // Arreglo de imágenes para el slider
     const images = [
-        "../../public/slider1.jpg",
-        "../../public/slider2.jpg",
-        "../../public/slider3.jpg"
+        "/slider1.jpg",
+        "/slider2.jpg",
+        "/slider3.jpg"
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);

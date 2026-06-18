@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { getAnimalByIdRequest } from '../../../api/auth';
+import { MdClose, MdCheck } from "react-icons/md"
 
 export default function InfoAnimal({ animalId, onClose }) {
     const modalRef = useRef(null);
@@ -58,6 +59,7 @@ export default function InfoAnimal({ animalId, onClose }) {
             if (dialog) dialog.removeEventListener('close', onClose);
             restoreScroll();
         };
+        
     }, [animal]);
 
     const cerrarModal = () => {
@@ -81,9 +83,9 @@ export default function InfoAnimal({ animalId, onClose }) {
     };
 
     const handleModalClick = (e) => {
-    if (e.target === modalRef.current) {
-        cerrarModal();
-    }
+        if (e.target === modalRef.current) {
+            cerrarModal();
+        }
     };
 
     const handleWhatsapp = () => {
@@ -127,83 +129,125 @@ export default function InfoAnimal({ animalId, onClose }) {
                             <div className="flex flex-col gap-4">
                                 {/* Imagen Circular Clickeable */}
                                 <div className="rounded-3xl border-2 border-outline-variant bg-surface p-6">
-                                <div className="flex flex-col gap-4">
-                                    {/* Imagen Circular Clickeable */}
-                                    <div className="flex justify-center">
-                                        <button
-                                            type="button"
-                                            onClick={abrirImagenGrande}
-                                            className="h-64 w-64 rounded-full overflow-hidden bg-surface-variant border-4 border-outline-variant hover:border-primary transition-colors cursor-pointer"
-                                        >
-                                            <img
-                                                src={imageSrc || 'https://via.placeholder.com/400x400?text=Sin+imagen'}
-                                                alt={animal?.nombre || 'Imagen del animal'}
-                                                className="h-full w-full object-cover"
-                                            />
-                                        </button>
+                                    <div className="flex flex-col gap-4">
+                                        {/* Imagen Circular Clickeable */}
+                                        <div className="flex justify-center">
+                                            <button
+                                                type="button"
+                                                onClick={abrirImagenGrande}
+                                                className="h-64 w-64 rounded-full overflow-hidden bg-surface-variant border-4 border-outline-variant hover:border-primary transition-colors cursor-pointer"
+                                            >
+                                                <img
+                                                    src={imageSrc || 'https://via.placeholder.com/400x400?text=Sin+imagen'}
+                                                    alt={animal?.nombre || 'Imagen del animal'}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </button>
+                                        </div>
+
+                                        {/* Línea sutil debajo de la imagen */}
+                                        <div className="w-full border-t border-outline-variant my-4" />
+
+                                        {/* Datos del Animal - Horizontal */}
+                                        <div className="flex flex-col gap-2">
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Nombre</p>
+                                                <p className="font-semibold text-on-surface">{animal?.nombre || '-'}</p>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Raza</p>
+                                                <p className="font-semibold text-on-surface">{animal?.raza || '-'}</p>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Pelaje</p>
+                                                <p className="font-semibold text-on-surface">{animal?.pelaje || '-'}</p>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Sexo</p>
+                                                <p className="font-semibold text-on-surface">{animal?.sexo || '-'}</p>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Edad</p>
+                                                <p className="font-semibold text-on-surface">{animal?.edad || '-'}</p>
+                                            </div>
+                                            <div className="flex items-center justify-between">
+                                                <p className="text-xs uppercase text-on-surface-variant font-semibold">Tamaño</p>
+                                                <p className="font-semibold text-on-surface">{animal?.tamaño || '-'}</p>
+                                            </div>
+                                        </div>
+
+                                        {/* Línea sutil después de los datos generales */}
+                                        <div className="w-full border-t border-outline-variant my-4" />
                                     </div>
 
-                                    {/* Línea sutil debajo de la imagen */}
-                                    <div className="w-full border-t border-outline-variant my-4" />
+                                    <div className="rounded-3xl bg-surface-container-highest p-6">
+                                        <p className="text-sm uppercase text-on-surface-variant font-semibold mb-4">
+                                            Observaciones Médicas
+                                        </p>
+                                        <div className="space-y-3 text-base">
 
-                                    {/* Datos del Animal - Horizontal */}
-                                    <div className="flex flex-col gap-2">
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Nombre</p>
-                                            <p className="font-semibold text-on-surface">{animal?.nombre || '-'}</p>
-                                        </div>
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Raza</p>
-                                            <p className="font-semibold text-on-surface">{animal?.raza || '-'}</p>
-                                        </div>
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Pelaje</p>
-                                            <p className="font-semibold text-on-surface">{animal?.pelaje || '-'}</p>
-                                        </div>
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Sexo</p>
-                                            <p className="font-semibold text-on-surface">{animal?.sexo || '-'}</p>
-                                        </div>
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Edad</p>
-                                            <p className="font-semibold text-on-surface">{animal?.edad || '-'}</p>
-                                        </div>
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-xs uppercase text-on-surface-variant font-semibold">Tamaño</p>
-                                            <p className="font-semibold text-on-surface">{animal?.tamaño || '-'}</p>
+                                            {/* Opción: Vacunado */}
+                                            <label className="flex items-center gap-3 cursor-default">
+                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                    <input
+                                                        type="checkbox"
+                                                        id="vacunado"
+                                                        checked={animal?.salud?.vacunado}
+                                                        readOnly
+                                                        className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
+                                                    />
+                                                    {/* Ícono para FALSE (X Roja) */}
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    {/* Ícono para TRUE (Check Primario/Verde) */}
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                </div>
+                                                <span className="text-on-surface">Vacunado</span>
+                                            </label>
+
+                                            {/* Opción: Castrado */}
+                                            <label className="flex items-center gap-3 cursor-default">
+                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                    <input
+                                                        type="checkbox"
+                                                        id="castrado"
+                                                        checked={animal?.salud?.castrado}
+                                                        readOnly
+                                                        className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
+                                                    />
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                </div>
+                                                <span className="text-on-surface">Castrado</span>
+                                            </label>
+
+                                            {/* Opción: Desparasitado */}
+                                            <label className="flex items-center gap-3 cursor-default">
+                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                    <input
+                                                        type="checkbox"
+                                                        id="desparacitado"
+                                                        checked={animal?.salud?.desparacitado}
+                                                        readOnly
+                                                        className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
+                                                    />
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                </div>
+                                                <span className="text-on-surface">Desparasitado</span>
+                                            </label>
+
+                                            {/* Condiciones especiales */}
+                                            {animal?.salud?.condiciones_especiales && (
+                                                <p className="mt-3 pt-3 border-t border-outline-variant text-base text-on-surface">
+                                                    <span className="font-semibold">Condiciones especiales: </span>
+                                                    <span className="ml-1">{animal.salud.condiciones_especiales}</span>
+                                                </p>
+                                            )}
+
                                         </div>
                                     </div>
-
-                                    {/* Línea sutil después de los datos generales */}
-                                    <div className="w-full border-t border-outline-variant my-4" />
                                 </div>
 
-                                {/* Observaciones Médicas */}
-                                <div className="rounded-3xl bg-surface-container-highest p-6">
-                                    <p className="text-sm uppercase text-on-surface-variant font-semibold mb-4">Observaciones Médicas</p>
-                                    <div className="space-y-3 text-base">
-                                        <div className="flex items-center gap-3">
-                                            <input type="checkbox" id="vacunado" checked={animal?.salud?.vacunado} readOnly className="h-5 w-5" />
-                                            <label htmlFor="vacunado">Vacunado</label>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <input type="checkbox" id="castrado" checked={animal?.salud?.castrado} readOnly className="h-5 w-5" />
-                                            <label htmlFor="castrado">Castrado</label>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <input type="checkbox" id="desparacitado" checked={animal?.salud?.desparacitado} readOnly className="h-5 w-5" />
-                                            <label htmlFor="desparacitado">Desparasitado</label>
-                                        </div>
-                                        {animal?.salud?.condiciones_especiales && (
-                                            <p className="mt-3 pt-3 border-t border-outline-variant text-base text-on-surface">
-                                                <span className="font-semibold">Condiciones especiales: </span>
-                                                <span className="ml-1">{animal.salud.condiciones_especiales}</span>
-                                            </p>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                                
                             </div>
 
                             {/* Columna Derecha */}

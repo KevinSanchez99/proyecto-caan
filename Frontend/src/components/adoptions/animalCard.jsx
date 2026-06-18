@@ -31,7 +31,8 @@ export default function AnimalCard({ animal, onAnimalChanged }) {
                 <img 
                     alt={animal.nombre}
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    src={animal.imagenes && animal.imagenes.length > 0 ? animal.imagenes[0] : ''} 
+                    src={animal.imagenes && animal.imagenes.length > 0 ? animal.imagenes[0] : ''}
+                    onClick={() => setMostrarInfo(true)}
                 />
                 <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                     {animal.raza}
