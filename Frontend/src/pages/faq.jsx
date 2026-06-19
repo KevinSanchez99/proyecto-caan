@@ -3,7 +3,7 @@ import FaqCard from '../components/faq/FaqCard';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Maps from '../components/faq/Map'
-import { MdPets, MdVolunteerActivism, MdFavorite, MdHelp, MdLocationOn } from "react-icons/md";
+import { MdPets, MdVolunteerActivism, MdFavorite, MdLocationOn } from "react-icons/md";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 export default function Faq() {

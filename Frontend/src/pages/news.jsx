@@ -62,7 +62,7 @@ export default function News() {
   return (
     <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-30">
       <Navbar />
-      <main className="max-w-container_max mx-auto grow w-full pb-10">
+      <main className="max-w-container_max mx-auto px-8 grow w-full pb-10">
         <section className="mb-xl">
           <div className="flex flex-col justify-center items-center" >
             <h1 className="font-h1 text-h1 text-on-surface mb-sm">
@@ -72,7 +72,7 @@ export default function News() {
               Acompañanos en nuestra misión diaria. Entérate de las historias de recuperación, próximos eventos y el trabajo que realizamos todos los días por los animales de Necochea y la zona.
             </p>
           </div>
-          <div class="mb-10">
+          <div className="mb-10">
             {isAuthenticated && (
               <Link to="/news/create" className="bg-emerald-600 text-white px-4 py-4 rounded-lg font-bold hover:bg-emerald-700 transition">
                 + Crear Noticia
