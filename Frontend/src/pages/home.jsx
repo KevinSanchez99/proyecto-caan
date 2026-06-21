@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-10">
       <NavBar />
-      <main className="max-w-container_max mx-auto px-8 py-12 grow w-full">
+      <main className="max-w-container_max mx-auto px-8 mb-10 grow w-full">
         <Hero />
         <section>
           <ReportBanner />
