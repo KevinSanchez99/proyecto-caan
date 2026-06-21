@@ -8,8 +8,6 @@ export default function InfoAnimal({ animalId, onClose }) {
     const [animal, setAnimal] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
-
     useEffect(() => {
         const fetchAnimal = async () => {
             try {
@@ -30,7 +28,6 @@ export default function InfoAnimal({ animalId, onClose }) {
         }
     }, [animal]);
 
-    // Bloquear el scroll del body mientras el modal de información esté abierto
     useEffect(() => {
         const dialog = modalRef.current;
         const restoreScroll = () => {
@@ -67,7 +64,6 @@ export default function InfoAnimal({ animalId, onClose }) {
         if (onClose) onClose();
     };
 
-    // Imagen Grande dentro de informacion del animal
     const abrirImagenGrande = () => {
         if (imageModalRef.current) imageModalRef.current.showModal();
     };
@@ -111,31 +107,30 @@ export default function InfoAnimal({ animalId, onClose }) {
             <dialog
                 ref={modalRef}
                 onClick={handleModalClick}
-                className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] max-w-5xl bg-surface-container-lowest text-on-surface"
+                className="m-auto p-4 md:p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[95%] md:w-[90%] max-w-5xl max-h-[95vh] overflow-y-auto bg-surface-container-lowest text-on-surface"
             >
                 <div className="flex flex-col gap-4">
                     <div className="flex items-start justify-between gap-4">
                         <div>
-                            <h2 className="text-3xl font-semibold text-primary">Más Información</h2>
-                            <p className="text-base text-on-surface-variant mt-1">Ficha completa del animal seleccionado</p>
+                            <h2 className="text-2xl font-semibold text-primary">Más Información</h2>
+                            <p className="text-sm text-on-surface-variant mt-1">Ficha completa del animal seleccionado</p>
                         </div>
                     </div>
 
                     {loading ? (
                         <p className="text-center py-8">Cargando información...</p>
                     ) : (
-                        <div className="grid gap-6 md:grid-cols-[1fr_1.2fr]">
+                        <div className="grid gap-4 md:grid-cols-[1fr_1.2fr]">
                             {/* Columna Izquierda */}
                             <div className="flex flex-col gap-4">
-                                {/* Imagen Circular Clickeable */}
-                                <div className="rounded-3xl border-2 border-outline-variant bg-surface p-6">
-                                    <div className="flex flex-col gap-4">
+                                <div className="rounded-2xl border-2 border-outline-variant bg-surface p-4">
+                                    <div className="flex flex-col gap-3">
                                         {/* Imagen Circular Clickeable */}
                                         <div className="flex justify-center">
                                             <button
                                                 type="button"
                                                 onClick={abrirImagenGrande}
-                                                className="h-64 w-64 rounded-full overflow-hidden bg-surface-variant border-4 border-outline-variant hover:border-primary transition-colors cursor-pointer"
+                                                className="h-40 w-40 md:h-48 md:w-48 rounded-full overflow-hidden bg-surface-variant border-4 border-outline-variant hover:border-primary transition-colors cursor-pointer"
                                             >
                                                 <img
                                                     src={imageSrc || 'https://via.placeholder.com/400x400?text=Sin+imagen'}
@@ -145,11 +140,10 @@ export default function InfoAnimal({ animalId, onClose }) {
                                             </button>
                                         </div>
 
-                                        {/* Línea sutil debajo de la imagen */}
-                                        <div className="w-full border-t border-outline-variant my-4" />
+                                        <div className="w-full border-t border-outline-variant my-2" />
 
-                                        {/* Datos del Animal - Horizontal */}
-                                        <div className="flex flex-col gap-2">
+                                        {/* Datos del Animal */}
+                                        <div className="flex flex-col gap-2 text-sm">
                                             <div className="flex items-center justify-between">
                                                 <p className="text-xs uppercase text-on-surface-variant font-semibold">Nombre</p>
                                                 <p className="font-semibold text-on-surface">{animal?.nombre || '-'}</p>
@@ -176,19 +170,16 @@ export default function InfoAnimal({ animalId, onClose }) {
                                             </div>
                                         </div>
 
-                                        {/* Línea sutil después de los datos generales */}
-                                        <div className="w-full border-t border-outline-variant my-4" />
+                                        <div className="w-full border-t border-outline-variant my-2" />
                                     </div>
 
-                                    <div className="rounded-3xl bg-surface-container-highest p-6">
-                                        <p className="text-sm uppercase text-on-surface-variant font-semibold mb-4">
+                                    <div className="rounded-2xl bg-surface-container-highest p-4 mt-2">
+                                        <p className="text-xs uppercase text-on-surface-variant font-semibold mb-3">
                                             Observaciones Médicas
                                         </p>
-                                        <div className="space-y-3 text-base">
-
-                                            {/* Opción: Vacunado */}
+                                        <div className="space-y-2 text-sm">
                                             <label className="flex items-center gap-3 cursor-default">
-                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                <div className="relative flex items-center justify-center w-4 h-4 border-2 border-outline-variant bg-surface rounded-sm">
                                                     <input
                                                         type="checkbox"
                                                         id="vacunado"
@@ -196,17 +187,14 @@ export default function InfoAnimal({ animalId, onClose }) {
                                                         readOnly
                                                         className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
                                                     />
-                                                    {/* Ícono para FALSE (X Roja) */}
-                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
-                                                    {/* Ícono para TRUE (Check Primario/Verde) */}
-                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-sm pointer-events-none font-bold" />
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none font-bold" />
                                                 </div>
                                                 <span className="text-on-surface">Vacunado</span>
                                             </label>
 
-                                            {/* Opción: Castrado */}
                                             <label className="flex items-center gap-3 cursor-default">
-                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                <div className="relative flex items-center justify-center w-4 h-4 border-2 border-outline-variant bg-surface rounded-sm">
                                                     <input
                                                         type="checkbox"
                                                         id="castrado"
@@ -214,15 +202,14 @@ export default function InfoAnimal({ animalId, onClose }) {
                                                         readOnly
                                                         className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
                                                     />
-                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
-                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-sm pointer-events-none font-bold" />
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none font-bold" />
                                                 </div>
                                                 <span className="text-on-surface">Castrado</span>
                                             </label>
 
-                                            {/* Opción: Desparasitado */}
                                             <label className="flex items-center gap-3 cursor-default">
-                                                <div className="relative flex items-center justify-center w-5 h-5 border-2 border-outline-variant bg-surface rounded-sm">
+                                                <div className="relative flex items-center justify-center w-4 h-4 border-2 border-outline-variant bg-surface rounded-sm">
                                                     <input
                                                         type="checkbox"
                                                         id="desparacitado"
@@ -230,44 +217,39 @@ export default function InfoAnimal({ animalId, onClose }) {
                                                         readOnly
                                                         className="peer absolute opacity-0 w-full h-full pointer-events-none z-10"
                                                     />
-                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-lg pointer-events-none font-bold" />
-                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-lg pointer-events-none font-bold" />
+                                                    <MdClose className="absolute text-red-500 opacity-100 peer-checked:opacity-0 transition-opacity text-sm pointer-events-none font-bold" />
+                                                    <MdCheck className="absolute text-primary opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none font-bold" />
                                                 </div>
                                                 <span className="text-on-surface">Desparasitado</span>
                                             </label>
 
-                                            {/* Condiciones especiales */}
                                             {animal?.salud?.condiciones_especiales && (
-                                                <p className="mt-3 pt-3 border-t border-outline-variant text-base text-on-surface">
+                                                <p className="mt-2 pt-2 border-t border-outline-variant text-sm text-on-surface">
                                                     <span className="font-semibold">Condiciones especiales: </span>
                                                     <span className="ml-1">{animal.salud.condiciones_especiales}</span>
                                                 </p>
                                             )}
-
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             {/* Columna Derecha */}
                             <div className="flex flex-col gap-4">
-                                {/* Tips antes de adoptar */}
-                                <div className="rounded-3xl border border-outline-variant bg-surface p-6">
-                                    <h3 className="text-xl font-semibold mb-4 text-primary">Tips antes de adoptar</h3>
-                                    <ul className="flex flex-col gap-3">
+                                <div className="rounded-2xl border border-outline-variant bg-surface p-4">
+                                    <h3 className="text-lg font-semibold mb-3 text-primary">Tips antes de adoptar</h3>
+                                    <ul className="flex flex-col gap-2">
                                         {adoptionTips.map((tip) => (
-                                            <li key={tip} className="rounded-2xl bg-surface-container-highest p-4 text-base leading-7">
+                                            <li key={tip} className="rounded-xl bg-surface-container-highest p-3 text-sm leading-snug">
                                                 {tip}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
-                                {/* Historia */}
-                                <div className="rounded-3xl border border-outline-variant bg-surface p-6">
-                                    <h3 className="text-xl font-semibold mb-4 text-primary">Historia</h3>
-                                    <p className="text-base leading-7 text-on-surface-variant">
+                                <div className="rounded-2xl border border-outline-variant bg-surface p-4">
+                                    <h3 className="text-lg font-semibold mb-3 text-primary">Historia</h3>
+                                    <p className="text-sm leading-snug text-on-surface-variant">
                                         {animal?.descripcion || 'No hay historia registrada para este animal.'}
                                     </p>
                                 </div>
@@ -275,12 +257,11 @@ export default function InfoAnimal({ animalId, onClose }) {
                         </div>
                     )}
 
-                    {/* Botón Contactar */}
                     {!loading && (
                         <button
                             type="button"
                             onClick={handleWhatsapp}
-                            className="w-full rounded-full bg-green-600 px-6 py-3 text-base font-semibold text-white hover:bg-green-700 transition-colors mt-4"
+                            className="w-full rounded-full bg-green-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-green-700 transition-colors mt-2"
                         >
                             Contactar por WhatsApp
                         </button>

@@ -70,6 +70,22 @@ export default function ModalAnimal({ onAnimalCreated }) {
         }
     };
 
+        const handleOutsideClick = (e) => {
+        const dialog = modalRef.current;
+        if (!dialog) return;
+
+        const dialogDimensions = dialog.getBoundingClientRect();
+
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            cerrarModal();
+        }
+    };
+
     return (
         <>
             {isAuthenticated && (
@@ -79,37 +95,37 @@ export default function ModalAnimal({ onAnimalCreated }) {
                 </button>
             )}
 
-            <dialog ref={modalRef} className="m-auto p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[90%] bg-surface-container-lowest text-on-surface">
-                <h2 className="font-h2 text-h2 text-emerald-800 mb-6">Ingresar Nuevo Rescatado</h2>
+            <dialog ref={modalRef} onClick={handleOutsideClick} className="m-auto p-4 md:p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[95%] md:w-[90%] max-w-6xl max-h-[95vh] overflow-y-auto bg-surface-container-lowest text-on-surface">
+                <h2 className="font-h2 text-h2 text-emerald-800 mb-4">Ingresar Nuevo Rescatado</h2>
                 
                 <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-                    <div className="flex flex-row gap-10">
+                    <div className="flex flex-col lg:flex-row gap-4">
                         {/* DATOS GENERALES */}
-                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
-                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos generales</h3>
+                        <div className="flex flex-1 flex-col gap-3 p-4 rounded-2xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-lg text-emerald-800 font-semibold mb-2">Datos generales</h3>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Nombre del perro</label>
-                                <input type="text" name="nombre" required placeholder="Ej: Firulais" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del perro</label>
+                                <input type="text" name="nombre" required placeholder="Ej: Firulais" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Raza</label>
-                                <input type="text" name="raza" required placeholder="Ej: Mestizo" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Raza</label>
+                                <input type="text" name="raza" required placeholder="Ej: Mestizo" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Pelaje</label>
-                                <input type="text" name="pelaje" required placeholder="Ej: Corto" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Pelaje</label>
+                                <input type="text" name="pelaje" required placeholder="Ej: Corto" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Sexo</label>
-                                <select name="sexo" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Sexo</label>
+                                <select name="sexo" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona el sexo</option>
                                     <option value="macho">Macho</option>
                                     <option value="hembra">Hembra</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Tamaño</label>
-                                <select name="tamaño" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Tamaño</label>
+                                <select name="tamaño" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona el tamaño</option>
                                     <option value="Pequeño">Pequeño</option>
                                     <option value="Mediano">Mediano</option>
@@ -117,54 +133,54 @@ export default function ModalAnimal({ onAnimalCreated }) {
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Fecha de Nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Fecha de Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                         </div>
 
                         {/* DATOS MEDICOS */}
-                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
-                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Datos Médicos</h3>
+                        <div className="flex flex-1 flex-col gap-3 p-4 rounded-2xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-lg text-emerald-800 font-semibold mb-2">Datos Médicos</h3>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Vacunado</label>
-                                <select name="vacunado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Vacunado</label>
+                                <select name="vacunado" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Castrado</label>
-                                <select name="castrado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Castrado</label>
+                                <select name="castrado" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Desparacitado</label>
-                                <select name="desparacitado" required className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Desparacitado</label>
+                                <select name="desparacitado" required className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm">
                                     <option value="">Selecciona una opción</option>
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Condiciones Especiales</label>
-                                <textarea name="observaciones" placeholder="Ej: ceguera parcial, sordera" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Condiciones Especiales</label>
+                                <textarea name="observaciones" placeholder="Ej: ceguera parcial, sordera" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-20" />
                             </div>
                         </div>
 
                         {/* MÁS SOBRE MÍ */}
-                        <div className="flex flex-1 flex-col gap-5 p-5 rounded-3xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
-                            <h3 className="text-xl text-emerald-800 font-semibold mb-3">Más Sobre Mí</h3>
+                        <div className="flex flex-1 flex-col gap-3 p-4 rounded-2xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
+                            <h3 className="text-lg text-emerald-800 font-semibold mb-2">Más Sobre Mí</h3>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Historia</label>
-                                <textarea name="historia" required placeholder="Ej: Muy amigable, le gusta jugar con otros" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-32" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Historia</label>
+                                <textarea name="historia" required placeholder="Ej: Muy amigable, le gusta jugar con otros" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none resize-none h-20" />
                             </div>
                             <div>
-                                <label className="block text-lg mb-2 text-emerald-800 font-semibold">Cargue una Foto</label>
-                                <input type="file" name="foto" required accept="image/png, image/jpeg, image/webp" className="w-full p-3 rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" />
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Cargue una Foto</label>
+                                <input type="file" name="foto" required accept="image/png, image/jpeg, image/webp" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none" />
                             </div>
                             
                             {error && (
@@ -187,11 +203,11 @@ export default function ModalAnimal({ onAnimalCreated }) {
                     </div>
 
                     <div className="flex justify-end gap-3 mt-4">
-                        <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">Cancelar</button>
+                        <button type="button" onClick={cerrarModal} className="px-6 py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors text-sm font-medium">Cancelar</button>
                         <button 
                         type="submit" 
                         disabled={isSubmitting}
-                        className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors font-medium disabled:cursor-not-allowed disabled:opacity-50"
+                        className="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors text-sm font-medium disabled:cursor-not-allowed disabled:opacity-50"
                         >
                         {isSubmitting ? "Guardando..." : "Crear Ficha"}
                         </button>
