@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 export default function Navbar() {
-    const { isAuthenticated, logout } = useAuth();
+    const { isAuthenticated, logout, user } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const location = useLocation();
@@ -58,22 +58,44 @@ export default function Navbar() {
                 </div>
 
                 {/* Botones derecha */}
-                <div className="flex items-center gap-4">
-                    {isAuthenticated && (
-                        <button 
-                            onClick={logout} 
-                            className="px-6 py-3 rounded-full bg-red-300 border border-red-400 text-red-900 font-label-sm text-label-sm shadow-sm active:scale-95 transition-transform duration-200 hover:bg-red-400 "
-                        >
-                            Cerrar Sesión
-                        </button>
-                    )}
+                <div className="flex items-center gap-3 lg:gap-5">
+                    
+                    {/* Botón Donar  */}
                     <Link to="/donations" className="hidden lg:block">
                         <button className="bg-primary/90 border-primary text-white font-label-sm text-label-sm px-6 py-3.5 rounded-full active:scale-95 transition-transform duration-200 hover:bg-primary/70">
                             Donar
                         </button>
                     </Link>
 
-                    {/* Boton Hamburguesa */}
+                    {/*Sección de Usuario y Cerrar Sesión*/}
+                    {isAuthenticated && (
+                        <div className="hidden lg:flex items-center gap-3 pl-2 lg:pl-5 border-l border-stone-200 dark:border-stone-800">
+                            
+                            <div className="flex items-center gap-2.5 px-3 py-1.5 bg-stone-100/80 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 rounded-full shadow-sm">
+                                <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <span className="text-sm font-semibold text-stone-700 dark:text-stone-300 pr-1 truncate max-w-30" title={user?.username}>
+                                    {user?.username}
+                                </span>
+                            </div>
+                            
+                            {/* Botón Logout */}
+                            <button 
+                                onClick={logout} 
+                                title="Cerrar Sesión"
+                                className="p-2.5 rounded-full text-stone-500 hover:text-red-600 dark:text-stone-400 hover:bg-red-50 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-200"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                            </button>
+                        </div>
+                    )}
+
+                    {/* 3. Boton Hamburguesa */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="lg:hidden text-stone-600 dark:text-stone-400 hover:text-emerald-600 focus:outline-none p-2"
@@ -110,6 +132,36 @@ export default function Navbar() {
             {isMobileMenuOpen && (
                 <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-l border-b border-stone-200 dark:border-stone-800 shadow-2xl absolute w-80 right-0 top-20 rounded-bl-2xl">
                     <div className="flex flex-col px-6 py-6 space-y-4 font-sans text-base font-medium tracking-tight">
+                        
+                        {/* Info de usuario y Cerrar Sesión en menú móvil */}
+                        {isAuthenticated && (
+                            <div className="flex items-center justify-between pb-4 mb-2 border-b border-stone-200 dark:border-stone-800">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
+                                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] text-stone-500 dark:text-stone-400 uppercase tracking-wider font-bold">Sesión iniciada</p>
+                                        <p className="font-bold text-stone-800 dark:text-stone-200">{user?.username}</p>
+                                    </div>
+                                </div>
+                                <button 
+                                    onClick={() => {
+                                        logout();
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    title="Cerrar Sesión"
+                                    className="p-2 text-stone-400 hover:text-red-500 bg-stone-50 dark:bg-stone-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                    </svg>
+                                </button>
+                            </div>
+                        )}
+
                         {navLinks.map((link) => {
                             const isActive = checkIsActive(link.path);
                             return (
