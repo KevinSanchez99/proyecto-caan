@@ -68,7 +68,7 @@ export default function News() {
             <h1 className="font-h1 text-h1 text-on-surface mb-sm">
               Modulo de Noticias
             </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto text-justify">
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto text-justify">
               Acompañanos en nuestra misión diaria. Entérate de las historias de recuperación, próximos eventos y el trabajo que realizamos todos los días por los animales de Necochea y la zona.
             </p>
           </div>
