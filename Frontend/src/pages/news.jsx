@@ -72,7 +72,7 @@ export default function News() {
               Acompañanos en nuestra misión diaria. Entérate de las historias de recuperación, próximos eventos y el trabajo que realizamos todos los días por los animales de Necochea y la zona.
             </p>
           </div>
-          <div className="mb-10">
+          <div className="flex justify-end m-5">
             {isAuthenticated && (
               <Link to="/news/create" className="bg-emerald-600 text-white px-4 py-4 rounded-lg font-bold hover:bg-emerald-700 transition">
                 + Crear Noticia

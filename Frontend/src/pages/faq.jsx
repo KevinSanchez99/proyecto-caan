@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FaqAccordionItem from '../components/faq/AcordionItems';
 import FaqCard from '../components/faq/FaqCard';
 import NavBar from '../components/NavBar';
@@ -170,7 +170,7 @@ export default function Faq() {
                   <p className="font-bold text-primary mt-2">Dirección: Calle 107 Esquina 66, Necochea, BA.</p>
                 </div>
                 {/* Mapa Responsivo */}
-                <div className="w-full h-[350px] md:h-[450px] rounded-xl overflow-hidden border border-outline-variant/30 relative">
+                <div className="w-full h-87.5 md:h-112.5 rounded-xl overflow-hidden border border-outline-variant/30 relative">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3119.438311416452!2d-58.76915112465223!3d-38.56975317762067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x958fbd3dd2c3bc67%3A0xf38c8259a2a91cb8!2sProtectora%20De%20Animales%20Caan%20Necochea!5e0!3m2!1ses-419!2sar!4v1781903210617!5m2!1ses-419!2sar"
                     className="absolute top-0 left-0 w-full h-full"
