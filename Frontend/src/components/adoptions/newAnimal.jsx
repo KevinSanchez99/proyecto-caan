@@ -63,7 +63,7 @@ export default function ModalAnimal({ onAnimalCreated }) {
             if (error.response?.data?.errors) {
                 setError(error.response.data.errors); 
             } else {
-                setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
+                setError(error.response?.data?.message || "Hubo un error al guardar el animal.");
             }
         }finally {
             setIsSubmitting(false);
@@ -91,12 +91,12 @@ export default function ModalAnimal({ onAnimalCreated }) {
             {isAuthenticated && (
                 <button className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-emerald-700 transition" onClick={abrirModal}>
                     <span className="text-xl font-bold text-white">+</span>
-                    <span className="font-label-sm text-label-sm text-white">Nuevo Rescatado</span>
+                    <span className="font-label-sm text-label-sm text-white">Nuevo Animal</span>
                 </button>
             )}
 
             <dialog ref={modalRef} onClick={handleOutsideClick} className="m-auto p-4 md:p-6 rounded-2xl border-none shadow-xl backdrop:bg-black/50 w-[95%] md:w-[90%] max-w-6xl max-h-[95vh] overflow-y-auto bg-surface-container-lowest text-on-surface">
-                <h2 className="font-h2 text-h2 text-emerald-800 mb-4">Ingresar Nuevo Rescatado</h2>
+                <h2 className="font-h2 text-h2 text-emerald-800 mb-4">Ingresar Nuevo Animal</h2>
                 
                 <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div className="flex flex-col lg:flex-row gap-4">
@@ -104,7 +104,7 @@ export default function ModalAnimal({ onAnimalCreated }) {
                         <div className="flex flex-1 flex-col gap-3 p-4 rounded-2xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
                             <h3 className="text-lg text-emerald-800 font-semibold mb-2">Datos generales</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del perro</label>
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del animal</label>
                                 <input type="text" name="nombre" required placeholder="Ej: Firulais" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" />
                             </div>
                             <div>

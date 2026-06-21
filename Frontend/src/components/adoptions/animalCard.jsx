@@ -11,16 +11,16 @@ export default function AnimalCard({ animal, onAnimalChanged }) {
     const [mostrarInfo, setMostrarInfo] = useState(false);
 
     const handleDelete = async () => {
-        const confirmDelete = window.confirm('Usted está por borrar un perro. ¿Desea continuar?');
+        const confirmDelete = window.confirm('Usted está por borrar un animal. ¿Desea continuar?');
         if (!confirmDelete) return;
 
         try {
             await deleteAnimalRequest(animal._id);
-            alert('Adopción borrada correctamente.');
+            alert('Animal borrado correctamente.');
             if (onAnimalChanged) onAnimalChanged();
         } catch (error) {
-            console.error('Error al borrar la adopción:', error);
-            alert('No se pudo borrar la adopción. Revisa la consola.');
+            console.error('Error al borrar el animal:', error);
+            alert('No se pudo borrar el animal. Revisa la consola.');
         }
     };
     return (

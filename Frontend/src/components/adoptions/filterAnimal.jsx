@@ -73,7 +73,7 @@ export default function FilterAnimal({ onApplyFilters, isAuthenticated = false }
                 <h2 className="font-h2 text-h2 text-emerald-800 mb-4">Filtros de búsqueda</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
                     <div>
-                        <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del perro</label>
+                        <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del animal</label>
                         <input type="text" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" placeholder="Ej: Firulais" name="nombre" value={filters.nombre} onChange={(e) => setFilters((prev) => ({ ...prev, nombre: e.target.value }))} />
                     </div>
                     <div>

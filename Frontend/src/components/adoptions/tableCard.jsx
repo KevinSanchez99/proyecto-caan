@@ -17,7 +17,7 @@ export default function TableCard({ filters = {}, refreshTrigger }) {
             setPagina(1);
             setCargando(false);
         } catch (error) {
-            console.error("Hubo un error al traer los animales", error);
+            console.error("Hubo un error al cargar los animales", error);
             setCargando(false);
         }
     };

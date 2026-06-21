@@ -101,7 +101,7 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
             if (error.response?.data?.errors) {
                 setError(error.response.data.errors);
             } else {
-                setError(error.response?.data?.message || "Hubo un error al guardar el rescatado.");
+                setError(error.response?.data?.message || "Hubo un error al guardar el animal.");
             }
         } finally {
             setIsSubmitting(false);
@@ -126,7 +126,7 @@ export default function EditAnimal({ animalId, onClose, onAnimalChanged }) {
                         <div className="flex flex-1 flex-col gap-3 p-4 rounded-2xl border border-slate-300/90 bg-slate-50 shadow-lg ring-1 ring-slate-200/90">
                             <h3 className="text-lg text-emerald-800 font-semibold mb-2">Datos generales</h3>
                             <div>
-                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del perro</label>
+                                <label className="block text-sm mb-1 text-emerald-800 font-semibold">Nombre del animal</label>
                                 <input type="text" className="w-full p-2 text-sm rounded-lg border border-outline-variant bg-white text-on-surface font-medium placeholder:text-on-surface-variant focus:border-emerald-800 focus:ring-1 focus:ring-emerald-800 outline-none shadow-sm" name="nombre" defaultValue={formData.nombre} required />
                             </div>
                             <div>
