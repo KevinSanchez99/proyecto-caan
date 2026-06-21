@@ -4,7 +4,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
-        <div className="mt-xl flex justify-center gap-2">
+        <div className="flex justify-center gap-2">
             <button 
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}

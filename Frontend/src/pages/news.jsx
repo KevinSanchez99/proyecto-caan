@@ -63,7 +63,7 @@ export default function News() {
     <div className="bg-background w-full text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col pt-30">
       <Navbar />
       <main className="max-w-container_max mx-auto px-8 grow w-full pb-10">
-        <section className="mb-xl">
+        <section className="mb-8">
           <div className="flex flex-col justify-center items-center" >
             <h1 className="font-h1 text-h1 text-on-surface mb-sm">
               Modulo de Noticias
