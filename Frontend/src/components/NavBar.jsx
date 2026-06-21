@@ -86,7 +86,7 @@ export default function Navbar() {
                             <button 
                                 onClick={logout} 
                                 title="Cerrar Sesión"
-                                className="p-2.5 rounded-full text-stone-500 hover:text-red-600 dark:text-stone-400 hover:bg-red-50 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-200"
+                                className="p-3 rounded-full hover:text-red-400 text-red-600 bg-red-200 hover:bg-red-150 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-200"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -153,7 +153,7 @@ export default function Navbar() {
                                         setIsMobileMenuOpen(false);
                                     }}
                                     title="Cerrar Sesión"
-                                    className="p-2 text-stone-400 hover:text-red-500 bg-stone-50 dark:bg-stone-900/50 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-colors"
+                                    className="p-2 text-red-600 bg-red-100 hover:text-stone-900  hover:bg-stone-50  rounded-full transition-colors"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
