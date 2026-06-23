@@ -94,9 +94,9 @@ export default function Faq() {
               <p className="font-body-md text-sm mb-md opacity-90">
                 Nuestro equipo está listo para ayudarte con cualquier pregunta adicional.
               </p>
-              <a className="inline-flex items-center gap-xs font-label-sm text-label-sm bg-on-primary-container text-primary-container px-4 py-2 rounded-full hover:bg-white transition-colors" href="https://www.instagram.com/caanecochea/">
+              <a className="inline-flex items-center gap-xs font-label-sm text-label-sm bg-on-primary-container text-primary-container px-4 py-2 rounded-full hover:bg-white transition-colors" href="https://www.instagram.com/caanecochea/" target="_blank">
                 Contáctanos
-                <span className="text-[18px]"><IoMdArrowRoundForward /></span>
+                <span className="text-[18px]" ><IoMdArrowRoundForward /></span>
               </a>
             </div>
           </aside>
