@@ -4,9 +4,9 @@ const HistorySection = () => (
             <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-4 capitalize">
                 Nuestra Historia
             </h2>
-            <p className="leading-relaxed text-primary/80 text-md body-md">
-                El Centro de Ayuda al Animal de Necochea (CAAN) es una organización sin fines de lucro que trabaja en la ciudad de Necochea, provincia de Buenos Aires, dedicada al rescate, cuidado y adopción responsable de animales en situación de abandono o riesgo. <br/>
-                Nuestra labor está centrada principalmente en perros, a quienes brindamos asistencia y recuperación con el objetivo de encontrarles un hogar definitivo.
+            <p className="leading-relaxed text-primary/90 text-md body-md">
+                El <strong>Centro de Ayuda al Animal de Necochea</strong> es una organización sin fines de lucro que trabaja en la ciudad de Necochea, dedicada al rescate, cuidado y adopción responsable de animales en situación de abandono o riesgo. <br/><br/>
+                Nuestra labor está centrada principalmente en <strong>perros</strong>, a quienes brindamos asistencia y recuperación con el objetivo de encontrarles un hogar definitivo.
             </p>
         </div>
 

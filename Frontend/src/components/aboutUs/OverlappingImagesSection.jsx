@@ -27,7 +27,7 @@ const OverlappingImagesSection = () => (
             <h2 className="text-3xl md:text-4xl font-bold text-on-surface mb-4 capitalize">
                 Nuestro Propósito
             </h2>
-            <p className="leading-relaxed text-primary/80 text-md body-md">
+            <p className="leading-relaxed text-primary/90 text-md body-md">
                 Cada rescate, cada castración y cada adopción es un paso hacia una comunidad más consciente y responsable con los animales.<br/> Junto a la comunidad del CAAN creemos que el bienestar animal se construye entre todos: con quienes adoptan, quienes donan, quienes dedican su tiempo como voluntarios y quienes simplemente eligen informarse y respetar a los animales de nuestra ciudad.
             </p>
         </div>
