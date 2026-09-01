@@ -28,9 +28,7 @@ const OverlappingImagesSection = () => (
                 Nuestro Propósito
             </h2>
             <p className="leading-relaxed text-primary/80 text-md body-md">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium non, expedita ratione
-                laudantium suscipit minus nesciunt facilis cupiditate error iusto eos, earum doloremque, tenetur
-                quisquam veritatis placeat iure modi alias.
+                Cada rescate, cada castración y cada adopción es un paso hacia una comunidad más consciente y responsable con los animales.<br/> Junto a la comunidad del CAAN creemos que el bienestar animal se construye entre todos: con quienes adoptan, quienes donan, quienes dedican su tiempo como voluntarios y quienes simplemente eligen informarse y respetar a los animales de nuestra ciudad.
             </p>
         </div>
 
